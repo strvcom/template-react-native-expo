@@ -1,0 +1,31 @@
+{
+  "cli": {
+    "version": ">= 0.52.0"
+  },
+  "build": {
+    "development": {
+      "env": {
+        "APP_ENV": "dev"
+      },
+      "developmentClient": true,
+      "distribution": "internal",
+      "releaseChannel": "dev"
+    },
+    "staging": {
+      "env": {
+        "APP_ENV": "staging"
+      },
+      "distribution": "internal",
+      "releaseChannel": "staging"
+    },
+    "production": {
+      "env": {
+        "APP_ENV": "production"
+      },
+      "releaseChannel": "production"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

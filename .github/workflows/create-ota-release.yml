@@ -1,0 +1,58 @@
+# This workflow should be triggered manually to publish mobile over-the-air update to targeted release channel from a particular branch.
+# The goal is to collocate production environment variables `.env` and prevent switching of variables on a local machine
+
+name: '📱 Create OTA Release'
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseChannel:
+        required: true
+        description: 'What release channel do you want to target (defined in eas.json, read Readme)'
+      mentalCheck:
+        required: true
+        description: '👻 Are you sure that selected release channel has a compatible native layer as the branch you are deploying from? 👻'
+        type: choice
+        options:
+          - YES
+      environment:
+        required: true
+        type: choice
+        description: 'What environment are you targeting? Similar to release channel'
+        options:
+          - staging
+          - prod
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_ACCESS_TOKEN }}
+
+      - name: 🔑 Create ENV File
+        shell: bash
+        working-directory: mobile
+        run: |
+          cp .env.ci .env
+          sed -ie 's/APP_ENV/${{ secrets.APP_ENV }}/g' .env
+
+      - name: 📦 Install dependencies
+        working-directory: mobile
+        run: yarn install
+
+      - name: 🚀 Publish app
+        working-directory: mobile
+        run: expo publish --release-channel=${{ github.event.inputs.releaseChannel }} --non-interactive

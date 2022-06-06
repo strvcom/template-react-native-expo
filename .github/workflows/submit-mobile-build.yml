@@ -1,0 +1,93 @@
+#  https://github.com/expo/expo-github-action
+#  detox test(build) in this setup would take too long, a logic to cache the detox build would be needed
+
+name: '📱 Submit Mobile Build'
+
+on:
+  workflow_dispatch:
+    inputs:
+      skipTests:
+        required: true
+        description: '👻 Do you want to skip tests? 👻'
+        type: boolean
+
+jobs:
+  # detox_test:
+  #   if: ${{ github.event.inputs.skipTests }} != 'true'
+  #   name: Detox Integration Tests - iOS
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16'
+
+  #     - name: Install deps and build (with cache)
+  #       uses: bahmutov/npm-install@v1
+
+  #     # Sharp CLI enables faster image generation during prebuild
+  #     # https://github.com/expo/expo-cli/issues/2676
+  #     - name: Install Sharp CLI for faster image generation during prebuild
+  #       working-directory: mobile
+  #       run: yarn global add sharp-cli
+
+  #     - name: Set up Expo
+  #       uses: expo/expo-github-action@v7
+  #       with:
+  #         expo-version: latest
+  #         token: ${{ secrets.EXPO_TOKEN }}
+
+  #     - name: 🔑 Create ENV File
+  #       shell: bash
+  #       working-directory: mobile
+  #       run: |
+  #         cp .env.ci .env
+  #         sed -ie 's/APP_ENV/${{ secrets.APP_ENV }}/g' .env
+
+  #     - name: Prepare files for xcodebuild command
+  #       working-directory: mobile
+  #       run: expo prebuild --platform ios
+
+  #     - name: Build iOS app locally with xcodebuild
+  #       working-directory: mobile
+  #       run: yarn detox build --configuration ios:ci
+
+  #     - name: Set up Simulator for Detox
+  #       working-directory: mobile
+  #       run: |
+  #         brew tap wix/brew
+  #         brew install applesimutils
+
+  #     - name: Run tests
+  #       working-directory: mobile
+  #       run: yarn detox test --configuration ios:ci authFlow.e2e.js
+
+  build:
+    runs-on: ubuntu-latest
+    # needs: detox_test
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_ACCESS_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: yarn install
+
+      - name: Build and Submit on EAS
+        working-directory: mobile
+        run: npx eas-cli build --profile production --platform all --auto-submit --non-interactive --no-wait
