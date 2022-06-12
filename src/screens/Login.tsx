@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 
 import Button from 'src/components/Button'
-import { useAuthStore } from 'src/hooks/useAuthStore'
+import { useRootStore } from 'src/store/useRootStore'
 
 const Login = () => {
-  const { setAccessToken } = useAuthStore()
+  const { setAccessToken } = useRootStore()
   const handleSignIn = () => {
     setAccessToken('dummyToken')
   }

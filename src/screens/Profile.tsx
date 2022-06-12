@@ -2,11 +2,11 @@ import { useNavigation } from '@react-navigation/native'
 import { Text, View } from 'react-native'
 
 import Button from 'src/components/Button'
-import { useAuthStore } from 'src/hooks/useAuthStore'
 import { Routes } from 'src/navigation/routes'
+import { useRootStore } from 'src/store/useRootStore'
 
 const Profile = () => {
-  const { logoutUser } = useAuthStore()
+  const { logoutUser } = useRootStore()
   const navigation = useNavigation()
   const handleNavigate = () => navigation.navigate(Routes.NESTED_SCREEN)
 
