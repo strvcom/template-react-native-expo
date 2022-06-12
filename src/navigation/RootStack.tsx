@@ -1,16 +1,16 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { useAuthStore } from 'src/hooks/useAuthStore'
 import BottomStack from 'src/navigation/BottomStack'
 import { Routes } from 'src/navigation/routes'
 import type { RootStackParamList } from 'src/navigation/types'
 import Login from 'src/screens/Login'
 import NestedScreen from 'src/screens/NestedScreen'
+import { useRootStore } from 'src/store/useRootStore'
 
 const Root = createNativeStackNavigator<RootStackParamList>()
 
 const RootStack = () => {
-  const { accessToken } = useAuthStore()
+  const { accessToken } = useRootStore()
   const isLoggedIn = Boolean(accessToken)
 
   return (

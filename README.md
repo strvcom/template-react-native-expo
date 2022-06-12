@@ -66,7 +66,7 @@ Flipper is a default React Native debugging tool that monitors crashes, console,
 Flipper plugins included in the template:
 
 - [React Navigation](https://reactnavigation.org/docs/devtools/) - to see navigation state, history, and params passed to screens
-- [Zustand](https://github.com/cmdominguez/react-native-flipper-zustand) - to see Zustand store (TODO: await support for Zustand v4 [typescript support](https://github.com/cmdominguez/react-native-flipper-zustand/issues/3))
+- [Zustand](https://github.com/cmdominguez/react-native-flipper-zustand) - to see Zustand store (TODO: await support for Zustand v4[typescript support](https://github.com/cmdominguez/react-native-flipper-zustand/issues/3) to remove ts-nocheck for `useRouteStore`)
 - [MMKV](https://github.com/muchobien/flipper-plugin-react-native-mmkv) - to see MMKV store
 
 Not included but useful:
@@ -111,9 +111,9 @@ declare global {
 
 ### Global State and User Persistance
 
-`Zustand` is used for global state as it is simple and does not need an extra provider. The state can be used through a `useAuthStore` hook within React render cycle or outside of it with its `useAuthStore.getState()` store method.
+`Zustand` is used for global state as it is simple and does not need an extra provider. The state can be used through a `useRootStore` hook within React render cycle or outside of it with its `useRootStore.getState()` store method.
 
-User persistance is setup through `MMKV` which is a **synchronized** and **faster** alternative to `AsyncStorage`. MMKV Storage is provided to Zustand `useAuthStore` and `partialize` method defines what data from Zustand store should be persisted (e.g. `accessToken`). Meaning upon user login we just need to update the Zustand store and the persistance is handled for us - no need to persist the user in MMKV separately.
+User persistance is setup through `MMKV` which is a **synchronized** and **faster** alternative to `AsyncStorage`. MMKV Storage is provided to Zustand `useRootStore` and `partialize` method defines what data from Zustand store should be persisted (e.g. `accessToken`). Meaning upon user login we just need to update the Zustand store and the persistance is handled for us - no need to persist the user in MMKV separately. The store is divided by slices to distinguish features.
 
 ### Over-the-Air Updates
 
