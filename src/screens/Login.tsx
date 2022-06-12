@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 
-import Button from 'src/components/Button'
+import Button from 'src/components/Button/Button'
 import { useRootStore } from 'src/store/useRootStore'
 
 const Login = () => {

@@ -18,6 +18,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Babel Plugins](#babel-plugins)
     - [Debugging - Flipper](#debugging---flipper)
     - [Linting Tools](#linting-tools)
+    - [Storybook](#storybook)
     - [Github Actions](#github-actions)
   - [Important Defaults - APP](#important-defaults---app)
     - [React Navigation](#react-navigation)
@@ -82,6 +83,12 @@ Typical STRV stack. Quite a few rules overrides in Eslint config.
 - Prettier
 - Husky
 - Lint Staged
+
+### Storybook
+
+React Native [implementation](https://github.com/storybookjs/react-native) of Storybook is lagging behind with features and syntax we are used to from web, therefore [addon-react-native-web](https://github.com/storybookjs/addon-react-native-web) was created which allows to use the latest features for Storybook web by rendering React Native components through React Native Web. See the repo and [example](https://github.dev/dannyhw/addon_react_native_web_example) implementation.
+
+⚠️ React Native Web won't render all components the same way as for iOS and Android, so don't build UI library on top of it, rather use if for smoother project bootstrapping experience.
 
 ### Github Actions
 

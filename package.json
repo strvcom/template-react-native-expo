@@ -13,7 +13,9 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "yarn lint --fix",
     "type-check": "tsc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@react-native-community/netinfo": "8.2.0",
@@ -41,11 +43,22 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@storybook/addon-actions": "^6.5.8",
+    "@storybook/addon-essentials": "^6.5.8",
+    "@storybook/addon-interactions": "^6.5.8",
+    "@storybook/addon-links": "^6.5.8",
+    "@storybook/addon-react-native-web": "^0.0.18",
+    "@storybook/builder-webpack4": "^6.5.8",
+    "@storybook/manager-webpack4": "^6.5.8",
+    "@storybook/react": "^6.5.8",
+    "@storybook/testing-library": "^0.0.12",
     "@strv/eslint-config-react-native": "^3.1.0",
     "@strv/eslint-config-typescript": "^3.1.2",
     "@types/react": "^17.0.41",
     "@types/react-native": "~0.66.13",
+    "babel-loader": "^8.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-react-native-web": "^0.18.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "dotenv": "^16.0.1",
     "eslint": "^8.15.0",

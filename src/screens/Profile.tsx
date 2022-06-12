@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { Text, View } from 'react-native'
 
-import Button from 'src/components/Button'
+import Button from 'src/components/Button/Button'
 import { Routes } from 'src/navigation/routes'
 import { useRootStore } from 'src/store/useRootStore'
 
