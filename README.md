@@ -66,7 +66,7 @@ Flipper is a default React Native debugging tool that monitors crashes, console,
 Flipper plugins included in the template:
 
 - [React Navigation](https://reactnavigation.org/docs/devtools/) - to see navigation state, history, and params passed to screens
-- [Zustand](https://github.com/cmdominguez/react-native-flipper-zustand) - to see Zustand store (TODO: await support for Zustand v4[typescript support](https://github.com/cmdominguez/react-native-flipper-zustand/issues/3) to remove ts-nocheck for `useRouteStore`)
+- [Zustand](https://github.com/cmdominguez/react-native-flipper-zustand) - to see Zustand store (TODO: await support for Zustand v4 [typescript support](https://github.com/cmdominguez/react-native-flipper-zustand/issues/3) to remove ts-nocheck for `useRootStore`)
 - [MMKV](https://github.com/muchobien/flipper-plugin-react-native-mmkv) - to see MMKV store
 
 Not included but useful:
