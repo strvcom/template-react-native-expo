@@ -73,7 +73,8 @@
         // unnecessary
         "react/require-default-props": "off",
         "react/prop-types": "off",
-        "react/style-prop-object": "off"
+        "react/style-prop-object": "off",
+        "react-native/no-inline-styles": "off"
       },
       "overrides": [
         // {

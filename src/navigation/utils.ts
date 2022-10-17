@@ -3,7 +3,6 @@ import { CommonActions, createNavigationContainerRef } from '@react-navigation/n
 import type { RootStackParamList } from 'src/navigation/types'
 
 export const navigationRef = createNavigationContainerRef()
-
 export const navigationReset = (route: keyof RootStackParamList, params?: object) =>
   navigationRef.dispatch(
     CommonActions.reset({
