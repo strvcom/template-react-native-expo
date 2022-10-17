@@ -2,6 +2,8 @@
 
 This template bootstraps Expo Managed Workflow focused not only on solid project setup but also important app defaults such as Forced and OTA update functionality.
 
+> To start using it, create a .env file with `APP_ENV=dev`
+
 **Major dependencies:**
 
 - Expo SDK 45

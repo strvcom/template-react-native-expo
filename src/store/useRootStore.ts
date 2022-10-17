@@ -1,7 +1,3 @@
-// @ts-nocheck
-// TODO: wrap persist middleware with zustandFlipper once types are resolved for Zustand V4 to enable seeing zustand actions/state in flipper
-// https://github.com/cmdominguez/react-native-flipper-zustand/issues/3
-
 import zustandFlipper from 'react-native-flipper-zustand'
 import create from 'zustand'
 import { persist } from 'zustand/middleware'

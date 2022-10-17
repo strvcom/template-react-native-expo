@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+import { colors } from 'src/styles/colors'
+
 const OfflineMessage = () => {
   const { bottom } = useSafeAreaInsets()
   const [showReload, setShowReload] = useState(false)
@@ -21,7 +23,7 @@ const OfflineMessage = () => {
     <View
       style={{
         ...(bottom ? { paddingBottom: bottom, marginTop: -bottom + 5 } : {}),
-        backgroundColor: '#ccc',
+        backgroundColor: colors.grey,
       }}
     >
       <Pressable
