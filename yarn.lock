@@ -6824,12 +6824,10 @@ react-native-dotenv@^3.3.1:
   dependencies:
     dotenv "^10.0.0"
 
-react-native-flipper-zustand@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-flipper-zustand/-/react-native-flipper-zustand-1.0.2.tgz#2ea8ddf0340b45ed0ce27f586c5c2acbc6712ad7"
-  integrity sha512-EwYR2jjbR+uwMMYtHEciPQNJoZISALggiWLlHTiiGxVB+Sq4NeXrC6P6anGbQsmAPVcjqXrYFun6qIqhjRAf7A==
-  dependencies:
-    zustand "^3.3.2"
+react-native-flipper-zustand@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-flipper-zustand/-/react-native-flipper-zustand-2.0.1.tgz#c9a5081dfb831c89e507662d90cd7fcb0a66cc08"
+  integrity sha512-ic7L/rEE3m+was3F9MA18V+7DV+vAF0CEXAKPL/vdORiqmQd8bTmidfFaIcDYz/z40R6vuwmwDTPaxUKT1khdA==
 
 react-native-flipper@^0.145.0:
   version "0.145.0"
@@ -8543,11 +8541,6 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
-
-zustand@^3.3.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.7.2.tgz#7b44c4f4a5bfd7a8296a3957b13e1c346f42514d"
-  integrity sha512-PIJDIZKtokhof+9+60cpockVOq05sJzHCriyvaLBmEJixseQ1a5Kdov6fWZfWOu5SK9c+FhH1jU0tntLxRJYMA==
 
 zustand@^4.1.2:
   version "4.1.2"

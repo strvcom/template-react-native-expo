@@ -56,7 +56,7 @@
     "prettier": "^2.6.2",
     "react-native-dotenv": "^3.3.1",
     "react-native-flipper": "^0.145.0",
-    "react-native-flipper-zustand": "^1.0.2",
+    "react-native-flipper-zustand": "^2.0.1",
     "react-native-mmkv-flipper-plugin": "^1.0.0",
     "typescript": "^4.6.3"
   },
