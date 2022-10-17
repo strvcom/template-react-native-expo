@@ -1,8 +1,8 @@
+import type { Environment } from '@env'
 import type { ExpoConfig, IOS, Android } from '@expo/config-types'
 
 import 'dotenv/config'
 import type { OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
-import type { Environment } from 'src/types/types'
 
 declare const process: {
   env: { APP_ENV: Environment }
