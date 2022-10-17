@@ -8,7 +8,7 @@ export default function useCachedResources() {
   useEffect(() => {
     const loadResourcesAndDataAsync = () => {
       try {
-        // Load fonts
+        // -- Load fonts
         // await Font.loadAsync({
         //   'Lato-Black': require('./../../assets/fonts/Lato-Black.ttf'),
         //   'Lato-Bold': require('./../../assets/fonts/Lato-Bold.ttf'),
@@ -17,6 +17,12 @@ export default function useCachedResources() {
         //   'Lato-Semibold': require('./../../assets/fonts/Lato-Semibold.ttf'),
         //   'Lato-Regular': require('./../../assets/fonts/Lato-Regular.ttf'),
         // })
+        // -- Preload images
+        // await Asset.loadAsync([
+        //   require('src/../assets/images/getStarted.png'),
+        // ])
+      } catch (error) {
+        // crashlytics.recordCatchError(error, 'loading fonts or images failed')
       } finally {
         setLoadingComplete(true)
       }

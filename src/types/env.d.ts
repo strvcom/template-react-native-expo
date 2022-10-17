@@ -1,5 +1,5 @@
 declare module '@env' {
-  import type { Environment } from './environment'
+  export type Environment = 'dev' | 'staging' | 'production'
 
   export const APP_ENV: Environment
 }

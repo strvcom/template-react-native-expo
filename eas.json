@@ -1,6 +1,6 @@
 {
   "cli": {
-    "version": ">= 0.52.0"
+    "version": ">= 2.3.0"
   },
   "build": {
     "development": {
@@ -9,20 +9,28 @@
       },
       "developmentClient": true,
       "distribution": "internal",
-      "releaseChannel": "dev"
+      "channel": "dev"
     },
     "staging": {
       "env": {
         "APP_ENV": "staging"
       },
       "distribution": "internal",
-      "releaseChannel": "staging"
+      "channel": "staging"
+    },
+    "staging-development": {
+      "env": {
+        "APP_ENV": "staging"
+      },
+      "distribution": "internal",
+      "developmentClient": true,
+      "channel": "staging"
     },
     "production": {
       "env": {
         "APP_ENV": "production"
       },
-      "releaseChannel": "production"
+      "channel": "production"
     }
   },
   "submit": {

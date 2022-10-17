@@ -6,9 +6,9 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 **Major dependencies:**
 
-- Expo SDK 45
-- React Native 0.68.2
-- React 17.0.2
+- Expo SDK 46
+- React Native 0.69.6
+- React 18.0.0
 
 **Table of Contents**
 
@@ -123,17 +123,19 @@ User persistance is setup through `MMKV` which is a **synchronized** and **faste
 
 > ⚠️ The OTA updates are used for patches to javascript layer only which is convenient for small bug fixes and UI changes.
 
-To deliver the update through `expo publish` we need to target the right `release channel` from `eas.json` and manage `runtimeVersion` in `app.config.ts` for **native layer compatibility** otherwise we risk updating incompatible environment resulting in app crashes.
+To deliver the update through `eas update` we need to target the right `channel` from `eas.json` and manage `runtimeVersion` in `app.config.ts` for **native layer compatibility** otherwise we risk updating incompatible environment resulting in app crashes.
 
-> ⚠️ runtimeVersion should be changed whenever we change native layer, meaning a new third party dependency is installed in package.json or we do native config changes in app.config.ts.
+> ⚠️ runtimeVersion should be changed whenever we change native layer, meaning a new native third party dependency is installed in package.json or we do native config changes in app.config.ts.
 
 > ❓ A versioning strategy could be to bump minor version for every native change and bump patch version for every javascript change. Then `runtimeVersion` would change from `0.1.0` to `0.2.0`, while `version` could change as follows: `0.1.0` > `0.1.x` > `0.2.0`. This means `runtimeVersion` `0.1.0` is compatible with all `versions` `0.1.x`.
 
-> ⚠️ if we run `expo publish` locally, current `.env` file is used, so be careful not to publish to production development variables. Better to do it through a github action.
+> ⚠️ if we run `eas update` locally, current `.env` file is used, so be careful not to publish to production development variables. Better to do it through a github action and setup environment variables as Github Secrets.
 
 ### Forced Update aka Minimum Version Check
 
-**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useForcedUpdate()` hook compares `minimumSupportedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from our backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
+**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useStoreUpdate('forced' | 'suggested')` hook compares `minimumSupportedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from our backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
+
+We can also set `suggested` version to signal users that there is a new version available (e.g. in profile)
 
 ### Offline Check
 
