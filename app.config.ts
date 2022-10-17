@@ -66,6 +66,9 @@ const expoConfig: ExpoConfig = {
     buildNumber: String(buildNumber),
     supportsTablet: false,
     bundleIdentifier: appIdentifier,
+    config: {
+      usesNonExemptEncryption: false,
+    },
   },
   android: {
     versionCode: buildNumber,
