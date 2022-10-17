@@ -1,6 +1,7 @@
 import type { ExpoConfig, IOS, Android } from '@expo/config-types'
 
 import 'dotenv/config'
+import type { OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
 import type { Environment } from 'src/types/types'
 
 declare const process: {
@@ -35,11 +36,20 @@ const { name, appIdentifier, icon } = getEnvironmentInfo()
 // use flipper only in DEV
 const plugins: ExpoConfig['plugins'] = environment === 'dev' ? ['expo-community-flipper'] : []
 
+// UPDATE VERSION AND BUILDNUMBER
+const version = '0.1.0'
+const buildNumber = 60
+// calculated from version to replace patch version with 0: 0.1.1 >> 0.1.0 -- read Readme
+const runtimeVersion = `${version.split('.').slice(0, 2).join('.')}.0`
+// this can be length of splashscreen during which app can download and run OTA update version
+const fallbackToCacheTimeout = 1000
+const otaUpdatePriority: OtaUpdatePriority = 'normal'
+
 const expoConfig: ExpoConfig = {
   name,
   slug: 'template-react-native-expo',
-  version: '0.1.0',
-  runtimeVersion: '0.1.0',
+  version,
+  runtimeVersion,
   orientation: 'portrait',
   icon,
   userInterfaceStyle: 'light',
@@ -49,16 +59,16 @@ const expoConfig: ExpoConfig = {
     backgroundColor: '#ffffff',
   },
   updates: {
-    fallbackToCacheTimeout: 0,
+    fallbackToCacheTimeout,
   },
   assetBundlePatterns: ['**/*'],
   ios: {
-    buildNumber: '1',
+    buildNumber: String(buildNumber),
     supportsTablet: false,
     bundleIdentifier: appIdentifier,
   },
   android: {
-    versionCode: 1,
+    versionCode: buildNumber,
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
@@ -73,6 +83,10 @@ const expoConfig: ExpoConfig = {
   },
   jsEngine: 'hermes',
   plugins,
+  extra: {
+    fallbackToCacheTimeout,
+    otaUpdatePriority,
+  },
 }
 
 export default expoConfig
