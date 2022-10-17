@@ -6,9 +6,9 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 **Major dependencies:**
 
-- Expo SDK 45
-- React Native 0.68.2
-- React 17.0.2
+- Expo SDK 46
+- React Native 0.69.6
+- React 18.0.0
 
 **Table of Contents**
 
@@ -133,7 +133,9 @@ To deliver the update through `expo publish` we need to target the right `releas
 
 ### Forced Update aka Minimum Version Check
 
-**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useForcedUpdate()` hook compares `minimumSupportedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from our backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
+**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useStoreUpdate('forced' | 'suggested')` hook compares `minimumSupportedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from our backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
+
+We can also set `suggested` version to signal users that there is a new version available (e.g. in profile)
 
 ### Offline Check
 
