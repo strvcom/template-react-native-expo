@@ -2,7 +2,8 @@
 
 This template bootstraps Expo Managed Workflow focused not only on solid project setup but also important app defaults such as Forced and OTA update functionality.
 
-> To start using it, create a .env file with `APP_ENV=dev`
+> To start using it, create a .env file with `APP_ENV=dev`.
+> Also to use EAS, install `eas-cli` globally (`yarn global add eas-cli`).
 
 **Major dependencies:**
 
@@ -28,6 +29,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Forced Update aka Minimum Version Check](#forced-update-aka-minimum-version-check)
     - [Offline Check](#offline-check)
     - [Maximum Font Scaling](#maximum-font-scaling)
+    - [Size Scaling](#size-scaling)
 
 ## Important Defaults - SETUP
 
@@ -50,7 +52,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 ### App Environments Setup
 
 - Environment variables are managed by `react-native-dotenv` importable from `@env` module. `APP_ENV` variable defines what environment we are running.
-  > src/types/types.ts > `export type Environment = 'dev' | 'staging' | 'production'`
+  > src/types/env.d.ts > `export type Environment = 'dev' | 'staging' | 'production'`
 - `app.config.ts` determines based on the environment a relevant **icon, app name and appIdentifier** to distinguish individual apps and allow installing side by side
 - `eas.json` can set `APP_ENV` variable for each build profile to define environment
 
@@ -89,11 +91,10 @@ Typical STRV stack. Quite a few rules overrides in Eslint config.
 
 Requires `Expo Access Token` set as Github secret to connect to EAS.
 
-1.  **Expo Publish (over-the-air)**
+1.  **EAS Update (over-the-air)**
     - env file is created with copying `.env.ci` file as `.env` and replacing dummy values with actual secrets from Github secrets
 2.  **EAS Build**
-
-    - ideally would run tests before building and have build cache logic
+    - ideally would run tests before submitting an app and have build cache logic
 
 ## Important Defaults - APP
 
@@ -146,3 +147,7 @@ We can also set `suggested` version to signal users that there is a new version 
 ### Maximum Font Scaling
 
 React Native allows as default to scale the font significantly which will break the UI of the app. You should expect users to have font scaling up if your target group includes older generation. To allow some level of accessibility but prevent users from breaking the app UI, default scaling of maximum +25% is applied. You can increase it but be sure to control important parts of the application individually to keep UX in place.
+
+### Size Scaling
+
+To replicate Figma design consistently on majority of mobile screen sizes, we should apply size scaling to UI elements relative to actual device window width/height. This technique is not perfect and implements a subjective scaling factor, but prevents well having too small elements on larger screens. Inspiration: [article + library](https://github.com/nirsky/react-native-size-matters/blob/master/examples/BlogPost/README.md)

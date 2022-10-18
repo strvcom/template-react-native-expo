@@ -74,7 +74,11 @@
         "react/require-default-props": "off",
         "react/prop-types": "off",
         "react/style-prop-object": "off",
-        "react-native/no-inline-styles": "off"
+        "react-native/no-inline-styles": "off",
+        "padding-line-between-statements": [
+          "warn",
+          { "blankLine": "any", "prev": "export", "next": "export" }
+        ]
       },
       "overrides": [
         // {
