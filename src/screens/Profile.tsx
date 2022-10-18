@@ -9,7 +9,7 @@ import { ms } from 'src/utils/scale'
 const Profile = () => {
   const { logoutUser } = useRootStore()
   const navigation = useNavigation()
-  const handleNavigate = () => navigation.navigate(Routes.NESTED_SCREEN)
+  const handleNavigate = () => navigation.navigate(Routes.NESTED_SCREEN, { isProfile: true })
 
   return (
     <View>
