@@ -4,6 +4,7 @@ import { Text, View } from 'react-native'
 import Button from 'src/components/Button'
 import { Routes } from 'src/navigation/routes'
 import { useRootStore } from 'src/store/useRootStore'
+import { ms } from 'src/utils/scale'
 
 const Profile = () => {
   const { logoutUser } = useRootStore()
@@ -12,7 +13,7 @@ const Profile = () => {
 
   return (
     <View>
-      <Text>Profile</Text>
+      <Text style={{ fontSize: ms(20) }}>Profile</Text>
       <Button text="Navigate to nested screen" onPress={handleNavigate} />
       <Button text="Sign out" onPress={logoutUser} />
     </View>
