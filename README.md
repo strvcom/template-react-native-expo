@@ -30,6 +30,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Offline Check](#offline-check)
     - [Maximum Font Scaling](#maximum-font-scaling)
     - [Size Scaling](#size-scaling)
+  - [Other Recommended Solutions](#other-recommended-solutions)
 
 ## Important Defaults - SETUP
 
@@ -151,3 +152,30 @@ React Native allows as default to scale the font significantly which will break 
 ### Size Scaling
 
 To replicate Figma design consistently on majority of mobile screen sizes, we should apply size scaling to UI elements relative to actual device window width/height. This technique is not perfect and implements a subjective scaling factor, but prevents well having too small elements on larger screens. Inspiration: [article + library](https://github.com/nirsky/react-native-size-matters/blob/master/examples/BlogPost/README.md)
+
+## Other Recommended Solutions
+
+- **Styling**
+
+  - [Restyle](https://github.com/Shopify/restyle) or [Styled Components](https://github.com/styled-components/styled-components)
+
+    > Restyle follows a defined theme with strict type safety resulting in consistent and quickly built UI. It is very helpeful when a designer defines majority of text variants which can be plugged into the theme and reused super easily. It has also responsive utilities that can make potential transition to a tablet app easier. Styled components or its variations are known to Web colleagues, so the familiarity may help in transition to React Native.
+
+- **Notifications**
+
+  - [React Native Firebase Cloud Messaging](https://rnfirebase.io/messaging/usage) + [Notifee](https://github.com/invertase/notifee)
+
+    > Both managed by Invertase with latest notification features. Notifee is needed to change Foreground notifications to local ones. Expo-notifications, alternative to both, is also an option but only with native tokens, because using ExpoPushTokens is a strong lock-in, not easily reverted.
+
+- **Forms**
+  - [React Hook Form](https://github.com/react-hook-form/react-hook-form) + [Zod](https://github.com/colinhacks/zod)
+    > RHF offers many more utilities (and less bugs) than Formik, e.g. to name one, with `setFocus(fieldName)` one does not have to setup own refs for inputs. Zod for validation is typescript first and type inference is very reliable and useful.
+- **Bottom Sheets and Modals**
+  - [React Native Bottom Sheet](https://github.com/gorhom/react-native-bottom-sheet)
+    > Reliable all-in-one solution with good Keyboard Handling options
+- **Swiping content**
+  - [React Native Pager View](https://github.com/callstack/react-native-pager-view)
+    > From Callstack, actively maintained and already supporting the new Architecture, uses native components.
+- **In-App Purchases**
+  - [React Native Purchases](https://github.com/RevenueCat/react-native-purchases)
+    > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
