@@ -168,14 +168,25 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
     > Both managed by Invertase with latest notification features. Notifee is needed to change Foreground notifications to local ones. Expo-notifications, alternative to both, is also an option but only with native tokens, because using ExpoPushTokens is a strong lock-in, not easily reverted.
 
 - **Forms**
+
   - [React Hook Form](https://github.com/react-hook-form/react-hook-form) + [Zod](https://github.com/colinhacks/zod)
+
     > RHF offers many more utilities (and less bugs) than Formik, e.g. to name one, with `setFocus(fieldName)` one does not have to setup own refs for inputs. Zod for validation is typescript first and type inference is very reliable and useful.
+
 - **Bottom Sheets and Modals**
+
   - [React Native Bottom Sheet](https://github.com/gorhom/react-native-bottom-sheet)
+
     > Reliable all-in-one solution with good Keyboard Handling options
+
 - **Swiping content**
+
   - [React Native Pager View](https://github.com/callstack/react-native-pager-view)
+
     > From Callstack, actively maintained and already supporting the new Architecture, uses native components.
+
 - **In-App Purchases**
+
   - [React Native Purchases](https://github.com/RevenueCat/react-native-purchases)
+
     > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
