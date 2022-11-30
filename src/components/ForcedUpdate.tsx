@@ -4,7 +4,7 @@ import { View, Alert } from 'react-native'
 
 import { getStoreLink } from 'src/utils/getStoreLink'
 
-const ForcedUpdate = () => {
+export const ForcedUpdate = () => {
   useEffect(() => {
     const handleUpdate = async () => {
       const storeLink = getStoreLink()
@@ -31,5 +31,3 @@ const ForcedUpdate = () => {
 
   return <View />
 }
-
-export default ForcedUpdate

@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 
 import type { RootStackScreenProps } from 'src/navigation/types'
 
-const NestedScreen = () => {
+export const NestedScreen = () => {
   const route = useRoute<RootStackScreenProps<'NestedScreen'>['route']>()
   return (
     <View>
@@ -11,5 +11,3 @@ const NestedScreen = () => {
     </View>
   )
 }
-
-export default NestedScreen

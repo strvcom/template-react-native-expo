@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 
-import Button from 'src/components/Button'
+import { Button } from 'src/components/Button'
 import { navigationResetState, NESTED_ROUTE_RESET } from 'src/navigation/utils'
 import { ms } from 'src/utils/scale'
 
-const Dashboard = () => {
+export const Dashboard = () => {
   const handleNavigate = () => navigationResetState(NESTED_ROUTE_RESET)
 
   return (
@@ -14,5 +14,3 @@ const Dashboard = () => {
     </View>
   )
 }
-
-export default Dashboard

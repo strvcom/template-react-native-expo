@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
 import { Text, View } from 'react-native'
 
-import Button from 'src/components/Button'
+import { Button } from 'src/components/Button'
 import { Routes } from 'src/navigation/routes'
 import { useRootStore } from 'src/store/useRootStore'
 import { ms } from 'src/utils/scale'
 
-const Profile = () => {
+export const Profile = () => {
   const { logoutUser } = useRootStore()
   const navigation = useNavigation()
   const handleNavigate = () => navigation.navigate(Routes.NESTED_SCREEN, { isProfile: true })
@@ -19,5 +19,3 @@ const Profile = () => {
     </View>
   )
 }
-
-export default Profile

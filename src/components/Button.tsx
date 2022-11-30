@@ -16,10 +16,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const Button = ({ text, onPress }: IButton) => (
+export const Button = ({ text, onPress }: IButton) => (
   <TouchableOpacity onPress={onPress} style={styles.wrapper}>
     <Text>{text}</Text>
   </TouchableOpacity>
 )
-
-export default Button
