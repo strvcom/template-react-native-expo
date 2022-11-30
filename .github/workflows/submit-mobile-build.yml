@@ -89,5 +89,4 @@ jobs:
         run: yarn install
 
       - name: Build and Submit on EAS
-        working-directory: mobile
-        run: npx eas-cli build --profile production --platform all --auto-submit --non-interactive --no-wait
+        run: eas build --profile production --platform all --auto-submit --non-interactive --no-wait
