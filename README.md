@@ -93,7 +93,7 @@ Typical STRV stack. Quite a few rules overrides in Eslint config.
 Requires `Expo Access Token` set as Github secret to connect to EAS.
 
 1.  **EAS Update (over-the-air)**
-    - env file is created with copying `.env.ci` file as `.env` and replacing dummy values with actual secrets from Github secrets
+    - env values are [prepended](https://docs.expo.dev/eas-update/environment-variables/#setting-and-getting-environment-variables-when-publishing) to the `eas update` command
 2.  **EAS Build**
     - ideally would run tests before submitting an app and have build cache logic
 

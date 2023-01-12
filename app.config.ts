@@ -1,8 +1,11 @@
 import type { Environment } from '@env'
 import type { ExpoConfig, IOS, Android } from '@expo/config-types'
+// see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from 'dotenv'
 
-import 'dotenv/config'
 import type { OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
+
+dotenv.config()
 
 declare const process: {
   env: { APP_ENV: Environment }

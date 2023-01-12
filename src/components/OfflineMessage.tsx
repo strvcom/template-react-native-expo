@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { colors } from 'src/styles/colors'
 
-const OfflineMessage = () => {
+export const OfflineMessage = () => {
   const { bottom } = useSafeAreaInsets()
   const [showReload, setShowReload] = useState(false)
 
@@ -37,5 +37,3 @@ const OfflineMessage = () => {
     </View>
   )
 }
-
-export default OfflineMessage
