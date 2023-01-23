@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import { isAndroid } from 'src/constants/platform'
 import { BottomStack } from 'src/navigation/BottomStack'
 import { Routes } from 'src/navigation/routes'
 import type { RootStackParamList } from 'src/navigation/types'
@@ -14,7 +15,7 @@ export const RootStack = () => {
   const isLoggedIn = Boolean(accessToken)
 
   return (
-    <Root.Navigator>
+    <Root.Navigator screenOptions={{ animation: isAndroid ? 'fade' : 'default' }}>
       {isLoggedIn ? (
         <>
           <Root.Screen
