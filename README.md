@@ -16,6 +16,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 - [React Native Expo Template](#react-native-expo-template)
   - [Important Defaults - SETUP](#important-defaults---setup)
     - [Expo Managed Workflow](#expo-managed-workflow)
+    - [Native Folders](#native-folders)
     - [EAS Build Setup](#eas-build-setup)
     - [App Environments Setup](#app-environments-setup)
     - [Babel Plugins](#babel-plugins)
@@ -37,6 +38,12 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 ### Expo Managed Workflow
 
 - The main benefit is better maintainability as most of the native setup is done through `app.config.ts` and community/custom config plugins. Updating Expo SDK mostly assures compatibility with majority of dependencies used, which is a common source of problem when upgrading React Native separately - though [rnx-kit/dep-check](https://microsoft.github.io/rnx-kit/docs/tools/dep-check) can be now used.
+
+### Native Folders
+
+- Once you create a development build, in practice iOS and Android folders with native code are not needed anymore and you could delete them, but you would have to delete them after each new local build. For convenience, they are moved to `.gitignore`.
+- It is good to remove them **temporarily** from .gitignore when setting up a config plugin and you need to see the native code git changes.
+- Also when you need to regenerate the native code because your build is somehow cached, you may remove the folders and run a fresh build, or run `yarn expo prebuild --clean`.
 
 ### EAS Build Setup
 
