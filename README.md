@@ -7,9 +7,9 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 **Major dependencies:**
 
-- Expo SDK 47
-- React Native 0.70.5
-- React 18.1.0
+- Expo SDK 48
+- React Native 0.71.3
+- React 18.2.0
 
 **Table of Contents**
 
@@ -66,7 +66,9 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 ### Debugging - Flipper
 
-Flipper is a default React Native debugging tool that monitors crashes, console, network and more. It is easily extensible with plugins. Expo does not include it, therefore to enable it, you need `expo-community-flipper` config plugin.
+Flipper is a default React Native debugging tool that monitors crashes, console, network and more. It is easily extensible with plugins. In Expo, it can be enabled via `expo-build-properties` plugin.
+
+> previously `expo-community-flipper` plugin was needed
 
 Flipper plugins included in the template:
 

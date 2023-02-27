@@ -36,8 +36,7 @@ const getEnvironmentInfo = (): {
 
 const { name, appIdentifier, icon } = getEnvironmentInfo()
 
-// use flipper only in DEV
-const plugins: ExpoConfig['plugins'] = environment === 'dev' ? ['expo-community-flipper'] : []
+const plugins: ExpoConfig['plugins'] = [['expo-build-properties', { ios: { flipper: true } }]]
 
 // UPDATE VERSION AND BUILDNUMBER
 const version = '0.1.0'
