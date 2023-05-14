@@ -7,15 +7,16 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 **Major dependencies:**
 
-- Expo SDK 47
-- React Native 0.70.5
-- React 18.1.0
+- Expo SDK 48
+- React Native 0.71.3
+- React 18.2.0
 
 **Table of Contents**
 
 - [React Native Expo Template](#react-native-expo-template)
   - [Important Defaults - SETUP](#important-defaults---setup)
     - [Expo Managed Workflow](#expo-managed-workflow)
+    - [Native Folders](#native-folders)
     - [EAS Build Setup](#eas-build-setup)
     - [App Environments Setup](#app-environments-setup)
     - [Babel Plugins](#babel-plugins)
@@ -37,6 +38,12 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 ### Expo Managed Workflow
 
 - The main benefit is better maintainability as most of the native setup is done through `app.config.ts` and community/custom config plugins. Updating Expo SDK mostly assures compatibility with majority of dependencies used, which is a common source of problem when upgrading React Native separately - though [rnx-kit/dep-check](https://microsoft.github.io/rnx-kit/docs/tools/dep-check) can be now used.
+
+### Native Folders
+
+- Once you create a development build, in practice iOS and Android folders with native code are not needed anymore and you could delete them, but you would have to delete them after each new local build. For convenience, they are moved to `.gitignore`.
+- It is good to remove them **temporarily** from .gitignore when setting up a config plugin and you need to see the native code git changes.
+- Also when you need to regenerate the native code because your build is somehow cached, you may remove the folders and run a fresh build, or run `yarn expo prebuild --clean`.
 
 ### EAS Build Setup
 
@@ -66,7 +73,9 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 ### Debugging - Flipper
 
-Flipper is a default React Native debugging tool that monitors crashes, console, network and more. It is easily extensible with plugins. Expo does not include it, therefore to enable it, you need `expo-community-flipper` config plugin.
+Flipper is a default React Native debugging tool that monitors crashes, console, network and more. It is easily extensible with plugins. In Expo, it can be enabled via `expo-build-properties` plugin.
+
+> previously `expo-community-flipper` plugin was needed
 
 Flipper plugins included in the template:
 
