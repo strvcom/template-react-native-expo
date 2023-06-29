@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useFlipper } from '@react-navigation/devtools'
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
@@ -9,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ForcedUpdate } from 'src/components/ForcedUpdate'
 import { OfflineMessage } from 'src/components/OfflineMessage'
 import { useCachedResources } from 'src/hooks/useCachedResources'
+import { useIsOnline } from 'src/hooks/useIsOnline'
 import { useOTAUpdates } from 'src/hooks/useOTAUpdate'
 import { useStoreUpdate } from 'src/hooks/useStoreUpdate'
 import { RootStack } from 'src/navigation/RootStack'
@@ -24,7 +24,7 @@ setFontScaling()
 
 const AppContent = () => {
   const isAppOutdated = useStoreUpdate('forced')
-  const netInfo = useNetInfo()
+  const { isOnline } = useIsOnline()
   const { isLoadingComplete } = useCachedResources()
   return (
     <>
@@ -34,8 +34,8 @@ const AppContent = () => {
         {isLoadingComplete && isAppOutdated === false && <RootStack />}
       </NavigationContainer>
       {isAppOutdated && <ForcedUpdate />}
-      {/* netInfo.isConnected might be null initially or when unknown */}
-      {isLoadingComplete && netInfo.isConnected === false && <OfflineMessage />}
+      {/* might be null initially or when unknown */}
+      {isLoadingComplete && isOnline === false && <OfflineMessage />}
     </>
   )
 }
