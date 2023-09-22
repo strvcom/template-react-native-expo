@@ -54,7 +54,6 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
-    "react-native-dotenv": "^3.4.9",
     "react-native-flipper": "^0.212.0",
     "react-native-flipper-zustand": "^2.0.1",
     "react-native-mmkv-flipper-plugin": "^1.0.0",

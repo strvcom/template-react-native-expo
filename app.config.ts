@@ -1,17 +1,13 @@
 // eslint-disable-next-line import/no-unresolved
-import { type Environment } from '@env'
 import { type ExpoConfig, type IOS } from '@expo/config-types'
-// see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-import * as dotenv from 'dotenv'
 
 import { type OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
-
-dotenv.config()
+import { type Environment } from 'src/types/env'
 
 declare const process: {
-  env: { APP_ENV: Environment }
+  env: { EXPO_PUBLIC_APP_ENV: Environment }
 }
-const environment = process.env.APP_ENV
+const environment = process.env.EXPO_PUBLIC_APP_ENV
 
 const getEnvironmentInfo = (): {
   name: ExpoConfig['name']
