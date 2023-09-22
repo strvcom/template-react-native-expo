@@ -1,9 +1,10 @@
-import type { Environment } from '@env'
-import type { ExpoConfig, IOS, Android } from '@expo/config-types'
+// eslint-disable-next-line import/no-unresolved
+import { type Environment } from '@env'
+import { type ExpoConfig, type IOS } from '@expo/config-types'
 // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 import * as dotenv from 'dotenv'
 
-import type { OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
+import { type OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
 
 dotenv.config()
 
@@ -14,7 +15,7 @@ const environment = process.env.APP_ENV
 
 const getEnvironmentInfo = (): {
   name: ExpoConfig['name']
-  appIdentifier: IOS['bundleIdentifier'] & Android['package']
+  appIdentifier: IOS['bundleIdentifier']
   icon: ExpoConfig['icon']
 } => {
   const appIdentifier = 'com.expo.template'
@@ -70,6 +71,9 @@ const expoConfig: ExpoConfig = {
     bundleIdentifier: appIdentifier,
     config: {
       usesNonExemptEncryption: false,
+    },
+    infoPlist: {
+      LSApplicationQueriesSchemes: ['itms-apps'],
     },
   },
   android: {
