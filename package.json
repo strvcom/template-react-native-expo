@@ -46,7 +46,6 @@
     "@strv/eslint-config-react-native": "^3.3.1",
     "@strv/eslint-config-typescript": "^4.1.2",
     "@types/react": "~18.2.14",
-    "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "dotenv": "^16.0.1",
     "eslint": "^8.49.0",

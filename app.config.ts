@@ -92,6 +92,9 @@ const expoConfig: ExpoConfig = {
     fallbackToCacheTimeout,
     otaUpdatePriority,
   },
+  experiments: {
+    tsconfigPaths: true,
+  },
 }
 
 export default expoConfig
