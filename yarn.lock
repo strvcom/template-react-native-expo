@@ -7719,10 +7719,12 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-flipper-zustand@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-flipper-zustand/-/react-native-flipper-zustand-2.0.1.tgz#c9a5081dfb831c89e507662d90cd7fcb0a66cc08"
-  integrity sha512-ic7L/rEE3m+was3F9MA18V+7DV+vAF0CEXAKPL/vdORiqmQd8bTmidfFaIcDYz/z40R6vuwmwDTPaxUKT1khdA==
+react-native-flipper-zustand@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-flipper-zustand/-/react-native-flipper-zustand-3.0.1.tgz#8d61a1a643944b2a781840122cdf0e2f51721210"
+  integrity sha512-nSC4GPx5V4+5OgXNZKM8VCbDx4qiog2oXKQxWrlWdas1im+5VaDYzws0wvob+NRcxAyy9t5YWVlCJ7rER19CDg==
+  dependencies:
+    zustand "^4.3.9"
 
 react-native-flipper@^0.212.0:
   version "0.212.0"
@@ -9441,9 +9443,9 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zustand@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.1.2.tgz#4912b24741662d8a84ed1cb52198471cb369c4b6"
-  integrity sha512-gcRaKchcxFPbImrBb/BKgujOhHhik9YhVpIeP87ETT7uokEe2Szu7KkuZ9ghjtD+/KKkcrRNktR2AiLXPIbKIQ==
+zustand@^4.3.9, zustand@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.4.1.tgz#0cd3a3e4756f21811bd956418fdc686877e8b3b0"
+  integrity sha512-QCPfstAS4EBiTQzlaGP1gmorkh/UL1Leaj2tdj+zZCZ/9bm0WS7sI2wnfD5lpOszFqWJ1DcPnGoY8RDL61uokw==
   dependencies:
     use-sync-external-store "1.2.0"

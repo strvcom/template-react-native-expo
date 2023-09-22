@@ -39,7 +39,7 @@
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
     "react-native-web": "~0.19.6",
-    "zustand": "^4.1.2"
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.22.20",
@@ -55,7 +55,7 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "react-native-flipper": "^0.212.0",
-    "react-native-flipper-zustand": "^2.0.1",
+    "react-native-flipper-zustand": "^3.0.1",
     "react-native-mmkv-flipper-plugin": "^1.0.0",
     "typescript": "^5.1.3"
   },

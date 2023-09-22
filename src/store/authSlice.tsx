@@ -1,6 +1,6 @@
-import type { StateCreator } from 'zustand'
+import { type StateCreator } from 'zustand'
 
-import type { IStore, IAuthSlice } from './types'
+import { type IStore, type IAuthSlice } from './types'
 
 export const authSlice: StateCreator<IStore, [['zustand/persist', unknown]], [], IAuthSlice> = (
   set,
