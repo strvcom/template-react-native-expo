@@ -7,7 +7,7 @@ import { useRootStore } from 'src/store/useRootStore'
 import { ms } from 'src/utils/scale'
 
 export const Profile = () => {
-  const { logoutUser } = useRootStore()
+  const logoutUser = useRootStore((state) => state.logoutUser)
   const navigation = useNavigation()
   const handleNavigate = () => navigation.navigate(Routes.NESTED_SCREEN, { isProfile: true })
 

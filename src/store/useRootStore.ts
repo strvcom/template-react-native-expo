@@ -5,9 +5,9 @@ import { persist } from 'zustand/middleware'
 import { mmkvStorage } from 'src/utils/storage'
 
 import { authSlice } from './authSlice'
-import type { IStore } from './types'
+import  { type IStore } from './types'
 
-export const useRootStore = create<IStore>()(
+export const rootStore = create<IStore>()(
   zustandFlipper(
     persist(
       // you can create more slices for other app features
@@ -21,3 +21,5 @@ export const useRootStore = create<IStore>()(
     ),
   ),
 )
+
+export const useRootStore = <T>(selector: (state: IStore) => T): T => rootStore(selector)
