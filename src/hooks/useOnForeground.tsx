@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { AppStateStatus } from 'react-native'
+import { type AppStateStatus } from 'react-native'
 import { AppState } from 'react-native'
 
 import { useLatestValue } from 'src/hooks/useLatest'
