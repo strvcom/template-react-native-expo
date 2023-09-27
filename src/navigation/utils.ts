@@ -1,7 +1,7 @@
 import { CommonActions, createNavigationContainerRef } from '@react-navigation/native'
 
 import { Routes } from 'src/navigation/routes'
-import type { ResetState, RootStackParamList } from 'src/navigation/types'
+import { type ResetState, type RootStackParamList } from 'src/navigation/types'
 
 export const navigationRef = createNavigationContainerRef()
 

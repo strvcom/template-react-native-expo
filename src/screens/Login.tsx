@@ -5,7 +5,7 @@ import { useRootStore } from 'src/store/useRootStore'
 import { ms } from 'src/utils/scale'
 
 export const Login = () => {
-  const { setAccessToken } = useRootStore()
+  const setAccessToken = useRootStore((state) => state.setAccessToken)
   const handleSignIn = () => {
     setAccessToken('dummyToken')
   }

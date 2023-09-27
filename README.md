@@ -59,8 +59,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 ### App Environments Setup
 
-- Environment variables are managed by `react-native-dotenv` importable from `@env` module. `APP_ENV` variable defines what environment we are running.
-  > src/types/env.d.ts > `export type Environment = 'dev' | 'staging' | 'production'`
+- Environment variables are managed by [Expo](https://docs.expo.dev/guides/environment-variables/), use `EXPO_PUBLIC` prefix to make them accessible in the app
 - `app.config.ts` determines based on the environment a relevant **icon, app name and appIdentifier** to distinguish individual apps and allow installing side by side
 - `eas.json` can set `APP_ENV` variable for each build profile to define environment
 
