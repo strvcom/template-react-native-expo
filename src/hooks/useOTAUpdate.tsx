@@ -2,7 +2,6 @@ import Constants from 'expo-constants'
 import * as Updates from 'expo-updates'
 import { useCallback, useEffect, useState } from 'react'
 import { Alert } from 'react-native'
-
 import { useOnForeground } from 'src/hooks/useOnForeground'
 
 export type OtaUpdatePriority = 'high' | 'normal'

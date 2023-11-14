@@ -1,7 +1,6 @@
 import * as Linking from 'expo-linking'
 import { useEffect } from 'react'
 import { View, Alert } from 'react-native'
-
 import { getStoreLink } from 'src/utils/getStoreLink'
 
 export const ForcedUpdate = () => {
