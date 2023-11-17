@@ -1,5 +1,4 @@
 import { Platform } from 'react-native'
-
 import { config } from 'src/config'
 
 const applicationIdProd = config.applicationIdProd

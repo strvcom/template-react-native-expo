@@ -4,7 +4,6 @@ import { StatusBar } from 'expo-status-bar'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { initializeMMKVFlipper } from 'react-native-mmkv-flipper-plugin'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-
 import { ForcedUpdate } from 'src/components/ForcedUpdate'
 import { OfflineMessage } from 'src/components/OfflineMessage'
 import { useCachedResources } from 'src/hooks/useCachedResources'

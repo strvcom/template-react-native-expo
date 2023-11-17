@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import { View, Text } from 'react-native'
-
 import { type RootStackScreenProps } from 'src/navigation/types'
 
 export const NestedScreen = () => {

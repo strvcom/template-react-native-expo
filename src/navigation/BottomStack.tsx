@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-
 import { Routes } from 'src/navigation/routes'
 import { type BottomStackParamList } from 'src/navigation/types'
 import { Dashboard } from 'src/screens/Dashboard'

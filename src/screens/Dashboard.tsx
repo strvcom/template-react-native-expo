@@ -1,5 +1,4 @@
 import { View, Text } from 'react-native'
-
 import { Button } from 'src/components/Button'
 import { navigationResetState, NESTED_ROUTE_RESET } from 'src/navigation/utils'
 import { ms } from 'src/utils/scale'
