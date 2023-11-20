@@ -21,6 +21,9 @@ export function useCachedResources() {
         // await Asset.loadAsync([
         //   require('src/../assets/images/getStarted.png'),
         // ])
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        // crashlytics.recordCatchError(error, 'loading fonts or images failed')
       } finally {
         setLoadingComplete(true)
       }
