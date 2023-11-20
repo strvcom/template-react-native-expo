@@ -59,7 +59,7 @@ const getIsAppOutdated = async (_variant: UpdateVariant) => {
     }
 
     return false
-  } catch (error) {
+  } catch {
     // crashlytics.recordCatchError(error, `${variant} version flag could not be fetched`)
     return false
   }

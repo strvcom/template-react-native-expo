@@ -21,8 +21,6 @@ export function useCachedResources() {
         // await Asset.loadAsync([
         //   require('src/../assets/images/getStarted.png'),
         // ])
-      } catch (error) {
-        // crashlytics.recordCatchError(error, 'loading fonts or images failed')
       } finally {
         setLoadingComplete(true)
       }

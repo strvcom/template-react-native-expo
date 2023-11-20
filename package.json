@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.20",
-    "@strv/eslint-config-react-native": "^3.3.2",
+    "@strv/eslint-config-react-native": "3.3.3",
     "@types/react": "~18.2.14",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "dotenv": "^16.0.1",
