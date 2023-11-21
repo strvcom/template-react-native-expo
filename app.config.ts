@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-unresolved
 import { type ExpoConfig, type IOS } from '@expo/config-types'
-import { type OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
-import { type Environment } from 'src/types/env'
+
+import { type OtaUpdatePriority } from '~/hooks/useOTAUpdate'
+import { type Environment } from '~/types/env'
 
 declare const process: {
   env: { EXPO_PUBLIC_APP_ENV: Environment }

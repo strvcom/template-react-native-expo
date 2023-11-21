@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react'
 // import { Platform } from 'react-native'
 
-// import { config } from 'src/config'
+// import { config } from '~/config'
 
 // eslint-disable-next-line prefer-named-capture-group
 const SEMANTIC_VERSION_REGEX = /^([1-9][0-9]*|[0]+)\.([1-9][0-9]*|[0]+)\.([1-9][0-9]*|[0]+)$/u
@@ -54,11 +54,7 @@ const getIsAppOutdated = async (_variant: UpdateVariant) => {
       supportedMinor === installedMinor &&
       supportedPatch > installedPatch
 
-    if (hasMajorDiff || hasMinorDif || hasPatchDif) {
-      return true
-    }
-
-    return false
+    return hasMajorDiff || hasMinorDif || hasPatchDif
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     // crashlytics.recordCatchError(error, `${variant} version flag could not be fetched`)
