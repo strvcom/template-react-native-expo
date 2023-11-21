@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
 import { type ExpoConfig, type IOS } from '@expo/config-types'
-
 import { type OtaUpdatePriority } from 'src/hooks/useOTAUpdate'
 import { type Environment } from 'src/types/env'
 

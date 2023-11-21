@@ -59,6 +59,7 @@ const getIsAppOutdated = async (_variant: UpdateVariant) => {
     }
 
     return false
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     // crashlytics.recordCatchError(error, `${variant} version flag could not be fetched`)
     return false

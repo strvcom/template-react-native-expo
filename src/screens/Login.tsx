@@ -1,5 +1,4 @@
 import { View, Text } from 'react-native'
-
 import { Button } from 'src/components/Button'
 import { useRootStore } from 'src/store/useRootStore'
 import { ms } from 'src/utils/scale'

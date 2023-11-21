@@ -1,8 +1,7 @@
 import zustandFlipper from 'react-native-flipper-zustand'
+import { mmkvStorage } from 'src/utils/storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
-
-import { mmkvStorage } from 'src/utils/storage'
 
 import { authSlice } from './authSlice'
 import { type IStore } from './types'

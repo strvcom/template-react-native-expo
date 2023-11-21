@@ -1,9 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
 import { isAndroid } from 'src/constants/platform'
 import { BottomStack } from 'src/navigation/BottomStack'
 import { Routes } from 'src/navigation/routes'
-import  { type RootStackParamList } from 'src/navigation/types'
+import { type RootStackParamList } from 'src/navigation/types'
 import { Login } from 'src/screens/Login'
 import { NestedScreen } from 'src/screens/NestedScreen'
 import { useRootStore } from 'src/store/useRootStore'
