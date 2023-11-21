@@ -1,0 +1,19 @@
+# Reusable composition action preparing all the pipes related workers.
+# It's a good idea to move all the repeated setup steps in here, such as setting up Expo.
+
+name: Shared setup steps composition
+description: 'This action provides the shared setups steps'
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: 🏗 Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: yarn
+
+    - name: 🏗 Install dependencies
+      run: HUSKY=0 yarn install --immutable
+      shell: bash
