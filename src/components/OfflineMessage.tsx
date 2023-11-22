@@ -3,7 +3,8 @@ import * as Updates from 'expo-updates'
 import { useEffect, useState } from 'react'
 import { Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { colors } from 'src/styles/colors'
+
+import { colors } from '~/styles/colors'
 
 export const OfflineMessage = () => {
   const { bottom } = useSafeAreaInsets()

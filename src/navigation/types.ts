@@ -1,6 +1,7 @@
 import { type NavigationState, type PartialState } from '@react-navigation/native'
 import { type NativeStackScreenProps } from '@react-navigation/native-stack'
-import { type Routes } from 'src/navigation/routes'
+
+import { type Routes } from '~/navigation/routes'
 
 export type BottomStackParamList = {
   [Routes.DASHBOARD]: undefined

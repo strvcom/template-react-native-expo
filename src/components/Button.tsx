@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { colors } from 'src/styles/colors'
+
+import { colors } from '~/styles/colors'
 
 interface IButton {
   text: string

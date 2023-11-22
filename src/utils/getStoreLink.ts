@@ -1,5 +1,6 @@
 import { Platform } from 'react-native'
-import { config } from 'src/config'
+
+import { config } from '~/config'
 
 const applicationIdProd = config.applicationIdProd
 const appleIdProd = config.appleIdProd

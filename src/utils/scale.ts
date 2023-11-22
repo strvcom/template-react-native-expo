@@ -1,4 +1,4 @@
-import { windowHeight, windowWidth } from 'src/constants/dimensions'
+import { windowHeight, windowWidth } from '~/constants/dimensions'
 
 const designBaseWidth = 375
 const designBaseHeight = 812

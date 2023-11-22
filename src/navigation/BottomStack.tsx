@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Routes } from 'src/navigation/routes'
-import { type BottomStackParamList } from 'src/navigation/types'
-import { Dashboard } from 'src/screens/Dashboard'
-import { Profile } from 'src/screens/Profile'
+
+import { Routes } from '~/navigation/routes'
+import { type BottomStackParamList } from '~/navigation/types'
+import { Dashboard } from '~/screens/Dashboard'
+import { Profile } from '~/screens/Profile'
 
 const Tab = createBottomTabNavigator<BottomStackParamList>()
 
