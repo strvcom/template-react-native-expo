@@ -1,0 +1,24 @@
+# The main CI workflow, running only on PRs, checking code-quality and running tests.
+
+name: 'CI PR Code Quality'
+on: [pull_request]
+jobs:
+  code-quality-and-tests:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 14
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Run Prettier
+        run: yarn format:check
+
+      - name: Run TypeScript
+        run: yarn type:check
+
+      # - name: Run Tests
+      #   run: yarn test
