@@ -1,3 +1,5 @@
+import { useMMKVDevTools } from '@dev-plugins/react-native-mmkv'
+import { useReactNavigationDevTools } from '@dev-plugins/react-navigation'
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
@@ -19,6 +21,8 @@ const AppContent = () => {
   const isAppOutdated = useStoreUpdate('forced')
   const { isOnline } = useIsOnline()
   const { isLoadingComplete } = useCachedResources()
+  useMMKVDevTools()
+  useReactNavigationDevTools(navigationRef)
   return (
     <>
       <NavigationContainer ref={navigationRef}>

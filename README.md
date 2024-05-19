@@ -20,7 +20,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [EAS Build Setup](#eas-build-setup)
     - [App Environments Setup](#app-environments-setup)
     - [Babel Plugins](#babel-plugins)
-    - [Debugging - Flipper](#debugging---flipper)
+    - [Debugging - Expo Dev Plugins](#debugging---expo-dev-plugins)
     - [Linting Tools](#linting-tools)
     - [Github Actions](#github-actions)
   - [Important Defaults - APP](#important-defaults---app)
@@ -70,17 +70,14 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 - `babel-plugin-transform-remove-console` to remove console logs in production
 - `react-native-reanimated/plugin` to support Reanimated 2
 
-### Debugging - Flipper
+### Debugging - Expo Dev Plugins
 
-Flipper is a default React Native debugging tool that monitors crashes, console, network and more. It is easily extensible with plugins. In Expo, it can be enabled via `expo-build-properties` plugin.
+Flipper was removed from React Native, therefore Expo dev plugins are started to fill the gap since SDK 50. All plugins are listed in this [repository](https://github.com/expo/dev-plugins?tab=readme-ov-file#awesome-plugins)
 
-> previously `expo-community-flipper` plugin was needed
+Dev plugins included in the template:
 
-Flipper plugins included in the template:
-
-- [React Navigation](https://reactnavigation.org/docs/devtools/) - to see navigation state, history, and params passed to screens
-- [Zustand](https://github.com/cmdominguez/react-native-flipper-zustand) - to see Zustand store (TODO: await support for Zustand v4 [typescript support](https://github.com/cmdominguez/react-native-flipper-zustand/issues/3) to remove ts-nocheck for `useRootStore`)
-- [MMKV](https://github.com/muchobien/flipper-plugin-react-native-mmkv) - to see MMKV store
+- [React Navigation](https://docs.expo.dev/debugging/devtools-plugins/#react-navigation) - to see navigation state, history, and params passed to screens
+- [MMKV](https://github.com/expo/dev-plugins/blob/main/apps/example/src/app/react-native-mmkv/index.tsx) - to see MMKV store
 
 Not included but useful:
 

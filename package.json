@@ -17,6 +17,8 @@
     "type:check": "tsc"
   },
   "dependencies": {
+    "@dev-plugins/react-native-mmkv": "^0.0.1",
+    "@dev-plugins/react-navigation": "^0.0.6",
     "@react-native-community/netinfo": "11.3.1",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
