@@ -7,8 +7,8 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 **Major dependencies:**
 
-- Expo SDK 48
-- React Native 0.71.3
+- Expo SDK 51
+- React Native 0.74.1
 - React 18.2.0
 
 **Table of Contents**

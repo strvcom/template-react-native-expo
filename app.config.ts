@@ -1,6 +1,7 @@
+/* eslint-disable import/consistent-type-specifier-style */
 import { ExpoConfig, IOS } from '@expo/config-types'
 
-import { OtaUpdatePriority } from '~/hooks/useOTAUpdate'
+import type { OtaUpdatePriority } from '~/hooks/useOTAUpdate'
 import { Environment } from '~/types/env'
 
 declare const process: {
@@ -32,7 +33,7 @@ const getEnvironmentInfo = (): {
 
 const { name, appIdentifier, icon } = getEnvironmentInfo()
 
-const plugins: ExpoConfig['plugins'] = [['expo-build-properties', { ios: { flipper: true } }]]
+const plugins: ExpoConfig['plugins'] = [['expo-build-properties']]
 
 // UPDATE VERSION AND BUILDNUMBER
 const version = '0.1.0'
