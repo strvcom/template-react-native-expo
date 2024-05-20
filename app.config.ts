@@ -12,6 +12,9 @@ const environment = process.env.EXPO_PUBLIC_APP_ENV
 // your custom fonts
 const fonts = ['./assets/fonts/Domine-Bold.ttf']
 
+// prefetched/embedded assets, can be referenced as source='rn_meme' https://docs.expo.dev/versions/latest/sdk/asset/#configurable-properties
+const assets = ['./assets/images/rn_meme.jpg']
+
 const getEnvironmentInfo = (): {
   name: ExpoConfig['name']
   appIdentifier: IOS['bundleIdentifier']
@@ -36,7 +39,11 @@ const getEnvironmentInfo = (): {
 
 const { name, appIdentifier, icon } = getEnvironmentInfo()
 
-const plugins: ExpoConfig['plugins'] = [['expo-build-properties'], ['expo-font', { fonts }]]
+const plugins: ExpoConfig['plugins'] = [
+  ['expo-build-properties'],
+  ['expo-font', { fonts }],
+  ['expo-asset', { assets }],
+]
 
 // UPDATE VERSION AND BUILDNUMBER
 const version = '0.1.0'
