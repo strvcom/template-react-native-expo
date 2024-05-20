@@ -65,10 +65,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 ### Babel Plugins
 
-- `babel-plugin-module-resolver` for absolute imports
-- `react-native-dotenv` for .env
 - `babel-plugin-transform-remove-console` to remove console logs in production
-- `react-native-reanimated/plugin` to support Reanimated 2
 
 ### Debugging - Expo Dev Plugins
 
