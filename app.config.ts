@@ -9,6 +9,9 @@ declare const process: {
 }
 const environment = process.env.EXPO_PUBLIC_APP_ENV
 
+// your custom fonts
+const fonts = ['./assets/fonts/Domine-Bold.ttf']
+
 const getEnvironmentInfo = (): {
   name: ExpoConfig['name']
   appIdentifier: IOS['bundleIdentifier']
@@ -33,7 +36,7 @@ const getEnvironmentInfo = (): {
 
 const { name, appIdentifier, icon } = getEnvironmentInfo()
 
-const plugins: ExpoConfig['plugins'] = [['expo-build-properties']]
+const plugins: ExpoConfig['plugins'] = [['expo-build-properties'], ['expo-font', { fonts }]]
 
 // UPDATE VERSION AND BUILDNUMBER
 const version = '0.1.0'

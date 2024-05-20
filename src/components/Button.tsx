@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
 
 export const Button = ({ text, onPress }: IButton) => (
   <TouchableOpacity onPress={onPress} style={styles.wrapper}>
-    <Text>{text}</Text>
+    <Text style={{ fontFamily: 'Domine-Bold', textTransform: 'uppercase', color: 'white' }}>
+      {text}
+    </Text>
   </TouchableOpacity>
 )
