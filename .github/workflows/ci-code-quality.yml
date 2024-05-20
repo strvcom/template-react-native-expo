@@ -8,17 +8,17 @@ jobs:
     timeout-minutes: 14
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
 
       - name: Run ESLint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Run Prettier
-        run: yarn format:check
+        run: pnpm format:check
 
       - name: Run TypeScript
-        run: yarn type:check
+        run: pnpm type:check
 
       # - name: Run Tests
       #   run: yarn test
