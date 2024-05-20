@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
   "scripts": {
     "prepare": "husky install",
     "start": "expo start",
