@@ -8,12 +8,18 @@ runs:
   using: 'composite'
 
   steps:
-    - name: 🏗 Setup Node
-      uses: actions/setup-node@v3
+    - name: Install pnpm
+      uses: pnpm/action-setup@v3
       with:
-        node-version: 18.x
-        cache: yarn
+        version: 9
+        run_install: false
 
-    - name: 🏗 Install dependencies
-      run: HUSKY=0 yarn install --immutable
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'pnpm'
+
+    - name: Install dependencies
       shell: bash
+      run: pnpm install --frozen-lockfile --ignore-scripts

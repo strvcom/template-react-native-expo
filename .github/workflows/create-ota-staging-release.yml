@@ -1,3 +1,5 @@
+# TODO: needs refresh
+
 # This workflow should be triggered manually to publish mobile over-the-air update to targeted release channel from a particular branch.
 # The goal is to collocate production environment variables `.env` and prevent switching of variables on a local machine
 

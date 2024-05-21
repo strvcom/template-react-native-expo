@@ -18,8 +18,11 @@ export const useOTAUpdates = () => {
     if (!updateStatus.isAvailable) return
 
     const update = await Updates.fetchUpdateAsync()
-    const otaUpdatePriority = update.manifest?.extra?.expoClient?.extra
-      ?.otaUpdatePriority as OtaUpdatePriority
+    const manifest = update.manifest
+    const otaUpdatePriority =
+      manifest &&
+      'extra' in manifest &&
+      (manifest.extra?.expoClient?.extra?.otaUpdatePriority as OtaUpdatePriority)
 
     // in case app is not updated during fallbackToCacheTimeout, check if to update during second launch (normal) or prompt user due to `high` priority
     if (otaUpdatePriority === 'high') {
