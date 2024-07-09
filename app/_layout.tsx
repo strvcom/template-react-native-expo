@@ -1,12 +1,22 @@
 import { Stack } from 'expo-router'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import React from 'react'
+
+import { Provider } from '~/provider'
 
 const RootStack = () => {
-  return <Stack />
+  return (
+    <Stack
+      screenOptions={{
+        title: `STRV's Expo Template`,
+      }}
+    />
+  )
 }
 
-export default () => (
-  <GestureHandlerRootView style={{ flex: 1 }}>
-    <RootStack />
-  </GestureHandlerRootView>
-)
+export default function Root() {
+  return (
+    <Provider>
+      <RootStack />
+    </Provider>
+  )
+}

@@ -109,6 +109,7 @@ const expoConfig: ExpoConfig = {
   },
   experiments: {
     tsconfigPaths: true,
+    typedRoutes: true,
   },
 }
 
