@@ -4,9 +4,6 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "rules": {
-	  "@typescript-eslint/no-floating-promises": "off" // Resolving SplashScreen API ESLint error
-},
   "overrides": [
     {
       "files": ["app.config.ts"],

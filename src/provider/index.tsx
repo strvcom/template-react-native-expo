@@ -10,7 +10,7 @@ import { useOTAUpdates } from '~/hooks/useOTAUpdate'
 import { useStoreUpdate } from '~/hooks/useStoreUpdate'
 import { setFontScaling } from '~/utils/setFontScaling'
 
-SplashScreen.preventAutoHideAsync()
+void SplashScreen.preventAutoHideAsync()
 setFontScaling()
 
 export const Provider = ({ children }: PropsWithChildren) => {
@@ -22,7 +22,7 @@ export const Provider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     // isAppOutdated is null until logic runs
     if (isAppOutdated !== null) {
-      SplashScreen.hideAsync()
+      void SplashScreen.hideAsync()
     }
   }, [isAppOutdated])
 

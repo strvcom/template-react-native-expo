@@ -13,7 +13,7 @@ export const useAuth = () => {
   }
 
   return {
-    isSignIn: Boolean(accessToken),
+    isSignedIn: Boolean(accessToken),
     signOut,
     signIn,
   }

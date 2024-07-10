@@ -4,9 +4,9 @@ import React from 'react'
 import { useAuth } from '~/features/auth/hooks/useAuth'
 
 export default function TabLayout() {
-  const { isSignIn } = useAuth()
+  const { isSignedIn } = useAuth()
 
-  if (!isSignIn) {
+  if (!isSignedIn) {
     return <Redirect href="/sign-in" />
   }
 
