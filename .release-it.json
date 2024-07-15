@@ -1,0 +1,28 @@
+{
+  "git": {
+    "requireCleanWorkingDir": false,
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "push": true,
+    "ignoreFiles": ["eas.json"]
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release ${version}",
+    "tokenRef": "GITHUB_TOKEN"
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits",
+      "infile": "CHANGELOG.md"
+    }
+  },
+  "hooks": {
+    "after:bump": "npx auto-changelog -p",
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  },
+  "increment": false
+}
