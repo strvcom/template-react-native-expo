@@ -1,11 +1,17 @@
 /* eslint-disable import/consistent-type-specifier-style */
 import { ExpoConfig, IOS } from '@expo/config-types'
 
+import packageJson from './package.json'
+
 import type { OtaUpdatePriority } from '~/hooks/useOTAUpdate'
 import { Environment } from '~/types/env'
 
 declare const process: {
-  env: { EXPO_PUBLIC_APP_ENV: Environment }
+  env: {
+    EXPO_PUBLIC_APP_ENV: Environment
+    EXPO_PUBLIC_APP_VERSION: string
+    EXPO_PUBLIC_BUILD_NUMBER: string
+  }
 }
 const environment = process.env.EXPO_PUBLIC_APP_ENV
 
@@ -46,11 +52,9 @@ const plugins: ExpoConfig['plugins'] = [
 ]
 
 // UPDATE VERSION AND BUILDNUMBER
-const version = '0.1.0'
-const buildNumber = 1
-// calculated from version to replace patch version with 0: 0.1.1 >> 0.1.0 -- read Readme
-const runtimeVersion = `${version.split('.').slice(0, 2).join('.')}.0`
-// this can be length of splashscreen during which app can download and run OTA update version
+const version = process.env.EXPO_PUBLIC_APP_VERSION || packageJson.version
+const buildNumber = process.env.EXPO_PUBLIC_BUILD_NUMBER || '1'
+
 const fallbackToCacheTimeout = 0
 const otaUpdatePriority: OtaUpdatePriority = 'normal'
 
@@ -58,7 +62,9 @@ const expoConfig: ExpoConfig = {
   name,
   slug: 'template-react-native-expo',
   version,
-  runtimeVersion,
+  runtimeVersion: {
+    policy: 'sdkVersion',
+  },
   orientation: 'portrait',
   icon,
   userInterfaceStyle: 'light',
@@ -72,7 +78,7 @@ const expoConfig: ExpoConfig = {
   },
   assetBundlePatterns: ['**/*'],
   ios: {
-    buildNumber: String(buildNumber),
+    buildNumber,
     supportsTablet: false,
     bundleIdentifier: appIdentifier,
     config: {
@@ -83,7 +89,7 @@ const expoConfig: ExpoConfig = {
     },
   },
   android: {
-    versionCode: buildNumber,
+    versionCode: parseInt(buildNumber, 10),
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
