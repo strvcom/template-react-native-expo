@@ -1,0 +1,25 @@
+name: Build Application
+description: 'Build the application using EAS'
+inputs:
+  environment:
+    required: true
+    description: 'The environment to build for'
+  platform:
+    required: true
+    description: 'The platform to build for'
+  auto_submit:
+    required: true
+    description: 'Whether to auto-submit to stores'
+
+runs:
+  using: composite
+  steps:
+    - name: Build for EAS
+      run: |
+        BUILD_COMMAND="eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive"
+        if [[ "${{ inputs.auto_submit }}" == "true" ]]; then
+          BUILD_COMMAND="$BUILD_COMMAND --auto-submit"
+          echo "Auto-submitting to stores"
+        fi
+        eval $BUILD_COMMAND
+      shell: bash
