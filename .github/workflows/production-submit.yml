@@ -1,0 +1,69 @@
+name: Production Submit
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
+        type: string
+      platform:
+        description: 'Platform'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ios
+          - android
+
+jobs:
+  production-release:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Validate tag
+        run: |
+          if ! git rev-parse ${{ github.event.inputs.tag }} >/dev/null 2>&1; then
+            echo "Error: Tag ${{ github.event.inputs.tag }} does not exist"
+            exit 1
+          fi
+
+      - name: Checkout tag
+        run: git checkout ${{ github.event.inputs.tag }}
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Get version from tag
+        id: version
+        run: |
+          VERSION=${{ github.event.inputs.tag }}
+          VERSION=${VERSION#v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Increment build number and save it in env variable
+        uses: ./.github/actions/increment-build-number
+        id: build_number
+        with:
+          gh_token: ${{ secrets.GT_PAT }}
+          current_build_number: ${{ vars.BUILD_NUMBER }}
+
+      - name: Update eas.json
+        uses: ./.github/actions/update-eas
+        with:
+          environment: production
+          version: ${{ steps.version.outputs.version }}
+          build_number: ${{ steps.build_number.outputs.build_number }}
+          vars: ${{ toJson(vars) }}
+
+      - name: Build and Submit
+        uses: ./.github/actions/build
+        with:
+          environment: production
+          platform: ${{ github.event.inputs.platform }}
+          auto_submit: true

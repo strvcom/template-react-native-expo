@@ -1,0 +1,18 @@
+name: Generate Release Notes
+description: 'Generate release notes and create a GitHub release'
+inputs:
+  version:
+    required: true
+    description: 'The exact version number to release'
+  gh_token:
+    required: true
+    description: 'The GitHub token'
+runs:
+  using: composite
+  steps:
+    - name: Generate Changelog and Create Release
+      run: |
+        npx release-it --ci --no-git.requireCleanWorkingDir --no-npm.publish --no-increment
+      env:
+        GITHUB_TOKEN: ${{ inputs.gh_token }}
+      shell: bash

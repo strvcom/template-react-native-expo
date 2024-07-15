@@ -1,0 +1,21 @@
+name: OTA Update
+description: 'Perform an OTA update'
+inputs:
+  channel:
+    required: true
+    description: 'The environment to update'
+  version:
+    required: true
+    description: 'The version number'
+  build_number:
+    required: true
+    description: 'The build number'
+
+runs:
+  using: composite
+  steps:
+    - name: Perform OTA Update
+      shell: bash
+      run: |
+        eas update --channel ${{ inputs.channel }} \
+          --message "Update ${{ inputs.channel }} to ${{ inputs.version }} (build ${{ inputs.build_number }})"
