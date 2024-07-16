@@ -24,7 +24,6 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Linting Tools](#linting-tools)
     - [Github Actions](#github-actions)
   - [Important Defaults - APP](#important-defaults---app)
-    - [React Navigation](#react-navigation)
     - [Global State and User Persistance](#global-state-and-user-persistance)
     - [Over-the-Air Updates](#over-the-air-updates)
     - [Forced Update aka Minimum Version Check](#forced-update-aka-minimum-version-check)
@@ -100,20 +99,6 @@ Requires `Expo Access Token` set as Github secret to connect to EAS.
     - ideally would run tests before submitting an app and have build cache logic
 
 ## Important Defaults - APP
-
-### React Navigation
-
-Ideally we keep number of stacks to minimum so that our `RootStack` contains majority of our screens. We can utilize [Group](https://reactnavigation.org/docs/group/) to apply common screen options and use conditional auth rendering to distinguish public and protected screen. `BottomStack` should be nested in the `RootStack` but screens within BottomStack that don't require bottom tabs should stay on the `RootStack` level - see `src/screens/NestedScreen.tsx`.
-
-This flat screen structure allows us to type `useNavigation` hook and `navigationRef` with this [snippet](https://reactnavigation.org/docs/typescript/#specifying-default-types-for-usenavigation-link-ref-etc)
-
-```
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
-}
-```
 
 ### Global State and User Persistance
 
