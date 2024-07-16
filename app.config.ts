@@ -49,6 +49,7 @@ const plugins: ExpoConfig['plugins'] = [
   ['expo-build-properties'],
   ['expo-font', { fonts }],
   ['expo-asset', { assets }],
+  ['expo-router'],
 ]
 
 // UPDATE VERSION AND BUILDNUMBER
@@ -65,6 +66,7 @@ const expoConfig: ExpoConfig = {
   runtimeVersion: {
     policy: 'sdkVersion',
   },
+  scheme: 'template-react-native-expo',
   orientation: 'portrait',
   icon,
   userInterfaceStyle: 'light',
@@ -88,6 +90,9 @@ const expoConfig: ExpoConfig = {
       LSApplicationQueriesSchemes: ['itms-apps'],
     },
   },
+  web: {
+    bundler: 'metro',
+  },
   android: {
     versionCode: parseInt(buildNumber, 10),
     adaptiveIcon: {
@@ -110,6 +115,7 @@ const expoConfig: ExpoConfig = {
   },
   experiments: {
     tsconfigPaths: true,
+    typedRoutes: true,
   },
 }
 
