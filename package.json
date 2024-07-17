@@ -29,8 +29,6 @@
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
-    "release-it": "^17.4.1",
-    "@release-it/conventional-changelog": "^8.0.1",
     "expo": "^51.0.8",
     "expo-build-properties": "~0.12.1",
     "expo-constants": "~16.0.2",
@@ -54,6 +52,8 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "release-it": "^17.4.1",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@babel/core": "^7.24.0",
     "@strv/eslint-config-react-native": "3.3.3",
     "@types/react": "~18.2.79",
