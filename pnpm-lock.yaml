@@ -10,21 +10,9 @@ importers:
       '@dev-plugins/react-native-mmkv':
         specifier: ^0.0.1
         version: 0.0.1(expo@51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5)))(react-native-mmkv@2.12.2(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))
-      '@dev-plugins/react-navigation':
-        specifier: ^0.0.6
-        version: 0.0.6(@react-navigation/core@6.4.16(react@18.2.0))(expo@51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5)))(react@18.2.0)
       '@react-native-community/netinfo':
         specifier: 11.3.1
         version: 11.3.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))
-      '@react-navigation/bottom-tabs':
-        specifier: ^6.5.20
-        version: 6.5.20(@react-navigation/native@6.1.17(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-screens@3.31.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
-      '@react-navigation/native':
-        specifier: ^6.1.17
-        version: 6.1.17(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
-      '@react-navigation/native-stack':
-        specifier: ^6.9.26
-        version: 6.9.26(@react-navigation/native@6.1.17(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-screens@3.31.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       expo:
         specifier: ^51.0.8
         version: 51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))
@@ -1471,15 +1459,6 @@ packages:
       expo: '*'
       react-native-mmkv: ^2.0.0
 
-  '@dev-plugins/react-navigation@0.0.6':
-    resolution:
-      {
-        integrity: sha512-DBuNhCyo0kqYPxZzirL4TZBemOGHBI1pxxF6LOU4WlsVaCK16PJvvtgoD2Tbd0xS64fdfaDyISrn16RbIncy5A==,
-      }
-    peerDependencies:
-      '@react-navigation/core': '*'
-      expo: '*'
-
   '@egjs/hammerjs@2.0.17':
     resolution:
       {
@@ -2219,14 +2198,6 @@ packages:
     resolution:
       {
         integrity: sha512-UDTJBsHxnzgFETR3ZxhctP+RWr4SkyeZpbhpkQoIGOuwSCkt1SE0qjU48/u6r6w6XlX8OqVudn1Ab0QFXTHxuQ==,
-      }
-    peerDependencies:
-      react: '*'
-
-  '@react-navigation/devtools@6.0.26':
-    resolution:
-      {
-        integrity: sha512-jbIb+678wb75Z1OiA/zP2g7ZuAviL9IFFTiadEcGog713n7XTm5xRr6uiCPWohalUJOvt8e9B8A2wRGmgELjHw==,
       }
     peerDependencies:
       react: '*'
@@ -4040,13 +4011,6 @@ packages:
       }
     engines: { node: '>=10' }
 
-  deep-equal@2.2.3:
-    resolution:
-      {
-        integrity: sha512-ZIwpnevOurS8bpT4192sqAowWM76JDKSHYzMLty3BZGSswgq6pBaH3DhCSW5xVAZICZyKdOBPjwww5wfgT/6PA==,
-      }
-    engines: { node: '>= 0.4' }
-
   deep-extend@0.6.0:
     resolution:
       {
@@ -4349,12 +4313,6 @@ packages:
         integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==,
       }
     engines: { node: '>= 0.4' }
-
-  es-get-iterator@1.1.3:
-    resolution:
-      {
-        integrity: sha512-sPZmqHBe6JIiTfN5q2pEi//TwxmAFHwj/XEuYjTuse78i8KxaqMTTzxPoFKuzRpDpTJ+0NAbpfenkmH2rePtuw==,
-      }
 
   es-iterator-helpers@1.0.15:
     resolution:
@@ -7442,13 +7400,6 @@ packages:
         integrity: sha512-geUvdk7c+eizMNUDkRpW1wJwgfOiOeHbxBR/hLXK1aT6zmVSO0jsQcs7fj6MGw89jC/cjGfLcNOrtMYtGqm81g==,
       }
 
-  object-is@1.1.6:
-    resolution:
-      {
-        integrity: sha512-F8cZ+KfGlSGi09lJT7/Nd6KJZ9ygtvYC0/UYYLI9nmQKLMnydpB9yvbv9K1uSkEu7FU9vYPmVwLg328tX+ot3Q==,
-      }
-    engines: { node: '>= 0.4' }
-
   object-keys@1.1.1:
     resolution:
       {
@@ -9056,13 +9007,6 @@ packages:
         integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==,
       }
     engines: { node: '>=18' }
-
-  stop-iteration-iterator@1.0.0:
-    resolution:
-      {
-        integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==,
-      }
-    engines: { node: '>= 0.4' }
 
   stream-buffers@2.2.0:
     resolution:
@@ -11287,15 +11231,6 @@ snapshots:
       expo: 51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))
       react-native-mmkv: 2.12.2(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
 
-  '@dev-plugins/react-navigation@0.0.6(@react-navigation/core@6.4.16(react@18.2.0))(expo@51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5)))(react@18.2.0)':
-    dependencies:
-      '@react-navigation/core': 6.4.16(react@18.2.0)
-      '@react-navigation/devtools': 6.0.26(react@18.2.0)
-      expo: 51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))
-      nanoid: 3.3.7
-    transitivePeerDependencies:
-      - react
-
   '@egjs/hammerjs@2.0.17':
     dependencies:
       '@types/hammerjs': 2.0.41
@@ -12198,13 +12133,6 @@ snapshots:
       react: 18.2.0
       react-is: 16.13.1
       use-latest-callback: 0.1.9(react@18.2.0)
-
-  '@react-navigation/devtools@6.0.26(react@18.2.0)':
-    dependencies:
-      deep-equal: 2.2.3
-      nanoid: 3.3.7
-      react: 18.2.0
-      stacktrace-parser: 0.1.10
 
   '@react-navigation/elements@1.3.30(@react-navigation/native@6.1.17(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)':
     dependencies:
@@ -13356,27 +13284,6 @@ snapshots:
     dependencies:
       mimic-response: 3.1.0
 
-  deep-equal@2.2.3:
-    dependencies:
-      array-buffer-byte-length: 1.0.0
-      call-bind: 1.0.7
-      es-get-iterator: 1.1.3
-      get-intrinsic: 1.2.4
-      is-arguments: 1.1.1
-      is-array-buffer: 3.0.2
-      is-date-object: 1.0.5
-      is-regex: 1.1.4
-      is-shared-array-buffer: 1.0.2
-      isarray: 2.0.5
-      object-is: 1.1.6
-      object-keys: 1.1.1
-      object.assign: 4.1.4
-      regexp.prototype.flags: 1.5.1
-      side-channel: 1.0.4
-      which-boxed-primitive: 1.0.2
-      which-collection: 1.0.1
-      which-typed-array: 1.1.15
-
   deep-extend@0.6.0: {}
 
   deep-is@0.1.4: {}
@@ -13558,18 +13465,6 @@ snapshots:
       get-intrinsic: 1.2.4
 
   es-errors@1.3.0: {}
-
-  es-get-iterator@1.1.3:
-    dependencies:
-      call-bind: 1.0.7
-      get-intrinsic: 1.2.4
-      has-symbols: 1.0.3
-      is-arguments: 1.1.1
-      is-map: 2.0.3
-      is-set: 2.0.3
-      is-string: 1.0.7
-      isarray: 2.0.5
-      stop-iteration-iterator: 1.0.0
 
   es-iterator-helpers@1.0.15:
     dependencies:
@@ -15619,11 +15514,6 @@ snapshots:
 
   object-inspect@1.12.3: {}
 
-  object-is@1.1.6:
-    dependencies:
-      call-bind: 1.0.7
-      define-properties: 1.2.1
-
   object-keys@1.1.1: {}
 
   object.assign@4.1.4:
@@ -16664,10 +16554,6 @@ snapshots:
   statuses@2.0.1: {}
 
   stdin-discarder@0.2.2: {}
-
-  stop-iteration-iterator@1.0.0:
-    dependencies:
-      internal-slot: 1.0.7
 
   stream-buffers@2.2.0: {}
 
