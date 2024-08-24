@@ -40,6 +40,8 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Release process example](#example-of-_ideal_-scenario)
     - [Hotfix Scenario example](#hotfix-scenario)
     - [JIRA Integration](#jira-integration)
+    - [Slack Integration](#slack-integration)
+    - [DEV build distribution](#dev-build-distribution)
 
 ## Important Defaults - SETUP
 
@@ -330,10 +332,7 @@ _- note: if you want to test the app on a real device, and your device is not re
 
 **Steps**:
 
-- Workflow: `Production submit` (triggered from the `tag` branch)
-- Deployment environment: `production`
-- Version bump type: _ignored_ (will take the version from the selected `tag`)
-- Action type: `build and submit`
+- Workflow: `Production submit` (triggered from the `tag` branch chosen via `Use workflow from` dropdown)
 - Platform: `all` | `ios` | `android`
 
 ### Example of _ideal_ scenario:
@@ -344,7 +343,7 @@ Working on a new feature (v. `1.2.1`)
   - This creates a dev build that serves for local development
 - After the feature is finished and merged to `main`, we trigger **Create release** and we select -> `staging` platform, version bump type `minor`, and action type will be `build and submit`
 - This creates a new build, submits it for testing, and creates a new release `1.3.0` with `changelogs`
-- After QA testing, we are ready for production submission via `Production submit` flow. This will create a new build with the version of the selected `tag` and submit it to the stores
+- After QA testing, we are ready for production submission via `Production submit` flow. This will create a new build with the version of the selected `tag` branch and submit it to the stores
 
 ### Hotfix Scenario:
 
@@ -367,3 +366,61 @@ Branch name example: `feat/ABC-1234-add-new-feature`
 PR title example: `feat(ABC-1234): add new feature`
 
 It is recommended to use the `Squash and merge` option for pull requests. This format is supported by the `release-it` Changelog plugin.
+
+### Slack Integration
+
+- **Staging and Production Notifications:**
+  1. Open Slack
+  2. In the left sidebar, click on `... More` and select `Automations`
+  3. Click on `New Workflow`
+  4. Choose `from a webhook` option
+  5. add data variables for `version` - string and `changelog`(optional) - string
+  6. add `Messages` step and select the `channel` where you want to send the message
+  7. Add the message
+
+Example message:
+
+```
+Hey @channel, :rocket:
+
+We’re excited to announce the release of the new EXPO-TEMPLATE app version!
+
+Latest version: {{version}}
+Changelog: https://github.com/strvcom/{repository-name}/releases/tag/v{{version}}
+```
+
+- you must do it for both `staging` and `production` environments
+
+- Copy the `webhook URL` and add it
+- for [STAGING](.release-it.json) - `line 34`
+- for [PRODUCTION](.github/workflows/production-submit.yml) - `line 64`
+
+`IN PROGRESS`
+
+### DEV BUILD DISTRIBUTION
+
+- the dev distribution builds are triggered by the `Create dev build` workflow
+- To distribute the dev builds to among the team members, choose one of the options and follow the steps below:
+
+### SLACK APP
+
+- Create a new Slack App on https://api.slack.com/apps
+- Select `Incoming Webhooks` and turn it on
+- Wait for the approval
+- Add `New Webhook to Workspace` and select the channel
+- copy the` Webhook URL`
+
+### CLOUDFLARE WORKERS
+
+- Create a new Cloudflare Worker
+- Copy the worker functionality from the [worker.js](docs/cloudflare-worker.txt)
+- replace `SLACK_WEBHOOK_URL` variable with yours
+- deploy the worker
+
+### EAS SETUP
+
+- create a new webhook via EAS CLI and the worker url `https//your-worker.account-name.workers.dev`
+
+```
+eas webhook:create
+```
