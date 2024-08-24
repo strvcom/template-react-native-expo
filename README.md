@@ -31,6 +31,7 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Maximum Font Scaling](#maximum-font-scaling)
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
+  -
 
 ## Important Defaults - SETUP
 
@@ -177,3 +178,170 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
   - [React Native Purchases](https://github.com/RevenueCat/react-native-purchases)
 
     > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
+
+## Release Process
+
+---
+
+### Prerequisites:
+
+### GitHub Setup Instructions
+
+### Expo Access Token
+
+1. Create a new token in the Expo dashboard.
+2. Add the token to the GitHub secrets as `EXPO_TOKEN`.
+
+### GitHub Workflow Permissions
+
+1. Go to `Settings` > `Actions` > `Workflow permissions`.
+2. Check `Read and write permissions`.
+
+### GitHub Personal Access Token
+
+1. Navigate to your GitHub profile > `Settings` > `Developer settings` > `Personal access tokens` > `Fine-grained tokens`.
+2. Click on `Generate a new token`.
+3. Select the repository under `STRV's` organization.
+4. Set the permissions as shown in the table below.
+5. Wait for the approval.
+6. Add the token to the GitHub secrets as `GT_PAT`.
+
+## Required Permissions Table
+
+When setting up the Fine-grained Personal Access Token, ensure you select the following permissions:
+
+| Permission      | Access Level   |
+| --------------- | -------------- |
+| Actions         | Read and write |
+| Commit statuses | Read and write |
+| Contents        | Read and write |
+| Deployments     | Read and write |
+| Environments    | Read and write |
+| Merge queues    | Read and write |
+| Metadata        | Read-only      |
+| Pull requests   | Read and write |
+| Secrets         | Read and write |
+| Variables       | Read and write |
+| Webhooks        | Read and write |
+
+### EAS BUILD
+
+### Credentials
+
+- Set up iOS credentials by running:
+  ```
+  npx eas credentials -p ios
+  ```
+
+### Builds and Submission
+
+To allow the GitHub Action to conduct builds, you must build the app for the first time using the `EAS` CLI. This will create the necessary credentials and allow the GitHub Action to access them.
+
+Run the following commands:
+
+```
+npx eas build --platform ios --profile dev-sim
+npx eas build --platform ios --profile dev
+npx eas build --platform ios --profile staging --auto-submit
+npx eas build --platform ios --profile production --auto-submit
+```
+
+### OTA-UPDATE
+
+- Before conducting over-the-air updates, validate that the channels are setup against correct branch (environment).
+
+```
+ npx eas channel:list
+```
+
+- if not, you can change it by running
+
+```
+ npx eas channel:edit
+```
+
+---
+
+### **Adding new `ENV` variables**:
+
+**Format**:
+
+- All variables must use the `EXPO_PUBLIC` prefix! e.g., `EXPO_PUBLIC_API_URL`
+
+**Github**:
+
+- There are two options for adding/managing env credentials:
+
+1. **Variables by a specific env**:
+
+> Settings -> Environments -> Select/add Env (dev, staging, prod) -> Add a new variable
+
+2. **Shared variables**:
+
+> Settings -> Secrets and Variables -> Actions -> Select Variables tab -> New repository variable
+
+### **Development Build:**
+
+**Description**:
+
+- Development are used for local development and testing on Simulator. This is the fastest way to iterate on the app.
+- Development build should be created everytime there is a change affecting Native code or when a new feature is added.
+
+_- note: if you want to test the app on a real device, and your device is not registered in EAS, you can do it by running `npx eas device:create `_
+
+**Steps**:
+
+- Workflow: `Create dev build`
+- Build type: `dev`(real device) | `dev-sim`(simulator)
+- Platform: `all` | `ios` | `android`
+
+### **Staging Release:**
+
+### WARNING
+
+**- Right now, we have not added any logic to allow` GitHub Actions` to bypass` Github's rulesets`. Therefore, the ruleset must be always disabled before running the action to allow workflow to push the changes back to the `main` branch.**
+
+**Description**:
+
+- Staging builds are used for testing new features and bug fixes before they are released to production.
+- After the staging build is created, the new release is created with the changelogs and it shared via Testflight or Play Store internal testing track.
+
+**Steps**:
+
+- Workflow: `Create release`
+- Deployment environment: `staging`
+- Version bump type: `patch` | `minor` | `major` | `none`
+- Action type: `build and submit` | `ota update`
+- Platform: `all` | `ios` | `android`
+
+### **Production Submit:**
+
+**Description**:
+
+- After the staging build is tested and approved, we are ready to submit the build to the stores.
+
+**Steps**:
+
+- Workflow: `Production submit` (triggered from the `tag` branch)
+- Deployment environment: `production`
+- Version bump type: _ignored_ (will take the version from the selected `tag`)
+- Action type: `build and submit`
+- Platform: `all` | `ios` | `android`
+
+### **Example of _ideal_ scenario:**
+
+Working on a new feature (v. `1.2.1`)
+
+- **Create dev build** Select `dev` for device build or `dev-sim` for simulator build and `platform`
+  - This creates a dev build that serves for local development
+- After the feature is finished and merged to `main`, we trigger **Create release** and we select -> `staging` platform, version bump type `minor`, and action type will be `build and submit`
+- This creates a new build, submits it for testing, and creates a new release `1.3.0` with `changelogs`
+- After QA testing, we are ready for production submission via `Production submit` flow. This will create a new build with the version of the selected `tag` and submit it to the stores
+
+### **Hotfix Scenario**:
+
+- We found a bug in version `1.3.0` - we create a new branch from the `1.3.0` `tag` branch
+- Fix the bug and create a **PR**
+- Review the **PR** and then we create a `hotfix` by triggering **Hotfix release**, selecting the current Hotfix branch and selecting the `build type` (either OTA or Normal)
+- This creates a new tag `1.3.0-hotfix.1` but no release
+- Merge the hotfix branch to `main`

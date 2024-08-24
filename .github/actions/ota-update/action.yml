@@ -10,10 +10,15 @@ inputs:
   build_number:
     required: true
     description: 'The build number'
-
 runs:
   using: composite
   steps:
+    - name: Set environment variables
+      shell: bash
+      run: |
+        echo "EXPO_PUBLIC_APP_VERSION=${{ inputs.version }}" >> $GITHUB_ENV
+        echo "EXPO_PUBLIC_BUILD_NUMBER=${{ inputs.build_number }}" >> $GITHUB_ENV
+
     - name: Perform OTA Update
       shell: bash
       run: |

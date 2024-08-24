@@ -1,8 +1,16 @@
-name: Production Submit
+name: Create Dev Build
 
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        description: 'Build Type'
+        required: true
+        default: 'dev-sim'
+        type: choice
+        options:
+          - dev
+          - dev-sim
       platform:
         description: 'Platform'
         required: true
@@ -14,9 +22,10 @@ on:
           - android
 
 jobs:
-  production-release:
+  create-dev-build:
     runs-on: ubuntu-latest
-    environment: production
+    environment: dev
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -34,41 +43,22 @@ jobs:
           version_bump: 'none'
           increment: false
 
-      - name: Increment build number and save it in env variable
-        uses: ./.github/actions/increment-build-number
-        id: build_number
-        with:
-          gh_token: ${{ secrets.GT_PAT }}
-          current_build_number: ${{ vars.BUILD_NUMBER }}
-
       - name: Update eas.json
         uses: ./.github/actions/update-eas
         with:
-          environment: production
+          environment: dev
           version: ${{ steps.version.outputs.version }}
-          build_number: ${{ steps.build_number.outputs.build_number }}
+          build_number: ${{ vars.BUILD_NUMBER }}
           vars: ${{ toJson(vars) }}
 
-      - name: Build and Submit
+      - name: Build Application
         uses: ./.github/actions/build
         with:
-          environment: production
+          environment: ${{ github.event.inputs.environment }}
           platform: ${{ github.event.inputs.platform }}
-          auto_submit: true
+          auto_submit: false
 
       - name: Revert eas.json changes
         if: always()
         run: |
           git restore eas.json
-
-# Uncomment and add your slack webhook url to send Slack notification after the build is submitted
-#      - name: Send Slack Notification
-#        id: slack
-#        uses: slackapi/slack-github-action@v1.26.0
-#        with:
-#          payload: |
-#            {
-#              "version": "${{ steps.version.outputs.version }}"
-#            }
-#        env:
-#          SLACK_WEBHOOK_URL: https://hooks.slack.com/triggers/**

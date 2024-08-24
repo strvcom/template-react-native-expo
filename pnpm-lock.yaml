@@ -116,6 +116,9 @@ importers:
       release-it:
         specifier: ^17.4.1
         version: 17.6.0(typescript@5.3.3)
+      release-it-webhook:
+        specifier: ^0.0.5
+        version: 0.0.5(release-it@17.6.0(typescript@5.3.3))
       typescript:
         specifier: ~5.3.3
         version: 5.3.3
@@ -8357,6 +8360,15 @@ packages:
       }
     hasBin: true
 
+  release-it-webhook@0.0.5:
+    resolution:
+      {
+        integrity: sha512-fNfxg783ilE+eVJ3qBgNvl1W05SMb7GWs4jy4nO6Lj3MY54DT426wIzhPvj4WRs+aRhpeDSauzxn7O6E/LQDhw==,
+      }
+    engines: { node: '>=18' }
+    peerDependencies:
+      release-it: 15 - 17
+
   release-it@17.6.0:
     resolution:
       {
@@ -16178,6 +16190,10 @@ snapshots:
   regjsparser@0.9.1:
     dependencies:
       jsesc: 0.5.0
+
+  release-it-webhook@0.0.5(release-it@17.6.0(typescript@5.3.3)):
+    dependencies:
+      release-it: 17.6.0(typescript@5.3.3)
 
   release-it@17.6.0(typescript@5.3.3):
     dependencies:

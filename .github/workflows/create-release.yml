@@ -1,4 +1,4 @@
-name: Create Release
+name: Create Release - DISABLE RULESET!
 
 on:
   workflow_dispatch:
@@ -9,7 +9,6 @@ on:
         default: 'staging'
         type: choice
         options:
-          - dev
           - staging
           - production
       version_bump:
@@ -21,6 +20,7 @@ on:
           - patch
           - minor
           - major
+          - none
       action_type:
         description: 'Action Type'
         required: true
@@ -86,7 +86,7 @@ jobs:
           auto_submit: ${{ github.event.inputs.action_type == 'build_and_submit' }}
 
       - name: OTA Release
-        if: github.event.inputs.action_type == 'ota_update' && github.event.inputs.environment != 'dev'
+        if: github.event.inputs.action_type == 'ota_update'
         uses: ./.github/actions/ota-update
         env: ${{ vars }}
         with:
@@ -100,7 +100,7 @@ jobs:
           git restore eas.json
 
       - name: Generate Release Notes
-        if: github.event.inputs.action_type != 'build' || github.event.inputs.environment != 'dev'
+        if: github.event.inputs.action_type != 'build' && github.event.inputs.version_bump != 'none'
         uses: ./.github/actions/release-notes
         with:
           version: ${{ steps.version.outputs.version }}

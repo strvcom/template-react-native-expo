@@ -11,18 +11,33 @@
     "releaseName": "Release ${version}",
     "tokenRef": "GITHUB_TOKEN"
   },
-  "npm": {
-    "publish": false
-  },
+  "npm": false,
   "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": "conventionalcommits",
-      "infile": "CHANGELOG.md"
+      "header": "# Changelog",
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "✨ Features" },
+          { "type": "fix", "section": "🐛 Bug Fixes" },
+          { "type": "chore", "section": "🔧 Chores" },
+          { "type": "ci", "section": "🤖 Continuous Integration" },
+          { "type": "docs", "section": "📄 Documentation" },
+          { "type": "refactor", "section": "💅 Code Refactoring" },
+          { "type": "test", "section": "🧪 Tests" },
+          { "type": "revert", "section": "🔄 Reverts" }
+        ]
+      },
+      "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump": true
+    },
+    "release-it-webhook": {
+      "webhook": {
+        "url": "YOUR SLACK WEBHOOK URL"
+      }
     }
   },
   "hooks": {
-    "after:bump": "npx auto-changelog -p",
     "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
-  },
-  "increment": false
+  }
 }
