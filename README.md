@@ -272,6 +272,10 @@ npx eas build --platform ios --profile production --auto-submit
 
 ---
 
+### Build number:
+
+Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not present, it creates a new one with version 1.
+
 ### Adding new `ENV` variables:
 
 **Format**:
