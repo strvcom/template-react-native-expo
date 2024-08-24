@@ -31,7 +31,15 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Maximum Font Scaling](#maximum-font-scaling)
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
-  -
+  - [Release Process](#release-process)
+    - [Prerequisites](#prerequisites)
+    - [Adding new ENV variables](#adding-new-env-variables)
+    - [Development Build](#development-build)
+    - [Staging Release](#staging-release)
+    - [Production Submit](#production-submit)
+    - [Release process example](#example-of-_ideal_-scenario)
+    - [Hotfix Scenario example](#hotfix-scenario)
+    - [JIRA Integration](#jira-integration)
 
 ## Important Defaults - SETUP
 
@@ -262,7 +270,7 @@ npx eas build --platform ios --profile production --auto-submit
 
 ---
 
-### **Adding new `ENV` variables**:
+### Adding new `ENV` variables:
 
 **Format**:
 
@@ -280,7 +288,7 @@ npx eas build --platform ios --profile production --auto-submit
 
 > Settings -> Secrets and Variables -> Actions -> Select Variables tab -> New repository variable
 
-### **Development Build:**
+### Development Build:
 
 **Description**:
 
@@ -295,7 +303,7 @@ _- note: if you want to test the app on a real device, and your device is not re
 - Build type: `dev`(real device) | `dev-sim`(simulator)
 - Platform: `all` | `ios` | `android`
 
-### **Staging Release:**
+### Staging Release:
 
 ### WARNING
 
@@ -314,7 +322,7 @@ _- note: if you want to test the app on a real device, and your device is not re
 - Action type: `build and submit` | `ota update`
 - Platform: `all` | `ios` | `android`
 
-### **Production Submit:**
+### Production Submit:
 
 **Description**:
 
@@ -328,7 +336,7 @@ _- note: if you want to test the app on a real device, and your device is not re
 - Action type: `build and submit`
 - Platform: `all` | `ios` | `android`
 
-### **Example of _ideal_ scenario:**
+### Example of _ideal_ scenario:
 
 Working on a new feature (v. `1.2.1`)
 
@@ -338,10 +346,24 @@ Working on a new feature (v. `1.2.1`)
 - This creates a new build, submits it for testing, and creates a new release `1.3.0` with `changelogs`
 - After QA testing, we are ready for production submission via `Production submit` flow. This will create a new build with the version of the selected `tag` and submit it to the stores
 
-### **Hotfix Scenario**:
+### Hotfix Scenario:
 
 - We found a bug in version `1.3.0` - we create a new branch from the `1.3.0` `tag` branch
 - Fix the bug and create a **PR**
 - Review the **PR** and then we create a `hotfix` by triggering **Hotfix release**, selecting the current Hotfix branch and selecting the `build type` (either OTA or Normal)
 - This creates a new tag `1.3.0-hotfix.1` but no release
 - Merge the hotfix branch to `main`
+
+### JIRA Integration
+
+- To track the progress of the project on the Jira board, follow the steps below:
+
+1. Connect the Jira project with the GitHub repository via the `GitHub for Jira` App.
+2. Go to `Settings` -> `Features`, scroll to the `Operation` section, and turn on the `Deployments` feature.
+
+To track progress such as `Builds`, `Releases`, and `Commits`, both branch name and pull request title need to include the Jira ticket number in their titles:
+
+Branch name example: `feat/ABC-1234-add-new-feature`
+PR title example: `feat(ABC-1234): add new feature`
+
+It is recommended to use the `Squash and merge` option for pull requests. This format is supported by the `release-it` Changelog plugin.
