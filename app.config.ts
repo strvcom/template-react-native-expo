@@ -13,7 +13,7 @@ declare const process: {
     EXPO_PUBLIC_BUILD_NUMBER: string
   }
 }
-const environment = process.env.EXPO_PUBLIC_APP_ENV
+const environment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
 
 // your custom fonts
 const fonts = ['./assets/fonts/Domine-Bold.ttf']

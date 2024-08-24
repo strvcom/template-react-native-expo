@@ -258,6 +258,15 @@ npx eas build --platform ios --profile production --auto-submit
 
 ### OTA-UPDATE
 
+- Add the Expo URL to the `expoConfig` in` app.config.ts`.
+
+```
+ updates: {
+    fallbackToCacheTimeout,
+    url: 'https://u.expo.dev/project-id',
+  },
+```
+
 - Before conducting over-the-air updates, validate that the channels are setup against correct branch (environment).
 
 ```
