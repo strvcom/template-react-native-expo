@@ -370,13 +370,15 @@ It is recommended to use the `Squash and merge` option for pull requests. This f
 ### Slack Integration
 
 - **Staging and Production Notifications:**
-  1. Open Slack
-  2. In the left sidebar, click on `... More` and select `Automations`
-  3. Click on `New Workflow`
-  4. Choose `from a webhook` option
-  5. add data variables for `version` - string and `changelog`(optional) - string
-  6. add `Messages` step and select the `channel` where you want to send the message
-  7. Add the message
+
+1.  Open Slack
+2.  In the left sidebar, click on `... More` and select `Automations`
+3.  Click on `New Workflow`
+4.  name it `[App name] [Env] [Release]`
+5.  Choose `from a webhook` option
+6.  add data variables for `version` - string and `changelog`(optional) - string
+7.  add `Messages` step and select the `channel` where you want to send the message
+8.  Add the message
 
 Example message:
 
@@ -389,7 +391,7 @@ Latest version: {{version}}
 Changelog: https://github.com/strvcom/{repository-name}/releases/tag/v{{version}}
 ```
 
-- you must do it for both `staging` and `production` environments
+- you must create workflow for both `staging` and `production` environments
 
 - Copy the `webhook URL` and add it
 - for [STAGING](.release-it.json) - `line 34`
