@@ -418,6 +418,7 @@ Changelog: https://github.com/strvcom/{repository-name}/releases/tag/v{{version}
 
 ### CLOUDFLARE WORKERS
 
+- Go to https://www.cloudflare.com/
 - Create a new Cloudflare Worker
 - Copy the worker functionality from the [worker.js](docs/cloudflare-worker.txt)
 - replace `SLACK_WEBHOOK_URL` variable with yours
