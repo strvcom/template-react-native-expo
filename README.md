@@ -307,7 +307,7 @@ _- note: if you want to test the app on a real device, and your device is not re
 
 ### Staging Release:
 
-### WARNING
+### WARNING IN CASE `Require a pull request before merging` RULE IS ENABLED
 
 **- Right now, we have not added any logic to allow` GitHub Actions` to bypass` Github's rulesets`. Therefore, the ruleset must be always disabled before running the action to allow workflow to push the changes back to the `main` branch.**
 
