@@ -195,6 +195,27 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
 ### Prerequisites:
 
+## EAS
+
+To connect your App Store account, fill in the "submit" object in the eas.json file:
+
+```
+submit": {
+ "staging": {
+   "ios": {
+     "ascAppId": "ID",
+     "appleTeamId": "ID"
+    }
+ },
+ "production": {
+   "ios": {
+    "ascAppId": "ID",
+     "appleTeamId": "ID"
+    }
+  }
+}
+```
+
 ### GitHub Setup Instructions
 
 ### Expo Access Token
@@ -238,7 +259,7 @@ When setting up the Fine-grained Personal Access Token, ensure you select the fo
 
 ### Credentials
 
-- Set up iOS credentials by running:
+- Set up` App Store Connect API Keys` for `staging` and `production` by running:
   ```
   npx eas credentials -p ios
   ```
@@ -297,7 +318,7 @@ Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not presen
 
 1. **Variables by a specific env**:
 
-> Settings -> Environments -> Select/add Env (dev, staging, prod) -> Add a new variable
+> Settings -> Environments -> Select/add Env (dev, staging, production) -> Add a new variable
 
 2. **Shared variables**:
 
