@@ -1,39 +1,47 @@
 {
   "cli": {
-    "version": ">= 2.3.0"
+    "version": ">= 3.13.3"
   },
   "build": {
-    "development": {
-      "env": {
-        "APP_ENV": "dev"
-      },
+    "base": {
+      "ios": {
+        "resourceClass": "medium"
+      }
+    },
+    "dev": {
+      "extends": "base",
       "developmentClient": true,
       "distribution": "internal",
-      "channel": "dev"
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "dev",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "dev"
+      }
+    },
+    "dev-sim": {
+      "extends": "dev",
+      "ios": {
+        "simulator": true
+      }
     },
     "staging": {
+      "extends": "base",
+      "distribution": "store",
+      "channel": "staging",
       "env": {
-        "APP_ENV": "staging"
-      },
-      "distribution": "internal",
-      "channel": "staging"
-    },
-    "staging-development": {
-      "env": {
-        "APP_ENV": "staging"
-      },
-      "distribution": "internal",
-      "developmentClient": true,
-      "channel": "staging"
+        "EXPO_PUBLIC_APP_ENV": "staging"
+      }
     },
     "production": {
+      "extends": "base",
+      "distribution": "store",
+      "channel": "production",
       "env": {
-        "APP_ENV": "production"
-      },
-      "channel": "production"
+        "EXPO_PUBLIC_APP_ENV": "production"
+      }
     }
   },
-  "submit": {
-    "production": {}
-  }
+  "submit": {}
 }

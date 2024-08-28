@@ -31,6 +31,17 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Maximum Font Scaling](#maximum-font-scaling)
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
+  - [Release Process](#release-process)
+    - [Prerequisites](#prerequisites)
+    - [Adding new ENV variables](#adding-new-env-variables)
+    - [Development Build](#development-build)
+    - [Staging Release](#staging-release)
+    - [Production Submit](#production-submit)
+    - [Release process example](#example-of-_ideal_-scenario)
+    - [Hotfix Scenario example](#hotfix-scenario)
+    - [JIRA Integration](#jira-integration)
+    - [Slack Integration](#slack-integration)
+    - [DEV build distribution](#dev-build-distribution)
 
 ## Important Defaults - SETUP
 
@@ -177,3 +188,276 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
   - [React Native Purchases](https://github.com/RevenueCat/react-native-purchases)
 
     > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
+
+## Release Process
+
+---
+
+### Prerequisites:
+
+## EAS
+
+To connect your App Store account, fill in the "submit" object in the eas.json file:
+
+```
+submit": {
+ "staging": {
+   "ios": {
+     "ascAppId": "ID",
+     "appleTeamId": "ID"
+    }
+ },
+ "production": {
+   "ios": {
+    "ascAppId": "ID",
+     "appleTeamId": "ID"
+    }
+  }
+}
+```
+
+### GitHub Setup Instructions
+
+### Expo Access Token
+
+1. Create a new token in the Expo dashboard.
+2. Add the token to the GitHub secrets as `EXPO_TOKEN`.
+
+### GitHub Workflow Permissions
+
+1. Go to `Settings` > `Actions` > `Workflow permissions`.
+2. Check `Read and write permissions`.
+
+### GitHub Personal Access Token
+
+1. Navigate to your GitHub profile > `Settings` > `Developer settings` > `Personal access tokens` > `Fine-grained tokens`.
+2. Click on `Generate a new token`.
+3. Select the repository under `STRV's` organization.
+4. Set the permissions as shown in the table below.
+5. Wait for the approval.
+6. Add the token to the GitHub secrets as `GT_PAT`.
+
+## Required Permissions Table
+
+When setting up the Fine-grained Personal Access Token, ensure you select the following permissions:
+
+| Permission      | Access Level   |
+| --------------- | -------------- |
+| Actions         | Read and write |
+| Commit statuses | Read and write |
+| Contents        | Read and write |
+| Deployments     | Read and write |
+| Environments    | Read and write |
+| Merge queues    | Read and write |
+| Metadata        | Read-only      |
+| Pull requests   | Read and write |
+| Secrets         | Read and write |
+| Variables       | Read and write |
+| Webhooks        | Read and write |
+
+### EAS BUILD
+
+### Credentials
+
+- Set up` App Store Connect API Keys` for `staging` and `production` by running:
+  ```
+  npx eas credentials -p ios
+  ```
+
+### Builds and Submission
+
+To allow the GitHub Action to conduct builds, you must build the app for the first time using the `EAS` CLI. This will create the necessary credentials and allow the GitHub Action to access them.
+
+Run the following commands:
+
+```
+npx eas build --platform ios --profile dev-sim
+npx eas build --platform ios --profile dev
+npx eas build --platform ios --profile staging --auto-submit
+npx eas build --platform ios --profile production --auto-submit
+```
+
+### OTA-UPDATE
+
+- Add the Expo URL to the `expoConfig` in` app.config.ts`.
+
+```
+ updates: {
+    fallbackToCacheTimeout,
+    url: 'https://u.expo.dev/project-id',
+  },
+```
+
+- Before conducting over-the-air updates, validate that the channels are setup against correct branch (environment).
+
+```
+ npx eas channel:list
+```
+
+- if not, you can change it by running
+
+```
+ npx eas channel:edit
+```
+
+---
+
+### Build number:
+
+Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not present, it creates a new one with version 1.
+
+### Adding new `ENV` variables:
+
+**Format**:
+
+- All variables must use the `EXPO_PUBLIC` prefix! e.g., `EXPO_PUBLIC_API_URL`
+
+**Github**:
+
+- There are two options for adding/managing env credentials:
+
+1. **Variables by a specific env**:
+
+> Settings -> Environments -> Select/add Env (dev, staging, production) -> Add a new variable
+
+2. **Shared variables**:
+
+> Settings -> Secrets and Variables -> Actions -> Select Variables tab -> New repository variable
+
+### Development Build:
+
+**Description**:
+
+- Development are used for local development and testing on Simulator. This is the fastest way to iterate on the app.
+- Development build should be created everytime there is a change affecting Native code or when a new feature is added.
+
+_- note: if you want to test the app on a real device, and your device is not registered in EAS, you can do it by running `npx eas device:create `_
+
+**Steps**:
+
+- Workflow: `Create dev build`
+- Build type: `dev`(real device) | `dev-sim`(simulator)
+- Platform: `all` | `ios` | `android`
+
+### Staging Release:
+
+### WARNING IN CASE `Require a pull request before merging` RULE IS ENABLED
+
+**- Right now, we have not added any logic to allow` GitHub Actions` to bypass` Github's rulesets`. Therefore, the ruleset must be always disabled before running the action to allow workflow to push the changes back to the `main` branch.**
+
+**Description**:
+
+- Staging builds are used for testing new features and bug fixes before they are released to production.
+- After the staging build is created, the new release is created with the changelogs and it shared via Testflight or Play Store internal testing track.
+
+**Steps**:
+
+- Workflow: `Create release`
+- Deployment environment: `staging`
+- Version bump type: `patch` | `minor` | `major` | `none`
+- Action type: `build and submit` | `ota update`
+- Platform: `all` | `ios` | `android`
+
+### Production Submit:
+
+**Description**:
+
+- After the staging build is tested and approved, we are ready to submit the build to the stores.
+
+**Steps**:
+
+- Workflow: `Production submit` (triggered from the `tag` branch chosen via `Use workflow from` dropdown)
+- Platform: `all` | `ios` | `android`
+
+### Example of _ideal_ scenario:
+
+Working on a new feature (v. `1.2.1`)
+
+- **Create dev build** Select `dev` for device build or `dev-sim` for simulator build and `platform`
+  - This creates a dev build that serves for local development
+- After the feature is finished and merged to `main`, we trigger **Create release** and we select -> `staging` platform, version bump type `minor`, and action type will be `build and submit`
+- This creates a new build, submits it for testing, and creates a new release `1.3.0` with `changelogs`
+- After QA testing, we are ready for production submission via `Production submit` flow. This will create a new build with the version of the selected `tag` branch and submit it to the stores
+
+### Hotfix Scenario:
+
+- We found a bug in version `1.3.0` - we create a new branch from the `1.3.0` `tag` branch
+- Fix the bug and create a **PR**
+- Review the **PR** and then we create a `hotfix` by triggering **Hotfix release**, selecting the current Hotfix branch and selecting the `build type` (either OTA or Normal)
+- This creates a new tag `1.3.0-hotfix.1` but no release
+- Merge the hotfix branch to `main`
+
+### JIRA Integration
+
+- To track the progress of the project on the Jira board, follow the steps below:
+
+1. Connect the Jira project with the GitHub repository via the `GitHub for Jira` App.
+2. Go to `Settings` -> `Features`, scroll to the `Operation` section, and turn on the `Deployments` feature.
+
+To track progress such as `Builds`, `Releases`, and `Commits`, both branch name and pull request title need to include the Jira ticket number in their titles:
+
+Branch name example: `feat/ABC-1234-add-new-feature`
+PR title example: `feat(ABC-1234): add new feature`
+
+It is recommended to use the `Squash and merge` option for pull requests. This format is supported by the `release-it` Changelog plugin.
+
+### Slack Integration
+
+- **Staging and Production Notifications:**
+
+1.  Open Slack
+2.  In the left sidebar, click on `... More` and select `Automations`
+3.  Click on `New Workflow`
+4.  name it `[App name] [Env] [Release]`
+5.  Choose `from a webhook` option
+6.  add data variables for `version` - string and `changelog`(optional) - string
+7.  add `Messages` step and select the `channel` where you want to send the message
+8.  Add the message
+
+Example message:
+
+```
+Hey @channel, :rocket:
+
+We’re excited to announce the release of the new EXPO-TEMPLATE app version!
+
+Latest version: {{version}}
+Changelog: https://github.com/strvcom/{repository-name}/releases/tag/v{{version}}
+```
+
+- you must create workflow for both `staging` and `production` environments
+
+- Copy the `webhook URL` and add it
+- for [STAGING](.release-it.json) - `line 34`
+- for [PRODUCTION](.github/workflows/production-submit.yml) - `line 64`
+
+`IN PROGRESS`
+
+### DEV BUILD DISTRIBUTION
+
+- the dev distribution builds are triggered by the `Create dev build` workflow
+- To distribute the dev builds to among the team members, choose one of the options and follow the steps below:
+
+### SLACK APP
+
+- Create a new Slack App on https://api.slack.com/apps
+- Select `Incoming Webhooks` and turn it on
+- Wait for the approval
+- Add `New Webhook to Workspace` and select the channel
+- copy the` Webhook URL`
+
+### CLOUDFLARE WORKERS
+
+- Go to https://www.cloudflare.com/
+- Create a new Cloudflare Worker
+- Copy the worker functionality from the [worker.js](docs/cloudflare-worker.txt)
+- replace `SLACK_WEBHOOK_URL` variable with yours
+- deploy the worker
+
+### EAS SETUP
+
+- create a new webhook via EAS CLI and the worker url `https//your-worker.account-name.workers.dev`
+
+```
+eas webhook:create
+```

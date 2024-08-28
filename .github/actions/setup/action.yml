@@ -1,25 +1,40 @@
-# Reusable composition action preparing all the pipes related workers.
-# It's a good idea to move all the repeated setup steps in here, such as setting up Expo.
-
-name: Shared setup steps composition
-description: 'This action provides the shared setups steps'
+name: Setup Environment
+description: 'Set up Node.js, pnpm, Expo CLI'
+inputs:
+  EXPO_TOKEN:
+    required: true
+    description: 'Expo API key'
 
 runs:
-  using: 'composite'
-
+  using: composite
   steps:
-    - name: Install pnpm
-      uses: pnpm/action-setup@v3
-      with:
-        version: 9
-        run_install: false
-
-    - name: Setup Node
-      uses: actions/setup-node@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 20
-        cache: 'pnpm'
 
-    - name: Install dependencies
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Get pnpm store directory
+      id: pnpm-cache
       shell: bash
-      run: pnpm install --frozen-lockfile --ignore-scripts
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v4
+      name: Setup pnpm cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - uses: expo/expo-github-action@v8
+      with:
+        eas-version: latest
+        token: ${{ inputs.EXPO_TOKEN }}
+        packager: pnpm
+
+    - name: Install Dependencies
+      run: pnpm install --frozen-lockfile
+      shell: bash

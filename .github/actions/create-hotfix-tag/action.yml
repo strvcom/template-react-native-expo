@@ -1,0 +1,43 @@
+name: 'Create Hotfix Tag'
+description: 'Creates a new Git tag for a hotfix based on the previous tag'
+inputs:
+  version:
+    description: 'Current version number'
+    required: true
+outputs:
+  hotfix_tag:
+    description: 'The new hotfix tag'
+    value: ${{ steps.create_tag.outputs.hotfix_tag }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Get previous tag and create hotfix tag
+      id: create_tag
+      shell: bash
+      run: |
+        # Get the current version
+        current_version="${{ inputs.version }}"
+
+        # Get the latest tag that matches the current version
+        latest_tag=$(git tag -l "v${current_version}*" | sort -V | tail -n 1)
+
+        if [[ $latest_tag == *"-hotfix"* ]]; then
+          # If the latest tag is already a hotfix, increment the hotfix number
+          hotfix_number=$(echo $latest_tag | grep -oP 'hotfix.\K\d+')
+          new_hotfix_number=$((hotfix_number + 1))
+          hotfix_tag="v${current_version}-hotfix.${new_hotfix_number}"
+        else
+          # If it's not a hotfix yet, create the first hotfix
+          hotfix_tag="v${current_version}-hotfix.1"
+        fi
+
+        echo "hotfix_tag=${hotfix_tag}" >> $GITHUB_OUTPUT
+
+        # Create and push the new tag
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git tag -a "${hotfix_tag}" -m "Hotfix release ${hotfix_tag}"
+        git push origin "${hotfix_tag}"
+
+        echo "Created and pushed new tag: ${hotfix_tag}"

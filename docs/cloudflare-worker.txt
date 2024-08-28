@@ -1,0 +1,136 @@
+// Enter here our webhook from slack app.
+const SLACK_WEBHOOK_URL =
+  'https://hooks.slack.com/services/**/**'
+
+async function sendSlackRequest({ text, blocks }) {
+  const postToSlack = await fetch(SLACK_WEBHOOK_URL, {
+    body: JSON.stringify({ text, blocks }),
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  })
+}
+
+export default {
+  async fetch(request, env) {
+    if (request.method === 'POST') {
+      const body = await request.json()
+
+      if (!['dev', 'dev-sim'].includes(body.metadata.buildProfile)) {
+        return new Response('Not a dev or dev-sim build')
+      }
+
+      const slackPayload = handleExpoStatus(body)
+      await sendSlackRequest(slackPayload)
+      return new Response('ok')
+    }
+    return new Response('ok')
+  },
+}
+
+function handleExpoStatus(body) {
+  if (body.platform === 'ios' && body.status === 'finished') {
+    const url = `itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${body.appId}/builds/${body.id}/manifest.plist`
+
+    return {
+      blocks: [
+        {
+          type: 'header',
+          text: {
+            type: 'plain_text',
+            text: ':applelogowhite: Build completed successfully for iOS :kiwico:',
+            emoji: true,
+          },
+        },
+        {
+          type: 'section',
+          fields: [
+            {
+              type: 'mrkdwn',
+              text: `*Build Profile*: ${body.metadata.buildProfile}\n*Version:* ${body.metadata.appVersion}\n*Build*: ${body.metadata.appBuildVersion}`,
+            },
+          ],
+        },
+        {
+          type: 'actions',
+          elements: [
+            {
+              type: 'button',
+              text: {
+                type: 'plain_text',
+                text: 'Download IPA',
+              },
+              url: body.artifacts.buildUrl,
+            },
+            {
+              type: 'button',
+              text: {
+                type: 'plain_text',
+                text: 'Open Build Details Page',
+              },
+              url: body.buildDetailsPageUrl,
+            },
+          ],
+        },
+        {
+          type: 'image',
+          image_url: `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(
+            url,
+          )}&size=250x250&qzone=2`,
+          alt_text: 'qr',
+        },
+      ],
+    }
+  }
+
+  if (body.platform === 'android' && body.status === 'finished') {
+    return {
+      blocks: [
+        {
+          type: 'header',
+          text: {
+            type: 'plain_text',
+            text: ':android: Build completed successfully for Android :kiwico:',
+            emoji: true,
+          },
+        },
+        {
+          type: 'section',
+          fields: [
+            {
+              type: 'mrkdwn',
+              text: `*Build Profile*: ${body.metadata.buildProfile}\n*Version:* ${body.metadata.appVersion}\n*Build*: ${body.metadata.appBuildVersion}`,
+            },
+          ],
+        },
+        {
+          type: 'actions',
+          elements: [
+            {
+              type: 'button',
+              text: {
+                type: 'plain_text',
+                text: 'Download APK',
+              },
+              url: body.artifacts.buildUrl,
+            },
+            {
+              type: 'button',
+              text: {
+                type: 'plain_text',
+                text: 'Open Build Details Page',
+              },
+              url: body.buildDetailsPageUrl,
+            },
+          ],
+        },
+        {
+          type: 'image',
+          image_url: `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(
+            body.artifacts.buildUrl,
+          )}&size=250x250&qzone=2`,
+          alt_text: 'qr',
+        },
+      ],
+    }
+  }
+}

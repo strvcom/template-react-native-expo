@@ -1,0 +1,74 @@
+name: Production Submit
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ios
+          - android
+
+jobs:
+  production-release:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Version Management
+        uses: ./.github/actions/version
+        id: version
+        with:
+          version_bump: 'none'
+          increment: false
+
+      - name: Increment build number and save it in env variable
+        uses: ./.github/actions/increment-build-number
+        id: build_number
+        with:
+          gh_token: ${{ secrets.GT_PAT }}
+          current_build_number: ${{ vars.BUILD_NUMBER }}
+
+      - name: Update eas.json
+        uses: ./.github/actions/update-eas
+        with:
+          environment: production
+          version: ${{ steps.version.outputs.version }}
+          build_number: ${{ steps.build_number.outputs.build_number }}
+          vars: ${{ toJson(vars) }}
+
+      - name: Build and Submit
+        uses: ./.github/actions/build
+        with:
+          environment: production
+          platform: ${{ github.event.inputs.platform }}
+          auto_submit: true
+
+      - name: Revert eas.json changes
+        if: always()
+        run: |
+          git restore eas.json
+
+# Uncomment and add your slack webhook url to send Slack notification after the build is submitted
+#      - name: Send Slack Notification
+#        id: slack
+#        uses: slackapi/slack-github-action@v1.26.0
+#        with:
+#          payload: |
+#            {
+#              "version": "${{ steps.version.outputs.version }}"
+#            }
+#        env:
+#          SLACK_WEBHOOK_URL: https://hooks.slack.com/triggers/**

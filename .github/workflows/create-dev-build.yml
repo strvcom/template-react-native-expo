@@ -1,0 +1,64 @@
+name: Create Dev Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Build Type'
+        required: true
+        default: 'dev-sim'
+        type: choice
+        options:
+          - dev
+          - dev-sim
+      platform:
+        description: 'Platform'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ios
+          - android
+
+jobs:
+  create-dev-build:
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Version Management
+        uses: ./.github/actions/version
+        id: version
+        with:
+          version_bump: 'none'
+          increment: false
+
+      - name: Update eas.json
+        uses: ./.github/actions/update-eas
+        with:
+          environment: dev
+          version: ${{ steps.version.outputs.version }}
+          build_number: ${{ vars.BUILD_NUMBER }}
+          vars: ${{ toJson(vars) }}
+
+      - name: Build Application
+        uses: ./.github/actions/build
+        with:
+          environment: ${{ github.event.inputs.environment }}
+          platform: ${{ github.event.inputs.platform }}
+          auto_submit: false
+
+      - name: Revert eas.json changes
+        if: always()
+        run: |
+          git restore eas.json
