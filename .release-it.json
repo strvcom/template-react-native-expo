@@ -3,7 +3,7 @@
     "requireCleanWorkingDir": false,
     "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
-    "push": true,
+    "push": false,
     "ignoreFiles": ["eas.json"]
   },
   "github": {
