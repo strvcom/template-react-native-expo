@@ -77,22 +77,22 @@ jobs:
           build_number: ${{ steps.build_number.outputs.build_number }}
           vars: ${{ toJson(vars) }}
 
-      - name: Build Application
-        if: github.event.inputs.action_type != 'ota_update'
-        uses: ./.github/actions/build
-        with:
-          environment: ${{ github.event.inputs.environment }}
-          platform: ${{ github.event.inputs.platform }}
-          auto_submit: ${{ github.event.inputs.action_type == 'build_and_submit' }}
+      # - name: Build Application
+      #   if: github.event.inputs.action_type != 'ota_update'
+      #   uses: ./.github/actions/build
+      #   with:
+      #     environment: ${{ github.event.inputs.environment }}
+      #     platform: ${{ github.event.inputs.platform }}
+      #     auto_submit: ${{ github.event.inputs.action_type == 'build_and_submit' }}
 
-      - name: OTA Release
-        if: github.event.inputs.action_type == 'ota_update'
-        uses: ./.github/actions/ota-update
-        env: ${{ vars }}
-        with:
-          channel: ${{ github.event.inputs.environment }}
-          version: ${{ steps.version.outputs.version }}
-          build_number: ${{ steps.build_number.outputs.build_number }}
+      # - name: OTA Release
+      #   if: github.event.inputs.action_type == 'ota_update'
+      #   uses: ./.github/actions/ota-update
+      #   env: ${{ vars }}
+      #   with:
+      #     channel: ${{ github.event.inputs.environment }}
+      #     version: ${{ steps.version.outputs.version }}
+      #     build_number: ${{ steps.build_number.outputs.build_number }}
 
       - name: Revert eas.json changes
         if: always()
