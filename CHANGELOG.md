@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.3 (2024-08-29)
+
+### 🔧 Chores
+
+- **build:** trying less complex version ([#39](https://github.com/strvcom/template-react-native-expo/issues/39)) ([d1a7aa0](https://github.com/strvcom/template-react-native-expo/commit/d1a7aa0ba82ee74ae904c6b3dfac938512dd2ff5))
+
 ## 1.1.2 (2024-08-29)
 
 ### 🔧 Chores
