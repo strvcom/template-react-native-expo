@@ -1,4 +1,4 @@
-name: Create Release - DISABLE RULESET!
+name: Create Release
 
 on:
   workflow_dispatch:

@@ -38,7 +38,8 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Expo Access Token](#expo-access-token)
     - [GitHub Workflow Permissions](#github-workflow-permissions)
     - [GitHub Personal Access Token](#github-personal-access-token)
-  - [Required Permissions Table](#required-permissions-table)
+      - [Required Permissions Table](#required-permissions-table)
+    - [Github Deploy Key](#github-deploy-key)
     - [EAS BUILD](#eas-build)
     - [Credentials](#credentials)
     - [Builds and Submission](#builds-and-submission)
@@ -47,7 +48,6 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Adding new `ENV` variables:](#adding-new-env-variables)
     - [Development Build:](#development-build)
     - [Staging Release:](#staging-release)
-    - [WARNING IN CASE `Require a pull request before merging` RULE IS ENABLED](#warning-in-case-require-a-pull-request-before-merging-rule-is-enabled)
     - [Production Submit:](#production-submit)
     - [Example of _ideal_ scenario:](#example-of-ideal-scenario)
     - [Hotfix Scenario:](#hotfix-scenario)
@@ -252,7 +252,7 @@ submit": {
 5. Wait for the approval.
 6. Add the token to the GitHub secrets as `GT_PAT`.
 
-## Required Permissions Table
+#### Required Permissions Table
 
 When setting up the Fine-grained Personal Access Token, ensure you select the following permissions:
 
@@ -269,6 +269,30 @@ When setting up the Fine-grained Personal Access Token, ensure you select the fo
 | Secrets         | Read and write |
 | Variables       | Read and write |
 | Webhooks        | Read and write |
+
+### Github Deploy Key
+
+This is necessary for release builds to allow Github Actions to bypass branch protection rules.
+
+1. generate a new SSH key pair on your machine:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "example@email.com"
+```
+
+- Follow the steps and save the key pair in the `~/.ssh` directory.
+- This will generate two files: `id_rsa` (private key) and `id_rsa.pub` (public key).
+
+1. Add the public key to the repository settings:
+
+- Go to the repository settings > Deploy keys > Add deploy key
+- Paste the public key
+- Check the `Allow write access` option
+
+2. Add the private key to the Github secrets:
+
+- Go to the repository settings > Secrets > Actions > New repository secret
+- Name the secret `SSH_PRIVATE_KEY` and paste the private key
 
 ### EAS BUILD
 
@@ -360,10 +384,6 @@ _- note: if you want to test the app on a real device, and your device is not re
 - Platform: `all` | `ios` | `android`
 
 ### Staging Release:
-
-### WARNING IN CASE `Require a pull request before merging` RULE IS ENABLED
-
-**- Right now, we have not added any logic to allow` GitHub Actions` to bypass` Github's rulesets`. Therefore, the ruleset must be always disabled before running the action to allow workflow to push the changes back to the `main` branch.**
 
 **Description**:
 
