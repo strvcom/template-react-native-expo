@@ -60,7 +60,6 @@ const fallbackToCacheTimeout = 0
 const otaUpdatePriority: OtaUpdatePriority = 'normal'
 
 const expoConfig: ExpoConfig = {
-  owner: 'strv-internal',
   name,
   slug: 'template-react-native-expo',
   version,
@@ -113,9 +112,6 @@ const expoConfig: ExpoConfig = {
   extra: {
     fallbackToCacheTimeout,
     otaUpdatePriority,
-    eas: {
-      projectId: '46e1c780-9495-4650-93c8-7f465bf4e1d0',
-    },
   },
   experiments: {
     tsconfigPaths: true,
