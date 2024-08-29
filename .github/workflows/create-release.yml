@@ -46,10 +46,10 @@ jobs:
     environment: ${{ github.event.inputs.environment }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
+          token: ${{ secrets.GT_PAT }}
 
       - name: Setup Environment
         uses: ./.github/actions/setup
