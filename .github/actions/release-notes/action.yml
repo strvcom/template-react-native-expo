@@ -15,3 +15,8 @@ runs:
       run: npx release-it ${{ inputs.version }} --ci --no-increment
       env:
         GITHUB_TOKEN: ${{ inputs.gh_token }}
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ inputs.gh_token }}
+        force_with_lease: true
