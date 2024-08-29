@@ -48,8 +48,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          token: ${{ secrets.GT_PAT }}
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          persist-credentials: true
 
       - name: Setup Environment
         uses: ./.github/actions/setup
