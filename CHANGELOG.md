@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 (2024-08-29)
+
+### 🔧 Chores
+
+- **build:** sync version ([#38](https://github.com/strvcom/template-react-native-expo/issues/38)) ([dc23f10](https://github.com/strvcom/template-react-native-expo/commit/dc23f103b711bfcdb17cd767db4bb341c8cfcdba))
+
 ## 1.1.0 (2024-08-29)
 
 ### ✨ Features
