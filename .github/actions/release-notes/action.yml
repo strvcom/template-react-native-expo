@@ -22,6 +22,5 @@ runs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ inputs.gh_token }}
-        force_with_lease: true
-        repository: strvcom/template-react-native-expo
+        ssh: true
+        branch: ${{ github.ref }}
