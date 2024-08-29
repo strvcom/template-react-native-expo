@@ -32,31 +32,16 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
   - [Release Process](#release-process)
-    - [Prerequisites:](#prerequisites)
-  - [EAS](#eas)
-    - [GitHub Setup Instructions](#github-setup-instructions)
-    - [Expo Access Token](#expo-access-token)
-    - [GitHub Workflow Permissions](#github-workflow-permissions)
-    - [GitHub Personal Access Token](#github-personal-access-token)
-  - [Required Permissions Table](#required-permissions-table)
-    - [EAS BUILD](#eas-build)
-    - [Credentials](#credentials)
-    - [Builds and Submission](#builds-and-submission)
-    - [OTA-UPDATE](#ota-update)
-    - [Build number:](#build-number)
-    - [Adding new `ENV` variables:](#adding-new-env-variables)
-    - [Development Build:](#development-build)
-    - [Staging Release:](#staging-release)
-    - [WARNING IN CASE `Require a pull request before merging` RULE IS ENABLED](#warning-in-case-require-a-pull-request-before-merging-rule-is-enabled)
-    - [Production Submit:](#production-submit)
-    - [Example of _ideal_ scenario:](#example-of-ideal-scenario)
-    - [Hotfix Scenario:](#hotfix-scenario)
+    - [Prerequisites](#prerequisites)
+    - [Adding new ENV variables](#adding-new-env-variables)
+    - [Development Build](#development-build)
+    - [Staging Release](#staging-release)
+    - [Production Submit](#production-submit)
+    - [Release process example](#example-of-_ideal_-scenario)
+    - [Hotfix Scenario example](#hotfix-scenario)
     - [JIRA Integration](#jira-integration)
     - [Slack Integration](#slack-integration)
-    - [DEV BUILD DISTRIBUTION](#dev-build-distribution)
-    - [SLACK APP](#slack-app)
-    - [CLOUDFLARE WORKERS](#cloudflare-workers)
-    - [EAS SETUP](#eas-setup)
+    - [DEV build distribution](#dev-build-distribution)
 
 ## Important Defaults - SETUP
 
@@ -240,7 +225,7 @@ submit": {
 
 ### GitHub Workflow Permissions
 
-1. Go to `Settings` > `Actions` > `General` > `Workflow permissions`.
+1. Go to `Settings` > `Actions` > `Workflow permissions`.
 2. Check `Read and write permissions`.
 
 ### GitHub Personal Access Token
@@ -271,11 +256,6 @@ When setting up the Fine-grained Personal Access Token, ensure you select the fo
 | Webhooks        | Read and write |
 
 ### EAS BUILD
-
-- Setup your project with your EAS account by running:
-  ```
-  npx eas init
-  ```
 
 ### Credentials
 
