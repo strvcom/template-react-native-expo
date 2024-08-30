@@ -26,7 +26,7 @@ const getEnvironmentInfo = (): {
   appIdentifier: IOS['bundleIdentifier']
   icon: ExpoConfig['icon']
 } => {
-  const appIdentifier = 'com.strv.rntemplate.expo'
+  const appIdentifier = 'com.strv.rntemplate'
   const appName = 'Expo Template'
 
   if (environment === 'production')

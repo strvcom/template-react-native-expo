@@ -1,0 +1,10 @@
+build:
+  name: Create a build and run Maestro tests on it
+  steps:
+    - eas/build
+    - eas/send_slack_message:
+        if: ${ success() }
+        name: Send Slack message when the build succeeds
+        inputs:
+          message: 'This is a test message when build succeeds'
+          slack_hook_url: 'https://hooks.slack.com/services/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'

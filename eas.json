@@ -29,6 +29,7 @@
     "staging": {
       "extends": "base",
       "distribution": "store",
+      "config": "build-and-slack.yml",
       "channel": "staging",
       "env": {
         "EXPO_PUBLIC_APP_ENV": "staging"
