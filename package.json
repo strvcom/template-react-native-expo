@@ -20,7 +20,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "type:check": "tsc",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "eas-build-on-success": "node ./scripts/eas-slack-hook.js"
   },
   "dependencies": {
     "@dev-plugins/react-native-mmkv": "^0.0.1",
