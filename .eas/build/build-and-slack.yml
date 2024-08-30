@@ -27,7 +27,7 @@ build:
                     text:
                       type: 'plain_text'
                       text: 'Download IPA'
-                    url: itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${eas.env.EAS_APP_ID}/builds/${eas.env.EAS_BUILD_ID}/manifest.plist
+                    url: itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${eas.metadata.trackingContext.project_id}/builds/${eas.env.EAS_BUILD_ID}/manifest.plist
                   - type: 'button'
                     text:
                       type: 'plain_text'
@@ -35,5 +35,5 @@ build:
                     url: ${eas.job.expoBuildUrl}
               - type: 'image'
                 image_url: |
-                  `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${eas.env.EAS_APP_ID}/builds/${eas.env.EAS_BUILD_ID}/manifest.plist)}&size=250x250&qzone=2`
+                  `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${eas.metadata.trackingContext.project_id}/builds/${eas.env.EAS_BUILD_ID}/manifest.plist)}&size=250x250&qzone=2`
                 alt_text: qr
