@@ -18,22 +18,20 @@ build:
                 fields:
                   - type: 'mrkdwn'
                     text: |
-                      *Build Profile:* ${eas.metadata.buildProfile}
+                      *Build Profile*: ${eas.metadata.buildProfile}
                       *Version:* ${eas.metadata.appVersion}
-                      *Build:* ${eas.metadata.appBuildVersion}
+                      *Build*: ${eas.metadata.appBuildVersion}
+                      *Project ID*: ${eas.metadata.trackingContext.project_id}
+                      *Build ID*: ${eas.env.EAS_BUILD_ID}
               - type: 'actions'
                 elements:
                   - type: 'button'
                     text:
                       type: 'plain_text'
                       text: 'Download IPA'
-                    url: itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/46e1c780-9495-4650-93c8-7f465bf4e1d0/builds/${eas.env.EAS_BUILD_ID}/manifest.plist
+                    url: ${eas.job.expoBuildUrl}
                   - type: 'button'
                     text:
                       type: 'plain_text'
                       text: 'Open Build Details Page'
                     url: ${eas.job.expoBuildUrl}
-              - type: 'image'
-                image_url: |
-                  `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/46e1c780-9495-4650-93c8-7f465bf4e1d0/builds/${eas.env.EAS_BUILD_ID}/manifest.plist)}&size=250x250&qzone=2`
-                alt_text: qr
