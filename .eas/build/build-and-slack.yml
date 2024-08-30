@@ -1,5 +1,5 @@
 build:
-  name: Create a build and run Maestro tests on it
+  name: Create a build and send a Slack message
   steps:
     - eas/build
     - eas/send_slack_message:
@@ -17,16 +17,23 @@ build:
               - type: 'section'
                 fields:
                   - type: 'mrkdwn'
-                    text: '*Build Profile*: ${eas.metadata.buildProfile}\n*Version:* ${eas.metadata.appVersion}\n*Build*: ${eas.metadata.appBuildVersion}'
+                    text: |
+                      *Build Profile:* ${eas.metadata.buildProfile}
+                      *Version:* ${eas.metadata.appVersion}
+                      *Build:* ${eas.metadata.appBuildVersion}
               - type: 'actions'
                 elements:
                   - type: 'button'
                     text:
                       type: 'plain_text'
                       text: 'Download IPA'
-                    url: https://www.google.com
+                    url: itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${eas.job.appId}/builds/${eas.job.id}/manifest.plist
                   - type: 'button'
                     text:
                       type: 'plain_text'
                       text: 'Open Build Details Page'
                     url: ${eas.job.expoBuildUrl}
+              - type: 'image'
+                image_url: |
+                  `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${eas.job.appId}/builds/${eas.job.id}/manifest.plist)}&size=250x250&qzone=2`
+                alt_text: qr
