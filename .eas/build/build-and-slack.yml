@@ -6,5 +6,27 @@ build:
         if: ${ success() }
         name: Send Slack message when the build succeeds
         inputs:
-          message: 'This is a test message when build succeeds'
           slack_hook_url: 'https://hooks.slack.com/services/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'
+          payload:
+            blocks:
+              - type: header
+                text:
+                  type: plain_text
+                  text: ':applelogowhite: Build completed successfully for iOS :kiwico:'
+                  emoji: true
+              - type: 'section'
+                fields:
+                  - type: 'mrkdwn'
+                    text: '*Build Profile*: ${eas.metadata.buildProfile}\n*Version:* ${eas.metadata.appVersion}\n*Build*: ${eas.metadata.appBuildVersion}'
+              - type: 'actions'
+                elements:
+                  - type: 'button'
+                    text:
+                      type: 'plain_text'
+                      text: 'Download IPA'
+                    url: https://www.google.com
+                  - type: 'button'
+                    text:
+                      type: 'plain_text'
+                      text: 'Open Build Details Page'
+                    url: ${eas.job.expoBuildUrl}
