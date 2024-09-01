@@ -55,8 +55,6 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Slack Integration](#slack-integration)
     - [DEV BUILD DISTRIBUTION](#dev-build-distribution)
     - [SLACK APP](#slack-app)
-    - [CLOUDFLARE WORKERS](#cloudflare-workers)
-    - [EAS SETUP](#eas-setup)
 
 ## Important Defaults - SETUP
 
@@ -471,33 +469,16 @@ Changelog: https://github.com/strvcom/{repository-name}/releases/tag/v{{version}
 - for [STAGING](.release-it.json) - `line 34`
 - for [PRODUCTION](.github/workflows/production-submit.yml) - `line 64`
 
-`IN PROGRESS`
-
 ### DEV BUILD DISTRIBUTION
 
 - the dev distribution builds are triggered by the `Create dev build` workflow
-- To distribute the dev builds to among the team members, choose one of the options and follow the steps below:
+- To distribute the dev builds among the team members follow the steps below:
 
 ### SLACK APP
 
-- Create a new Slack App on https://api.slack.com/apps
-- Select `Incoming Webhooks` and turn it on
-- Wait for the approval
-- Add `New Webhook to Workspace` and select the channel
-- copy the` Webhook URL`
-
-### CLOUDFLARE WORKERS
-
-- Go to https://www.cloudflare.com/
-- Create a new Cloudflare Worker
-- Copy the worker functionality from the [worker.js](docs/cloudflare-worker.txt)
-- replace `SLACK_WEBHOOK_URL` variable with yours
-- deploy the worker
-
-### EAS SETUP
-
-- create a new webhook via EAS CLI and the worker url `https//your-worker.account-name.workers.dev`
-
-```
-eas webhook:create
-```
+- Either create a new Slack App or select an existing one i.e https://api.slack.com/apps/A07EXVCP939
+- Ask for approval to either create the app or write admin of an existing app to add you.
+- Wait for approval
+- Make sure your app has `Incoming Webhooks` setting turned on
+- Add `New Webhook to Workspace` and select the channel where you want to send the messages
+- Add the `webhook URL` to `SLACK_HOOK_URL` secret for your Expo project
