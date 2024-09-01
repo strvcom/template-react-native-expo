@@ -22,7 +22,7 @@ build:
                       *Version:* ${eas.metadata.appVersion}
                       *Build*: ${eas.metadata.appBuildVersion}
                       *Project ID*: ${eas.metadata.trackingContext.project_id}
-                      *Build ID*: ${eas.env.EAS_BUILD_ID}
+                      *URL*: itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${ eas.metadata.trackingContext.project_id }/builds/${ eas.env.EAS_BUILD_ID }/manifest.plist
               - type: 'actions'
                 elements:
                   - type: 'button'
@@ -33,5 +33,8 @@ build:
                   - type: 'button'
                     text:
                       type: 'plain_text'
-                      text: 'Open Build Details Page'
+                      text: 'Download IPA'
                     url: ${eas.job.expoBuildUrl}
+              - type: image
+                image_url: https://api.qrserver.com/v1/create-qr-code/?data=itms-services://?action=download-manifest;url=https://exp.host/--/api/v2/projects/${ eas.metadata.trackingContext.project_id }/builds/${ eas.env.EAS_BUILD_ID }/manifest.plist&size=250x250&qzone=2
+                alt_text: QR code
