@@ -1,3 +1,5 @@
+## TODO: This is an experimental workflow that is not ready for production yet.
+
 build:
   name: Create a build and send a Slack message
   steps:
