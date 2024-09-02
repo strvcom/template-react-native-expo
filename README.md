@@ -32,16 +32,31 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
   - [Release Process](#release-process)
-    - [Prerequisites](#prerequisites)
-    - [Adding new ENV variables](#adding-new-env-variables)
-    - [Development Build](#development-build)
-    - [Staging Release](#staging-release)
-    - [Production Submit](#production-submit)
-    - [Release process example](#example-of-_ideal_-scenario)
-    - [Hotfix Scenario example](#hotfix-scenario)
+    - [Prerequisites:](#prerequisites)
+  - [EAS](#eas)
+    - [GitHub Setup Instructions](#github-setup-instructions)
+    - [Expo Access Token](#expo-access-token)
+    - [GitHub Workflow Permissions](#github-workflow-permissions)
+    - [GitHub Personal Access Token](#github-personal-access-token)
+      - [Required Permissions Table](#required-permissions-table)
+    - [Github Deploy Key](#github-deploy-key)
+    - [EAS BUILD](#eas-build)
+    - [Credentials](#credentials)
+    - [Builds and Submission](#builds-and-submission)
+    - [OTA-UPDATE](#ota-update)
+    - [Build number:](#build-number)
+    - [Adding new `ENV` variables:](#adding-new-env-variables)
+    - [Development Build:](#development-build)
+    - [Staging Release:](#staging-release)
+    - [Production Submit:](#production-submit)
+    - [Example of _ideal_ scenario:](#example-of-ideal-scenario)
+    - [Hotfix Scenario:](#hotfix-scenario)
     - [JIRA Integration](#jira-integration)
     - [Slack Integration](#slack-integration)
-    - [DEV build distribution](#dev-build-distribution)
+    - [DEV BUILD DISTRIBUTION](#dev-build-distribution)
+    - [SLACK APP](#slack-app)
+    - [CLOUDFLARE WORKERS](#cloudflare-workers)
+    - [EAS SETUP](#eas-setup)
 
 ## Important Defaults - SETUP
 
@@ -225,7 +240,7 @@ submit": {
 
 ### GitHub Workflow Permissions
 
-1. Go to `Settings` > `Actions` > `Workflow permissions`.
+1. Go to `Settings` > `Actions` > `General` > `Workflow permissions`.
 2. Check `Read and write permissions`.
 
 ### GitHub Personal Access Token
@@ -237,7 +252,7 @@ submit": {
 5. Wait for the approval.
 6. Add the token to the GitHub secrets as `GT_PAT`.
 
-## Required Permissions Table
+#### Required Permissions Table
 
 When setting up the Fine-grained Personal Access Token, ensure you select the following permissions:
 
@@ -255,7 +270,36 @@ When setting up the Fine-grained Personal Access Token, ensure you select the fo
 | Variables       | Read and write |
 | Webhooks        | Read and write |
 
+### Github Deploy Key
+
+This is necessary for release builds to allow Github Actions to bypass branch protection rules.
+
+1. generate a new SSH key pair on your machine:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "example@email.com"
+```
+
+- Follow the steps and save the key pair in the `~/.ssh` directory.
+- This will generate two files: `id_rsa` (private key) and `id_rsa.pub` (public key).
+
+1. Add the public key to the repository settings:
+
+- Go to the repository settings > Deploy keys > Add deploy key
+- Paste the public key
+- Check the `Allow write access` option
+
+2. Add the private key to the Github secrets:
+
+- Go to the repository settings > Secrets > Actions > New repository secret
+- Name the secret `SSH_PRIVATE_KEY` and paste the private key
+
 ### EAS BUILD
+
+- Setup your project with your EAS account by running:
+  ```
+  npx eas init
+  ```
 
 ### Credentials
 
@@ -340,10 +384,6 @@ _- note: if you want to test the app on a real device, and your device is not re
 - Platform: `all` | `ios` | `android`
 
 ### Staging Release:
-
-### WARNING IN CASE `Require a pull request before merging` RULE IS ENABLED
-
-**- Right now, we have not added any logic to allow` GitHub Actions` to bypass` Github's rulesets`. Therefore, the ruleset must be always disabled before running the action to allow workflow to push the changes back to the `main` branch.**
 
 **Description**:
 

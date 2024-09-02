@@ -13,6 +13,23 @@ declare const process: {
     EXPO_PUBLIC_BUILD_NUMBER: string
   }
 }
+
+// Template defaults uncomment if you are working on the template
+// const config = {
+//   appIdentifierBase: 'com.strv.rntemplate',
+//   expoProjectId: '46e1c780-9495-4650-93c8-7f465bf4e1d0',
+//   expoProjectOwner: 'strv-internal',
+//   appScheme: 'template-react-native-expo',
+// }
+
+// Your project defaults
+const config = {
+  appIdentifierBase: undefined,
+  expoProjectId: undefined,
+  expoProjectOwner: undefined,
+  appScheme: '',
+}
+
 const environment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
 
 // your custom fonts
@@ -26,7 +43,7 @@ const getEnvironmentInfo = (): {
   appIdentifier: IOS['bundleIdentifier']
   icon: ExpoConfig['icon']
 } => {
-  const appIdentifier = 'com.expo.template'
+  const appIdentifier = 'com.strv.rntemplate'
   const appName = 'Expo Template'
 
   if (environment === 'production')
@@ -60,13 +77,14 @@ const fallbackToCacheTimeout = 0
 const otaUpdatePriority: OtaUpdatePriority = 'normal'
 
 const expoConfig: ExpoConfig = {
+  owner: config.expoProjectOwner,
   name,
-  slug: 'template-react-native-expo',
+  slug: config.appScheme,
   version,
   runtimeVersion: {
     policy: 'sdkVersion',
   },
-  scheme: 'template-react-native-expo',
+  scheme: config.appScheme,
   orientation: 'portrait',
   icon,
   userInterfaceStyle: 'light',
@@ -112,6 +130,9 @@ const expoConfig: ExpoConfig = {
   extra: {
     fallbackToCacheTimeout,
     otaUpdatePriority,
+    eas: {
+      projectId: config.expoProjectId,
+    },
   },
   experiments: {
     tsconfigPaths: true,

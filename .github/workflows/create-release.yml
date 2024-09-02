@@ -1,4 +1,4 @@
-name: Create Release - DISABLE RULESET!
+name: Create Release
 
 on:
   workflow_dispatch:
@@ -46,9 +46,11 @@ jobs:
     environment: ${{ github.event.inputs.environment }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          persist-credentials: true
 
       - name: Setup Environment
         uses: ./.github/actions/setup
