@@ -8,7 +8,7 @@ on:
         type: choice
         options:
           - build_and_submit
-          - ota_update
+          # - ota_update
       platform:
         description: 'Platform'
         required: true
