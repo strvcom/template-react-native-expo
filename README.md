@@ -281,6 +281,7 @@ ssh-keygen -t rsa -b 4096 -C "example@email.com"
 ```
 
 - Follow the steps and save the key pair in the `~/.ssh` directory.
+- Be sure not to set a passcode on your key otherwise it will not work.
 - This will generate two files: `id_rsa` (private key) and `id_rsa.pub` (public key).
 
 1. Add the public key to the repository settings:
@@ -293,6 +294,9 @@ ssh-keygen -t rsa -b 4096 -C "example@email.com"
 
 - Go to the repository settings > Secrets > Actions > New repository secret
 - Name the secret `SSH_PRIVATE_KEY` and paste the private key
+- Be sure to paste the entire content of the file, starting with `-----BEGIN OPENSSH PRIVATE KEY-----` and ending with `-----END OPENSSH PRIVATE KEY-----`
+
+Then when you create rule sets in the branch protection rules, you select the `Deploy keys` option to allow release build action to bypass them and push changelog and updated version directly to main.
 
 ### EAS BUILD
 
