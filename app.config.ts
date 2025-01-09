@@ -79,6 +79,7 @@ const otaUpdatePriority: OtaUpdatePriority = 'normal'
 const expoConfig: ExpoConfig = {
   owner: config.expoProjectOwner,
   name,
+  newArchEnabled: true,
   slug: config.appScheme,
   version,
   runtimeVersion: {
