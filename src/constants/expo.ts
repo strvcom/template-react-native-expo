@@ -1,4 +1,4 @@
-import Constants from 'expo-constants'
+import Constants, { ExecutionEnvironment } from 'expo-constants'
 
-export const isExpoGo = Constants.appOwnership === 'expo'
+export const isExpoGo = Constants.executionEnvironment === ExecutionEnvironment.StoreClient
 export const isExpoDevClient = __DEV__ && !isExpoGo
