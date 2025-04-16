@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 import { colors } from '~/styles/colors'
 
-interface IButton {
+type ButtonProps = {
   text: string
   onPress: () => void
 }
@@ -14,12 +14,15 @@ const styles = StyleSheet.create({
     margin: 8,
     alignItems: 'center',
   },
+  text: {
+    fontFamily: 'Domine-Bold',
+    textTransform: 'uppercase',
+    color: 'white',
+  },
 })
 
-export const Button = ({ text, onPress }: IButton) => (
+export const Button = ({ text, onPress }: ButtonProps) => (
   <TouchableOpacity onPress={onPress} style={styles.wrapper}>
-    <Text style={{ fontFamily: 'Domine-Bold', textTransform: 'uppercase', color: 'white' }}>
-      {text}
-    </Text>
+    <Text style={styles.text}>{text}</Text>
   </TouchableOpacity>
 )
