@@ -14,7 +14,15 @@ void SplashScreen.preventAutoHideAsync()
 setFontScaling()
 
 export const Provider = ({ children }: PropsWithChildren) => {
-  const isAppOutdated = useStoreUpdate('forced')
+  const isAppOutdated = useStoreUpdate({
+    data: {
+      recommendedIOSVersion: '1.0.0',
+      recommendedAndroidVersion: '1.0.0',
+      minIOSVersion: '0.0.0',
+      minAndroidVersion: '0.0.0',
+    },
+    loading: false,
+  })
   const { isOnline } = useIsOnline()
   useMMKVDevTools()
   useOTAUpdates()
