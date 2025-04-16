@@ -3,18 +3,19 @@ import * as SplashScreen from 'expo-splash-screen'
 import React, { PropsWithChildren, useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { ForcedUpdate } from '~/components/ForcedUpdate'
 import { OfflineMessage } from '~/components/OfflineMessage'
+import { ForcedUpdate } from '~/features/versionCheck/components/ForcedUpdate'
+import { useOTAUpdates } from '~/features/versionCheck/hooks/useOTAUpdate'
+import { useStoreUpdate } from '~/features/versionCheck/hooks/useStoreUpdate'
 import { useIsOnline } from '~/hooks/useIsOnline'
-import { useOTAUpdates } from '~/hooks/useOTAUpdate'
-import { useStoreUpdate } from '~/hooks/useStoreUpdate'
+import { commonStyles } from '~/styles/common'
 import { setFontScaling } from '~/utils/setFontScaling'
 
 void SplashScreen.preventAutoHideAsync()
 setFontScaling()
 
 export const Provider = ({ children }: PropsWithChildren) => {
-  const isAppOutdated = useStoreUpdate({
+  const { shouldForceUpdate, shouldRecommendUpdate } = useStoreUpdate({
     data: {
       recommendedIOSVersion: '1.0.0',
       recommendedAndroidVersion: '1.0.0',
@@ -29,15 +30,16 @@ export const Provider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // isAppOutdated is null until logic runs
-    if (isAppOutdated !== null) {
+    if (!shouldForceUpdate && !shouldRecommendUpdate) {
       void SplashScreen.hideAsync()
     }
-  }, [isAppOutdated])
+  }, [shouldForceUpdate, shouldRecommendUpdate])
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={commonStyles.f1}>
       {children}
-      {isAppOutdated && <ForcedUpdate />}
+      {shouldForceUpdate && <ForcedUpdate cancelable={false} />}
+      {shouldRecommendUpdate && <ForcedUpdate />}
       {isOnline === false && <OfflineMessage />}
     </GestureHandlerRootView>
   )

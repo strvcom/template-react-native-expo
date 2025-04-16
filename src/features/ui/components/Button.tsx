@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-import { colors } from '~/styles/colors'
+import { colors } from '~/features/ui/theme/colors'
 
 type ButtonProps = {
   text: string

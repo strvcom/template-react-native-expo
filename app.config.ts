@@ -3,7 +3,7 @@ import { ExpoConfig, IOS } from '@expo/config-types'
 
 import packageJson from './package.json'
 
-import type { OtaUpdatePriority } from '~/hooks/useOTAUpdate'
+import type { OtaUpdatePriority } from '~/features/versionCheck/hooks/useOTAUpdate'
 import { Environment } from '~/types/env'
 
 declare const process: {
