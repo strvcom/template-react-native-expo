@@ -28,20 +28,20 @@ This template is a starting point for building a React Native app using Expo in 
 
 It provides a foundation for every stage of the development process:
 
-For the project start and initial development:
+🔧 For the project start and initial development:
 
 - Expo Development build setup
 - domain driven folder structure
 - Storage service using MMKV
 - Font and size scaling utilities
 
-For keeping the code quality high and enforcing code standards:
+📏 For keeping the code quality high and enforcing code standards:
 
 - basic unit test setup
 - Linter and formatter setup
 - pre push and pre commit hooks
 
-For the release process:
+🚀 For shipping and production maintenance:
 
 - Github Actions for CI/CD
 - App config ready for different environments
