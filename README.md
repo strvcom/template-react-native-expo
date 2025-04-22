@@ -53,6 +53,7 @@ It provides a foundation for every stage of the development process:
 > - State management library
 > - Image loading library
 > - E2E testing setup
+>   You need to decide what is best for your project and add it to the project. But we provide some recommendations in the [Other Recommended Solutions](#other-recommended-solutions) section.
 
 ## Quick Start
 
