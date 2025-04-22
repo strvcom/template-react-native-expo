@@ -20,7 +20,7 @@
     - [Maximum Font Scaling](#maximum-font-scaling)
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
-    - [Adding new `ENV` variables:](#adding-new-env-variables)
+  - [Adding new `ENV` variables:](#adding-new-env-variables)
 
 ## Overview
 
@@ -47,12 +47,12 @@ For the release process:
 - App config ready for different environments
 - Utilities for version check and forced updates in production
 
-We don't include any more opinionated solutions such as:
-
-- Styling and theming solution
-- State management library
-- Image loading library
-- E2E testing setup
+> ⚠️ We don't include any more opinionated solutions such as:
+>
+> - Styling and theming solution
+> - State management library
+> - Image loading library
+> - E2E testing setup
 
 ## Quick Start
 
@@ -190,7 +190,7 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
     > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
 
-### Adding new `ENV` variables:
+## Adding new `ENV` variables:
 
 **Format**:
 
