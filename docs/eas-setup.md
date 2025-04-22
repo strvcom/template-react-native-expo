@@ -1,6 +1,9 @@
-### EAS Build Setup
+# EAS Build Setup
 
-- EAS helps with building and app submission. It can create and store all important credentials so that we don't have to distribute them among everyone.
+> ❓ EAS helps with building and app submission. It can create and store all important credentials so that we don't have to distribute them among everyone.
+
+## eas.json config
+
 - Default build profiles in `eas.json`:
   - `dev` - this profile will build an `expo-dev-client`, meaning that after installing the app, one can change non-native code and see changes reflected in the app
   - `staging` - should be distributed for testing, does not have a dev client, meaning it cannot be manipulated. It builds `com.xxx.xxx.staging` application which can be distributed through a link or a QR code.
@@ -9,7 +12,7 @@
 
 - `production` - non-distributable build that should be submitted to Play Store and App Store. Can be tested through Play Store internal testing track or Testflight. It builds the official `com.xxx.xxx` package later released to production.
 
-### EAS BUILD
+### EAS account config
 
 - Setup your project with your EAS account by running:
   ```
@@ -23,7 +26,7 @@
   npx eas credentials -p ios
   ```
 
-### Builds and Submission
+### Before first build
 
 To allow the GitHub Action to conduct builds, you must build the app for the first time using the `EAS` CLI. This will create the necessary credentials and allow the GitHub Action to access them.
 
@@ -36,7 +39,7 @@ npx eas build --platform ios --profile staging --auto-submit
 npx eas build --platform ios --profile production --auto-submit
 ```
 
-### OTA-UPDATE
+### OTA updates setup
 
 - Add the Expo URL to the `expoConfig` in` app.config.ts`.
 

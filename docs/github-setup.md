@@ -1,5 +1,7 @@
 # GitHub Setup Instructions
 
+> ❓ For our actions to work, we need to setup some things in GitHub. Otherwise these actions won't be able to push changes like a new release tag or a changelog to the repository.
+
 ## Expo Access Token
 
 1. Create a new token in the Expo dashboard.

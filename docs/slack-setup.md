@@ -1,4 +1,7 @@
-Template github actions support several notification types to Slack to notify the team about the build status.
+# Slack Setup
+
+> ❓ Our github actions support several notification types to Slack to notify the team about the build status.
+
 But there is some additional setup both in Slack and on EAS to make this work.
 
 - **Staging and Production Notifications:**

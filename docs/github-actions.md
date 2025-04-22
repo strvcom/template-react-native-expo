@@ -1,3 +1,8 @@
+# Github Actions
+
+> ❓ We have found github actions to be the best way to trigger the builds. It does not require any git knowledge to i.e push a tag so almost anyone
+> with access can do it. We have created workflows that should work for almost any possible scenario.
+
 ### Development Build:
 
 **Description**:
