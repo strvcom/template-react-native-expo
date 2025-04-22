@@ -1,5 +1,29 @@
 # React Native Expo Template
 
+**Table of Contents**
+
+- [React Native Expo Template](#react-native-expo-template)
+  - [Overview](#overview)
+  - [Quick Start](#quick-start)
+  - [Important Defaults - Configuration](#important-defaults---configuration)
+    - [Expo Development Build](#expo-development-build)
+    - [EAS Build Setup](#eas-build-setup)
+    - [App Environments Setup](#app-environments-setup)
+    - [Babel Plugins](#babel-plugins)
+    - [Debugging - Expo Dev Plugins](#debugging---expo-dev-plugins)
+    - [Linting Tools](#linting-tools)
+  - [Important Defaults - APP](#important-defaults---app)
+    - [Global State and User Persistence](#global-state-and-user-persistence)
+    - [Over-the-Air Updates](#over-the-air-updates)
+    - [Forced Update aka Minimum Version Check](#forced-update-aka-minimum-version-check)
+    - [Offline Check](#offline-check)
+    - [Maximum Font Scaling](#maximum-font-scaling)
+    - [Size Scaling](#size-scaling)
+  - [Other Recommended Solutions](#other-recommended-solutions)
+    - [Adding new `ENV` variables:](#adding-new-env-variables)
+
+## Overview
+
 This template is a starting point for building a React Native app using Expo in STRV.
 
 It provides a foundation for every stage of the development process:
@@ -37,42 +61,14 @@ We don't include any more opinionated solutions such as:
 3. copy `.env.example` to `.env` using `cp .env.example .env`
 4. run `pnpm ios/android` to start the development server and run the app on your device
 
-To use the full release pipeline you also need to:
+To use the full CI/CD pipeline you also need to:
 
 1. [Setup EAS and EAS credentials](docs/eas-setup.md)
 2. [Setup Github environment](docs/github-setup.md)
-3. Setup Slack app for notifications (optional)
-4. Jira Setup (optional)
+3. [Setup Slack app for notifications (optional)](docs/slack-setup.md)
+4. [Jira Setup (optional)](docs/jira-setup.md)
 
-**Table of Contents**
-
-- [React Native Expo Template](#react-native-expo-template)
-  - [Quick Start](#quick-start)
-  - [Important Defaults - SETUP](#important-defaults---setup)
-    - [Expo Development Build](#expo-development-build)
-    - [EAS Build Setup](#eas-build-setup)
-    - [App Environments Setup](#app-environments-setup)
-    - [Babel Plugins](#babel-plugins)
-    - [Debugging - Expo Dev Plugins](#debugging---expo-dev-plugins)
-    - [Linting Tools](#linting-tools)
-  - [Important Defaults - APP](#important-defaults---app)
-    - [Global State and User Persistance](#global-state-and-user-persistance)
-    - [Over-the-Air Updates](#over-the-air-updates)
-    - [Forced Update aka Minimum Version Check](#forced-update-aka-minimum-version-check)
-    - [Offline Check](#offline-check)
-    - [Maximum Font Scaling](#maximum-font-scaling)
-    - [Size Scaling](#size-scaling)
-  - [Other Recommended Solutions](#other-recommended-solutions)
-  - [Release Process](#release-process)
-    - [Build number:](#build-number)
-    - [Adding new `ENV` variables:](#adding-new-env-variables)
-    - [Slack Integration](#slack-integration)
-    - [DEV BUILD DISTRIBUTION](#dev-build-distribution)
-    - [SLACK APP](#slack-app)
-    - [CLOUDFLARE WORKERS](#cloudflare-workers)
-    - [EAS SETUP](#eas-setup)
-
-## Important Defaults - SETUP
+## Important Defaults - Configuration
 
 ### Expo Development Build
 
@@ -112,16 +108,16 @@ Not included but useful:
 
 ### Linting Tools
 
-- We are using @strv/eslint-config-react-native eslint config which is an extension of Expo Universe with couple of extra rule changes we have found useful.
+- We are using @strv/eslint-config-react-native config which is an extension of Expo Universe config with couple of extra rule changes we have found useful.
 - We are using mostly standard prettier config.
 - Husky is used to run linting and formatting before committing and pushing code.
 - Lint Staged is used to run linting and formatting before committing.
 
 ## Important Defaults - APP
 
-### Global State and User Persistance
+### Global State and User Persistence
 
-User persistance is setup through `MMKV` which is a **synchronized** and **faster** alternative to `AsyncStorage`.
+User persistence is setup through `MMKV` which is a **synchronized** and **faster** alternative to `AsyncStorage`.
 
 ### Over-the-Air Updates
 
@@ -139,9 +135,8 @@ To deliver the update through `eas update` we need to target the right `channel`
 
 ### Forced Update aka Minimum Version Check
 
-**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useStoreUpdate('forced' | 'suggested')` hook compares `minimumSupportedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from our backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
-
-We can also set `suggested` version to signal users that there is a new version available (e.g. in profile)
+**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useStoreUpdate()` hook compares `minimumSupportedVersion` or `recommendedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from some backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
+How such a modal could look like is included in the template.
 
 ### Offline Check
 
@@ -161,9 +156,9 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
 - **Styling**
 
-  - [Restyle](https://github.com/Shopify/restyle) or [Styled Components](https://github.com/styled-components/styled-components)
+  - [Restyle](https://github.com/Shopify/restyle), [Unistyles](https://www.unistyl.es/), [Nativewind](https://www.nativewind.dev/)
 
-    > Restyle follows a defined theme with strict type safety resulting in consistent and quickly built UI. It is very helpeful when a designer defines majority of text variants which can be plugged into the theme and reused super easily. It has also responsive utilities that can make potential transition to a tablet app easier. Styled components or its variations are known to Web colleagues, so the familiarity may help in transition to React Native.
+    > Restyle follows a defined theme with strict type safety resulting in consistent and quickly built UI. It is very helpful when a designer defines majority of text variants which can be plugged into the theme and reused super easily. It has also responsive utilities that can make potential transition to a tablet app easier. Unistyles takes a similar approach but is newer and doesn't require special components. Nativewind is a newer library that is based on Tailwind CSS.
 
 - **Notifications**
 
@@ -195,14 +190,6 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
     > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
 
-## Release Process
-
----
-
-### Build number:
-
-Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not present, it creates a new one with version 1.
-
 ### Adding new `ENV` variables:
 
 **Format**:
@@ -221,63 +208,6 @@ Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not presen
 
 > Settings -> Secrets and Variables -> Actions -> Select Variables tab -> New repository variable
 
-### Slack Integration
-
-- **Staging and Production Notifications:**
-
-1.  Open Slack
-2.  In the left sidebar, click on `... More` and select `Automations`
-3.  Click on `New Workflow`
-4.  name it `[App name] [Env] [Release]`
-5.  Choose `from a webhook` option
-6.  add data variables for `version` - string and `changelog`(optional) - string
-7.  add `Messages` step and select the `channel` where you want to send the message
-8.  Add the message
-
-Example message:
-
-```
-Hey @channel, :rocket:
-
-We’re excited to announce the release of the new EXPO-TEMPLATE app version!
-
-Latest version: {{version}}
-Changelog: https://github.com/strvcom/{repository-name}/releases/tag/v{{version}}
 ```
 
-- you must create workflow for both `staging` and `production` environments
-
-- Copy the `webhook URL` and add it
-- for [STAGING](.release-it.json) - `line 34`
-- for [PRODUCTION](.github/workflows/production-submit.yml) - `line 64`
-
-`IN PROGRESS`
-
-### DEV BUILD DISTRIBUTION
-
-- the dev distribution builds are triggered by the `Create dev build` workflow
-- To distribute the dev builds to among the team members, choose one of the options and follow the steps below:
-
-### SLACK APP
-
-- Create a new Slack App on https://api.slack.com/apps
-- Select `Incoming Webhooks` and turn it on
-- Wait for the approval
-- Add `New Webhook to Workspace` and select the channel
-- copy the` Webhook URL`
-
-### CLOUDFLARE WORKERS
-
-- Go to https://www.cloudflare.com/
-- Create a new Cloudflare Worker
-- Copy the worker functionality from the [worker.js](docs/cloudflare-worker.txt)
-- replace `SLACK_WEBHOOK_URL` variable with yours
-- deploy the worker
-
-### EAS SETUP
-
-- create a new webhook via EAS CLI and the worker url `https//your-worker.account-name.workers.dev`
-
-```
-eas webhook:create
 ```

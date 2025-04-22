@@ -80,7 +80,7 @@ const expoConfig: ExpoConfig = {
   slug: config.appScheme,
   version,
   runtimeVersion: {
-    policy: 'sdkVersion',
+    policy: 'fingerprint',
   },
   scheme: config.appScheme,
   orientation: 'portrait',

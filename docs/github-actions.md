@@ -56,3 +56,7 @@ Working on a new feature (v. `1.2.1`)
 - Review the **PR** and then we create a `hotfix` by triggering **Hotfix release**, selecting the current Hotfix branch and selecting the `build type` (either OTA or Normal)
 - This creates a new tag `1.3.0-hotfix.1` but no release
 - Merge the hotfix branch to `main`
+
+### Build number:
+
+Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not present, it creates a new one with version 1.
