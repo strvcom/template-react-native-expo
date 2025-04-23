@@ -52,6 +52,7 @@
     "@babel/core": "^7.26.0",
     "@release-it/conventional-changelog": "^8.0.1",
     "@strv/eslint-config-react-native": "3.3.3",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.3.18",
     "babel-plugin-transform-remove-console": "^6.9.4",

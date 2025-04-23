@@ -5,12 +5,12 @@ import { config } from '~/config'
 const applicationIdProd = config.applicationIdProd
 const appleIdProd = config.appleIdProd
 
-interface IStoreLink {
+type StoreLink = {
   storeURI: string
   storeURL: string
 }
 
-export const getStoreLink = (): IStoreLink => {
+export const getStoreLink = (): StoreLink => {
   const appStoreURI = `itms-apps://apps.apple.com/app/id${appleIdProd}?mt=8`
   const appStoreURL = `https://apps.apple.com/app/id${appleIdProd}?mt=8`
 
@@ -20,5 +20,5 @@ export const getStoreLink = (): IStoreLink => {
   return Platform.select({
     ios: { storeURI: appStoreURI, storeURL: appStoreURL },
     android: { storeURI: playStoreURI, storeURL: playStoreURL },
-  }) as IStoreLink
+  }) as StoreLink
 }
