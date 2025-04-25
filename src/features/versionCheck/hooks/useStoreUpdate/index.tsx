@@ -1,4 +1,3 @@
-//
 import packageJson from 'package.json'
 import { Platform } from 'react-native'
 import semver from 'semver'

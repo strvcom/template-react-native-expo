@@ -3,12 +3,12 @@ import * as SplashScreen from 'expo-splash-screen'
 import React, { PropsWithChildren, useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { OfflineMessage } from '~/components/OfflineMessage'
+import { OfflineMessage } from '~/features/offlineCheck/components/OfflineMessage'
+import { useIsOnline } from '~/features/offlineCheck/hooks/useIsOnline'
+import { commonStyles } from '~/features/ui/styles/common'
 import { ForcedUpdate } from '~/features/versionCheck/components/ForcedUpdate'
 import { useOTAUpdates } from '~/features/versionCheck/hooks/useOTAUpdate'
 import { useStoreUpdate } from '~/features/versionCheck/hooks/useStoreUpdate'
-import { useIsOnline } from '~/hooks/useIsOnline'
-import { commonStyles } from '~/styles/common'
 import { setFontScaling } from '~/utils/setFontScaling'
 
 void SplashScreen.preventAutoHideAsync()

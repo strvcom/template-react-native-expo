@@ -10,15 +10,15 @@ export enum StorageKeys {
 export const useStorageString = (key: StorageKeys) => useMMKVString(key)
 export const useStorageObject = <T>(key: StorageKeys) => useMMKVObject<T>(key)
 
-export function getItem(key: StorageKeys | string): string | null {
-  return storage.getString(key) ?? null
+export function getItem(key: StorageKeys): string | undefined {
+  return storage.getString(key)
 }
 
-export function setItem(key: StorageKeys | string, value: string) {
+export function setItem(key: StorageKeys, value: string) {
   storage.set(key, value)
 }
 
-function removeItem(key: StorageKeys | string) {
+function removeItem(key: StorageKeys) {
   storage.delete(key)
 }
 
