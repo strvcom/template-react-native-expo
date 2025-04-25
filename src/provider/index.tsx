@@ -3,33 +3,43 @@ import * as SplashScreen from 'expo-splash-screen'
 import React, { PropsWithChildren, useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { ForcedUpdate } from '~/components/ForcedUpdate'
-import { OfflineMessage } from '~/components/OfflineMessage'
-import { useIsOnline } from '~/hooks/useIsOnline'
-import { useOTAUpdates } from '~/hooks/useOTAUpdate'
-import { useStoreUpdate } from '~/hooks/useStoreUpdate'
+import { OfflineMessage } from '~/features/offlineCheck/components/OfflineMessage'
+import { useIsOnline } from '~/features/offlineCheck/hooks/useIsOnline'
+import { commonStyles } from '~/features/ui/styles/common'
+import { ForcedUpdate } from '~/features/versionCheck/components/ForcedUpdate'
+import { useOTAUpdates } from '~/features/versionCheck/hooks/useOTAUpdate'
+import { useStoreUpdate } from '~/features/versionCheck/hooks/useStoreUpdate'
 import { setFontScaling } from '~/utils/setFontScaling'
 
 void SplashScreen.preventAutoHideAsync()
 setFontScaling()
 
 export const Provider = ({ children }: PropsWithChildren) => {
-  const isAppOutdated = useStoreUpdate('forced')
+  const { shouldForceUpdate, shouldRecommendUpdate } = useStoreUpdate({
+    data: {
+      recommendedIOSVersion: '1.0.0',
+      recommendedAndroidVersion: '1.0.0',
+      minIOSVersion: '0.0.0',
+      minAndroidVersion: '0.0.0',
+    },
+    loading: false,
+  })
   const { isOnline } = useIsOnline()
   useMMKVDevTools()
   useOTAUpdates()
 
   useEffect(() => {
     // isAppOutdated is null until logic runs
-    if (isAppOutdated !== null) {
+    if (!shouldForceUpdate && !shouldRecommendUpdate) {
       void SplashScreen.hideAsync()
     }
-  }, [isAppOutdated])
+  }, [shouldForceUpdate, shouldRecommendUpdate])
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={commonStyles.f1}>
       {children}
-      {isAppOutdated && <ForcedUpdate />}
+      {shouldForceUpdate && <ForcedUpdate cancelable={false} />}
+      {shouldRecommendUpdate && <ForcedUpdate />}
       {isOnline === false && <OfflineMessage />}
     </GestureHandlerRootView>
   )

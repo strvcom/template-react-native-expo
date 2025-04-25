@@ -1,79 +1,83 @@
 # React Native Expo Template
 
-This template bootstraps Expo Managed Workflow focused not only on solid project setup but also important app defaults such as Forced and OTA update functionality.
-
-> To start using it, create a .env file with `APP_ENV=dev`. Install pnpm via ``brew install pnpm`, if not yet installed, and run `pnpm install` to install dependencies.
-> Also to use EAS, install `eas-cli` globally (`yarn global add eas-cli`).
-
-**Major dependencies:**
-
-- Expo SDK 51
-- React Native 0.74.1
-- React 18.2.0
-
 **Table of Contents**
 
 - [React Native Expo Template](#react-native-expo-template)
-  - [Important Defaults - SETUP](#important-defaults---setup)
-    - [Expo Managed Workflow](#expo-managed-workflow)
-    - [Native Folders](#native-folders)
+  - [Overview](#overview)
+  - [Quick Start](#quick-start)
+  - [Important Defaults - Configuration](#important-defaults---configuration)
+    - [Expo Development Build](#expo-development-build)
     - [EAS Build Setup](#eas-build-setup)
     - [App Environments Setup](#app-environments-setup)
     - [Babel Plugins](#babel-plugins)
     - [Debugging - Expo Dev Plugins](#debugging---expo-dev-plugins)
     - [Linting Tools](#linting-tools)
-    - [Github Actions](#github-actions)
   - [Important Defaults - APP](#important-defaults---app)
-    - [Global State and User Persistance](#global-state-and-user-persistance)
+    - [Global State and User Persistence](#global-state-and-user-persistence)
     - [Over-the-Air Updates](#over-the-air-updates)
     - [Forced Update aka Minimum Version Check](#forced-update-aka-minimum-version-check)
     - [Offline Check](#offline-check)
     - [Maximum Font Scaling](#maximum-font-scaling)
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
-  - [Release Process](#release-process)
-    - [Prerequisites:](#prerequisites)
-  - [EAS](#eas)
-    - [GitHub Setup Instructions](#github-setup-instructions)
-    - [Expo Access Token](#expo-access-token)
-    - [GitHub Workflow Permissions](#github-workflow-permissions)
-    - [GitHub Personal Access Token](#github-personal-access-token)
-      - [Required Permissions Table](#required-permissions-table)
-    - [Github Deploy Key](#github-deploy-key)
-    - [EAS BUILD](#eas-build)
-    - [Credentials](#credentials)
-    - [Builds and Submission](#builds-and-submission)
-    - [OTA-UPDATE](#ota-update)
-    - [Build number:](#build-number)
-    - [Adding new `ENV` variables:](#adding-new-env-variables)
-    - [Development Build:](#development-build)
-    - [Staging Release:](#staging-release)
-    - [Production Submit:](#production-submit)
-    - [Example of _ideal_ scenario:](#example-of-ideal-scenario)
-    - [Hotfix Scenario:](#hotfix-scenario)
-    - [JIRA Integration](#jira-integration)
-    - [Slack Integration](#slack-integration)
-    - [DEV BUILD DISTRIBUTION](#dev-build-distribution)
-    - [SLACK APP](#slack-app)
-    - [CLOUDFLARE WORKERS](#cloudflare-workers)
-    - [EAS SETUP](#eas-setup)
+  - [Adding new `ENV` variables:](#adding-new-env-variables)
 
-## Important Defaults - SETUP
+## Overview
 
-### Expo Managed Workflow
+This template is a starting point for building a React Native app using Expo in STRV.
 
-- The main benefit is better maintainability as most of the native setup is done through `app.config.ts` and community/custom config plugins. Updating Expo SDK mostly assures compatibility with majority of dependencies used, which is a common source of problem when upgrading React Native separately - though [rnx-kit/dep-check](https://microsoft.github.io/rnx-kit/docs/tools/dep-check) can be now used.
+It provides a foundation for every stage of the development process:
 
-### Native Folders
+🔧 For the project start and initial development:
 
-- Once you create a development build, in practice iOS and Android folders with native code are not needed anymore and you could delete them, but you would have to delete them after each new local build. For convenience, they are moved to `.gitignore`.
-- It is good to remove them **temporarily** from .gitignore when setting up a config plugin and you need to see the native code git changes.
-- Also when you need to regenerate the native code because your build is somehow cached, you may remove the folders and run a fresh build, or run `yarn expo prebuild --clean`.
+- Expo Development build setup
+- domain driven folder structure
+- Storage service using MMKV
+- Font and size scaling utilities
+
+📏 For keeping the code quality high and enforcing code standards:
+
+- basic unit test setup
+- Linter and formatter setup
+- pre push and pre commit hooks
+
+🚀 For shipping and production maintenance:
+
+- Github Actions for CI/CD
+- App config ready for different environments
+- Utilities for version check and forced updates in production
+
+> ⚠️ We don't include any more opinionated solutions such as:
+>
+> - Styling and theming solution
+> - State management library
+> - Image loading library
+> - E2E testing setup
+>   You need to decide what is best for your project and add it to the project. But we provide some recommendations in the [Other Recommended Solutions](#other-recommended-solutions) section.
+
+## Quick Start
+
+1. Clone the repository
+2. Run `pnpm install` to install dependencies
+3. copy `.env.example` to `.env` using `cp .env.example .env`
+4. run `pnpm ios/android` to start the development server and run the app on your device
+
+To use the full CI/CD pipeline you also need to:
+
+1. [Setup EAS and EAS credentials](docs/eas-setup.md)
+2. [Setup Github environment](docs/github-setup.md)
+3. [Setup Slack app for notifications (optional)](docs/slack-setup.md)
+4. [Jira Setup (optional)](docs/jira-setup.md)
+
+## Important Defaults - Configuration
+
+### Expo Development Build
+
+- The main benefit is better maintainability as most of the native setup is done through `app.config.ts` and community/custom config plugins. Updating Expo SDK mostly assures compatibility with majority of dependencies used, which is a common source of problem when upgrading React Native separately. You can use expo doctor to check for any issues with the setup and update the project accordingly.
 
 ### EAS Build Setup
 
 - EAS helps with building and app submission. It can create and store all important credentials so that we don't have to distribute them among everyone.
-- Free tier has only 30 builds per months so we might need the client to order `production` tier for $99 per month.
 - Default build profiles in `eas.json`:
   - `dev` - this profile will build an `expo-dev-client`, meaning that after installing the app, one can change non-native code and see changes reflected in the app
   - `staging` - should be distributed for testing, does not have a dev client, meaning it cannot be manipulated. It builds `com.xxx.xxx.staging` application which can be distributed through a link or a QR code.
@@ -94,8 +98,6 @@ This template bootstraps Expo Managed Workflow focused not only on solid project
 
 ### Debugging - Expo Dev Plugins
 
-Flipper was removed from React Native, therefore Expo dev plugins are started to fill the gap since SDK 50. All plugins are listed in this [repository](https://github.com/expo/dev-plugins?tab=readme-ov-file#awesome-plugins)
-
 Dev plugins included in the template:
 
 - [React Navigation](https://docs.expo.dev/debugging/devtools-plugins/#react-navigation) - to see navigation state, history, and params passed to screens
@@ -103,34 +105,20 @@ Dev plugins included in the template:
 
 Not included but useful:
 
-- [AsyncStorage](https://github.com/lbaldy/flipper-plugin-async-storage-advanced)
 - [React Query](https://github.com/bgaleotti/react-query-native-devtools)
 
 ### Linting Tools
 
-Typical STRV stack. Quite a few rules overrides in Eslint config.
-
-- Eslint
-- Prettier
-- Husky
-- Lint Staged
-
-### Github Actions
-
-Requires `Expo Access Token` set as Github secret to connect to EAS.
-
-1.  **EAS Update (over-the-air)**
-    - env values are [prepended](https://docs.expo.dev/eas-update/environment-variables/#setting-and-getting-environment-variables-when-publishing) to the `eas update` command
-2.  **EAS Build**
-    - ideally would run tests before submitting an app and have build cache logic
+- We are using @strv/eslint-config-react-native config which is an extension of Expo Universe config with couple of extra rule changes we have found useful.
+- We are using mostly standard prettier config.
+- Husky is used to run linting and formatting before committing and pushing code.
+- Lint Staged is used to run linting and formatting before committing.
 
 ## Important Defaults - APP
 
-### Global State and User Persistance
+### Global State and User Persistence
 
-`Zustand` is used for global state as it is simple and does not need an extra provider. The state can be used through a `useRootStore` hook within React render cycle or outside of it with its `useRootStore.getState()` store method.
-
-User persistance is setup through `MMKV` which is a **synchronized** and **faster** alternative to `AsyncStorage`. MMKV Storage is provided to Zustand `useRootStore` and `partialize` method defines what data from Zustand store should be persisted (e.g. `accessToken`). Meaning upon user login we just need to update the Zustand store and the persistance is handled for us - no need to persist the user in MMKV separately. The store is divided by slices to distinguish features.
+User persistence is setup through `MMKV` which is a **synchronized** and **faster** alternative to `AsyncStorage`.
 
 ### Over-the-Air Updates
 
@@ -148,9 +136,8 @@ To deliver the update through `eas update` we need to target the right `channel`
 
 ### Forced Update aka Minimum Version Check
 
-**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useStoreUpdate('forced' | 'suggested')` hook compares `minimumSupportedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from our backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
-
-We can also set `suggested` version to signal users that there is a new version available (e.g. in profile)
+**Before going to production** we should have a forced update functionality in place for cases such as when we introduce a major bug or our backend API is not backward compatible. `useStoreUpdate()` hook compares `minimumSupportedVersion` or `recommendedVersion` with `installedAppVersion` from `app.config.ts`. The minimum version should come either from some backend API or third party service such as `Firebase Remote Config` (good experience). If the app is outdated we should show to the user screen/modal/alert that would suggest them to update (redirect to store listing).
+How such a modal could look like is included in the template.
 
 ### Offline Check
 
@@ -170,9 +157,9 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
 - **Styling**
 
-  - [Restyle](https://github.com/Shopify/restyle) or [Styled Components](https://github.com/styled-components/styled-components)
+  - [Restyle](https://github.com/Shopify/restyle), [Unistyles](https://www.unistyl.es/), [Nativewind](https://www.nativewind.dev/)
 
-    > Restyle follows a defined theme with strict type safety resulting in consistent and quickly built UI. It is very helpeful when a designer defines majority of text variants which can be plugged into the theme and reused super easily. It has also responsive utilities that can make potential transition to a tablet app easier. Styled components or its variations are known to Web colleagues, so the familiarity may help in transition to React Native.
+    > Restyle follows a defined theme with strict type safety resulting in consistent and quickly built UI. It is very helpful when a designer defines majority of text variants which can be plugged into the theme and reused super easily. It has also responsive utilities that can make potential transition to a tablet app easier. Unistyles takes a similar approach but is newer and doesn't require special components. Nativewind is a newer library that is based on Tailwind CSS.
 
 - **Notifications**
 
@@ -204,157 +191,7 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
     > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
 
-## Release Process
-
----
-
-### Prerequisites:
-
-## EAS
-
-To connect your App Store account, fill in the "submit" object in the eas.json file:
-
-```
-submit": {
- "staging": {
-   "ios": {
-     "ascAppId": "ID",
-     "appleTeamId": "ID"
-    }
- },
- "production": {
-   "ios": {
-    "ascAppId": "ID",
-     "appleTeamId": "ID"
-    }
-  }
-}
-```
-
-### GitHub Setup Instructions
-
-### Expo Access Token
-
-1. Create a new token in the Expo dashboard.
-2. Add the token to the GitHub secrets as `EXPO_TOKEN`.
-
-### GitHub Workflow Permissions
-
-1. Go to `Settings` > `Actions` > `General` > `Workflow permissions`.
-2. Check `Read and write permissions`.
-
-### GitHub Personal Access Token
-
-1. Navigate to your GitHub profile > `Settings` > `Developer settings` > `Personal access tokens` > `Fine-grained tokens`.
-2. Click on `Generate a new token`.
-3. Select the repository under `STRV's` organization.
-4. Set the permissions as shown in the table below.
-5. Wait for the approval.
-6. Add the token to the GitHub secrets as `GT_PAT`.
-
-#### Required Permissions Table
-
-When setting up the Fine-grained Personal Access Token, ensure you select the following permissions:
-
-| Permission      | Access Level   |
-| --------------- | -------------- |
-| Actions         | Read and write |
-| Commit statuses | Read and write |
-| Contents        | Read and write |
-| Deployments     | Read and write |
-| Environments    | Read and write |
-| Merge queues    | Read and write |
-| Metadata        | Read-only      |
-| Pull requests   | Read and write |
-| Secrets         | Read and write |
-| Variables       | Read and write |
-| Webhooks        | Read and write |
-
-### Github Deploy Key
-
-This is necessary for release builds to allow Github Actions to bypass branch protection rules.
-
-1. generate a new SSH key pair on your machine:
-
-```bash
-ssh-keygen -t rsa -b 4096 -C "example@email.com"
-```
-
-- Follow the steps and save the key pair in the `~/.ssh` directory.
-- Be sure not to set a passcode on your key otherwise it will not work.
-- This will generate two files: `id_rsa` (private key) and `id_rsa.pub` (public key).
-
-1. Add the public key to the repository settings:
-
-- Go to the repository settings > Deploy keys > Add deploy key
-- Paste the public key
-- Check the `Allow write access` option
-
-2. Add the private key to the Github secrets:
-
-- Go to the repository settings > Secrets > Actions > New repository secret
-- Name the secret `SSH_PRIVATE_KEY` and paste the private key
-- Be sure to paste the entire content of the file, starting with `-----BEGIN OPENSSH PRIVATE KEY-----` and ending with `-----END OPENSSH PRIVATE KEY-----`
-
-Then when you create rule sets in the branch protection rules, you select the `Deploy keys` option to allow release build action to bypass them and push changelog and updated version directly to main.
-
-### EAS BUILD
-
-- Setup your project with your EAS account by running:
-  ```
-  npx eas init
-  ```
-
-### Credentials
-
-- Set up` App Store Connect API Keys` for `staging` and `production` by running:
-  ```
-  npx eas credentials -p ios
-  ```
-
-### Builds and Submission
-
-To allow the GitHub Action to conduct builds, you must build the app for the first time using the `EAS` CLI. This will create the necessary credentials and allow the GitHub Action to access them.
-
-Run the following commands:
-
-```
-npx eas build --platform ios --profile dev-sim
-npx eas build --platform ios --profile dev
-npx eas build --platform ios --profile staging --auto-submit
-npx eas build --platform ios --profile production --auto-submit
-```
-
-### OTA-UPDATE
-
-- Add the Expo URL to the `expoConfig` in` app.config.ts`.
-
-```
- updates: {
-    fallbackToCacheTimeout,
-    url: 'https://u.expo.dev/project-id',
-  },
-```
-
-- Before conducting over-the-air updates, validate that the channels are setup against correct branch (environment).
-
-```
- npx eas channel:list
-```
-
-- if not, you can change it by running
-
-```
- npx eas channel:edit
-```
-
----
-
-### Build number:
-
-Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not present, it creates a new one with version 1.
-
-### Adding new `ENV` variables:
+## Adding new `ENV` variables:
 
 **Format**:
 
@@ -372,136 +209,6 @@ Build number is stored in GitHub variables as `BUILD_NUMBER`. If it's not presen
 
 > Settings -> Secrets and Variables -> Actions -> Select Variables tab -> New repository variable
 
-### Development Build:
-
-**Description**:
-
-- Development are used for local development and testing on Simulator. This is the fastest way to iterate on the app.
-- Development build should be created everytime there is a change affecting Native code or when a new feature is added.
-
-_- note: if you want to test the app on a real device, and your device is not registered in EAS, you can do it by running `npx eas device:create `_
-
-**Steps**:
-
-- Workflow: `Create dev build`
-- Build type: `dev`(real device) | `dev-sim`(simulator)
-- Platform: `all` | `ios` | `android`
-
-### Staging Release:
-
-**Description**:
-
-- Staging builds are used for testing new features and bug fixes before they are released to production.
-- After the staging build is created, the new release is created with the changelogs and it shared via Testflight or Play Store internal testing track.
-
-**Steps**:
-
-- Workflow: `Create release`
-- Deployment environment: `staging`
-- Version bump type: `patch` | `minor` | `major` | `none`
-- Action type: `build and submit` | `ota update`
-- Platform: `all` | `ios` | `android`
-
-### Production Submit:
-
-**Description**:
-
-- After the staging build is tested and approved, we are ready to submit the build to the stores.
-
-**Steps**:
-
-- Workflow: `Production submit` (triggered from the `tag` branch chosen via `Use workflow from` dropdown)
-- Platform: `all` | `ios` | `android`
-
-### Example of _ideal_ scenario:
-
-Working on a new feature (v. `1.2.1`)
-
-- **Create dev build** Select `dev` for device build or `dev-sim` for simulator build and `platform`
-  - This creates a dev build that serves for local development
-- After the feature is finished and merged to `main`, we trigger **Create release** and we select -> `staging` platform, version bump type `minor`, and action type will be `build and submit`
-- This creates a new build, submits it for testing, and creates a new release `1.3.0` with `changelogs`
-- After QA testing, we are ready for production submission via `Production submit` flow. This will create a new build with the version of the selected `tag` branch and submit it to the stores
-
-### Hotfix Scenario:
-
-- We found a bug in version `1.3.0` - we create a new branch from the `1.3.0` `tag` branch
-- Fix the bug and create a **PR**
-- Review the **PR** and then we create a `hotfix` by triggering **Hotfix release**, selecting the current Hotfix branch and selecting the `build type` (either OTA or Normal)
-- This creates a new tag `1.3.0-hotfix.1` but no release
-- Merge the hotfix branch to `main`
-
-### JIRA Integration
-
-- To track the progress of the project on the Jira board, follow the steps below:
-
-1. Connect the Jira project with the GitHub repository via the `GitHub for Jira` App.
-2. Go to `Settings` -> `Features`, scroll to the `Operation` section, and turn on the `Deployments` feature.
-
-To track progress such as `Builds`, `Releases`, and `Commits`, both branch name and pull request title need to include the Jira ticket number in their titles:
-
-Branch name example: `feat/ABC-1234-add-new-feature`
-PR title example: `feat(ABC-1234): add new feature`
-
-It is recommended to use the `Squash and merge` option for pull requests. This format is supported by the `release-it` Changelog plugin.
-
-### Slack Integration
-
-- **Staging and Production Notifications:**
-
-1.  Open Slack
-2.  In the left sidebar, click on `... More` and select `Automations`
-3.  Click on `New Workflow`
-4.  name it `[App name] [Env] [Release]`
-5.  Choose `from a webhook` option
-6.  add data variables for `version` - string and `changelog`(optional) - string
-7.  add `Messages` step and select the `channel` where you want to send the message
-8.  Add the message
-
-Example message:
-
-```
-Hey @channel, :rocket:
-
-We’re excited to announce the release of the new EXPO-TEMPLATE app version!
-
-Latest version: {{version}}
-Changelog: https://github.com/strvcom/{repository-name}/releases/tag/v{{version}}
 ```
 
-- you must create workflow for both `staging` and `production` environments
-
-- Copy the `webhook URL` and add it
-- for [STAGING](.release-it.json) - `line 34`
-- for [PRODUCTION](.github/workflows/production-submit.yml) - `line 64`
-
-`IN PROGRESS`
-
-### DEV BUILD DISTRIBUTION
-
-- the dev distribution builds are triggered by the `Create dev build` workflow
-- To distribute the dev builds to among the team members, choose one of the options and follow the steps below:
-
-### SLACK APP
-
-- Create a new Slack App on https://api.slack.com/apps
-- Select `Incoming Webhooks` and turn it on
-- Wait for the approval
-- Add `New Webhook to Workspace` and select the channel
-- copy the` Webhook URL`
-
-### CLOUDFLARE WORKERS
-
-- Go to https://www.cloudflare.com/
-- Create a new Cloudflare Worker
-- Copy the worker functionality from the [worker.js](docs/cloudflare-worker.txt)
-- replace `SLACK_WEBHOOK_URL` variable with yours
-- deploy the worker
-
-### EAS SETUP
-
-- create a new webhook via EAS CLI and the worker url `https//your-worker.account-name.workers.dev`
-
-```
-eas webhook:create
 ```

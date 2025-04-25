@@ -1,1 +1,1 @@
-export { Dashboard as default } from '~/features/dashboard/screens/DashboardScreen'
+export { DashboardScreen as default } from '~/features/dashboard/screens/DashboardScreen'

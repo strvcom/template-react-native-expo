@@ -3,7 +3,7 @@ import { ExpoConfig, IOS } from '@expo/config-types'
 
 import packageJson from './package.json'
 
-import type { OtaUpdatePriority } from '~/hooks/useOTAUpdate'
+import type { OtaUpdatePriority } from '~/features/versionCheck/hooks/useOTAUpdate'
 import { Environment } from '~/types/env'
 
 declare const process: {
@@ -35,8 +35,8 @@ const environment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
 // your custom fonts
 const fonts = ['./assets/fonts/Domine-Bold.ttf']
 
-// prefetched/embedded assets, can be referenced as source='rn_meme' https://docs.expo.dev/versions/latest/sdk/asset/#configurable-properties
-const assets = ['./assets/images/rn_meme.jpg']
+// prefetched/embedded assets, can be referenced as source='strv_logo' https://docs.expo.dev/versions/latest/sdk/asset/#configurable-properties
+const assets = ['./assets/images/strv_logo.png']
 
 const getEnvironmentInfo = (): {
   name: ExpoConfig['name']
@@ -83,7 +83,7 @@ const expoConfig: ExpoConfig = {
   slug: config.appScheme,
   version,
   runtimeVersion: {
-    policy: 'sdkVersion',
+    policy: 'fingerprint',
   },
   scheme: config.appScheme,
   orientation: 'portrait',

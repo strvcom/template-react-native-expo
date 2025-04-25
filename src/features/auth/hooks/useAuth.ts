@@ -1,20 +1,22 @@
-import { router } from 'expo-router'
-
-import { useRootStore } from '~/store/useRootStore'
+import { useRouter } from 'expo-router'
+import { useMMKVString } from 'react-native-mmkv'
 
 export const useAuth = () => {
-  const accessToken = useRootStore((state) => state.accessToken)
-  const setAccessToken = useRootStore((state) => state.setAccessToken)
+  const [accessToken, setAccessToken] = useMMKVString('accessToken')
+  const router = useRouter()
 
-  const signOut = useRootStore((state) => state.logoutUser)
   const signIn = () => {
     setAccessToken('dummyToken')
-    router.replace('/')
+    router.dismissTo('/')
+  }
+
+  const signOut = () => {
+    setAccessToken(undefined)
   }
 
   return {
     isSignedIn: Boolean(accessToken),
-    signOut,
     signIn,
+    signOut,
   }
 }

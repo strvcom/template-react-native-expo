@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 
-import { Button } from '~/components/Button'
 import { useAuth } from '~/features/auth/hooks/useAuth'
+import { Button } from '~/features/ui/components/Button'
 import { ms } from '~/utils/scale'
 
 export const Profile = () => {
