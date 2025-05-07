@@ -8,6 +8,9 @@
         "resourceClass": "medium"
       }
     },
+    "cli": {
+      "appVersionSource": "remote"
+    },
     "dev": {
       "extends": "base",
       "developmentClient": true,
@@ -30,6 +33,7 @@
       "extends": "base",
       "distribution": "store",
       "channel": "staging",
+      "autoIncrement": true,
       "env": {
         "EXPO_PUBLIC_APP_ENV": "staging"
       }
