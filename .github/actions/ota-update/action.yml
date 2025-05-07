@@ -7,9 +7,6 @@ inputs:
   version:
     required: true
     description: 'The version number'
-  build_number:
-    required: true
-    description: 'The build number'
 runs:
   using: composite
   steps:
@@ -17,10 +14,8 @@ runs:
       shell: bash
       run: |
         echo "EXPO_PUBLIC_APP_VERSION=${{ inputs.version }}" >> $GITHUB_ENV
-        echo "EXPO_PUBLIC_BUILD_NUMBER=${{ inputs.build_number }}" >> $GITHUB_ENV
-
     - name: Perform OTA Update
       shell: bash
       run: |
         eas update --channel ${{ inputs.channel }} \
-          --message "Update ${{ inputs.channel }} to ${{ inputs.version }} (build ${{ inputs.build_number }})"
+          --message "Update ${{ inputs.channel }} to ${{ inputs.version }}"

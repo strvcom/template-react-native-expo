@@ -48,7 +48,6 @@ jobs:
         with:
           environment: dev
           version: ${{ steps.version.outputs.version }}
-          build_number: ${{ vars.BUILD_NUMBER }}
           vars: ${{ toJson(vars) }}
 
       - name: Build Application
