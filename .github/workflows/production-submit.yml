@@ -34,25 +34,12 @@ jobs:
           version_bump: 'none'
           increment: false
 
-      - name: Update eas.json
-        uses: ./.github/actions/update-eas
-        with:
-          environment: production
-          version: ${{ steps.version.outputs.version }}
-          vars: ${{ toJson(vars) }}
-
       - name: Build and Submit
         uses: ./.github/actions/build
         with:
           environment: production
           platform: ${{ github.event.inputs.platform }}
           auto_submit: true
-
-      - name: Revert eas.json changes
-        if: always()
-        run: |
-          git restore eas.json
-
 # Uncomment and add your slack webhook url to send Slack notification after the build is submitted
 #      - name: Send Slack Notification
 #        id: slack

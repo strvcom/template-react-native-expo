@@ -64,13 +64,6 @@ jobs:
           version_bump: ${{ github.event.inputs.version_bump }}
           increment: ${{ github.event.inputs.action_type != 'build' }}
 
-      - name: Update eas.json
-        uses: ./.github/actions/update-eas
-        with:
-          environment: ${{ github.event.inputs.environment }}
-          version: ${{ steps.version.outputs.version }}
-          vars: ${{ toJson(vars) }}
-
       - name: Build Application
         if: github.event.inputs.action_type != 'ota_update'
         uses: ./.github/actions/build
@@ -82,15 +75,11 @@ jobs:
       - name: OTA Release
         if: github.event.inputs.action_type == 'ota_update'
         uses: ./.github/actions/ota-update
-        env: ${{ vars }}
+        env:
+          VARS: ${{ toJson(vars) }}
         with:
           channel: ${{ github.event.inputs.environment }}
           version: ${{ steps.version.outputs.version }}
-
-      - name: Revert eas.json changes
-        if: always()
-        run: |
-          git restore eas.json
 
       - name: Generate Release Notes
         if: github.event.inputs.action_type != 'build' && github.event.inputs.version_bump != 'none'
