@@ -1,0 +1,32 @@
+name: Map Environment
+description: 'Maps environment names to Expo environment names'
+inputs:
+  environment:
+    required: true
+    description: 'The environment to map (dev, staging) or pass through (development, preview, production)'
+outputs:
+  expo_environment:
+    description: 'The mapped Expo environment name (development, preview, production)'
+    value: ${{ steps.map-env.outputs.expo_environment }}
+runs:
+  using: composite
+  steps:
+    - name: Map environment to Expo environment
+      id: map-env
+      shell: bash
+      run: |
+        case "${{ inputs.environment }}" in
+          "dev")
+            echo "expo_environment=development" >> $GITHUB_OUTPUT
+            ;;
+          "staging")
+            echo "expo_environment=preview" >> $GITHUB_OUTPUT
+            ;;
+          "development"|"preview"|"production")
+            echo "expo_environment=${{ inputs.environment }}" >> $GITHUB_OUTPUT
+            ;;
+          *)
+            echo "Unknown environment: ${{ inputs.environment }}"
+            exit 1
+            ;;
+        esac

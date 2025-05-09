@@ -193,22 +193,30 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
 ## Adding new `ENV` variables:
 
-**Format**:
+We highly recommend using EAS to manage environments.
 
-- All variables must use the `EXPO_PUBLIC` prefix! e.g., `EXPO_PUBLIC_API_URL`
-
-**Github**:
-
-- There are two options for adding/managing env credentials:
-
-1. **Variables by a specific env**:
-
-> Settings -> Environments -> Select/add Env (dev, staging, production) -> Add a new variable
-
-2. **Shared variables**:
-
-> Settings -> Secrets and Variables -> Actions -> Select Variables tab -> New repository variable
+We map our environment names to the Expo environments names.
 
 ```
+"dev": "development",
+"staging": "preview",
+"production": "production"
+```
 
+Inside Github Actions we use an action to map the environments automatically.
+To add new environment variable:
+
+- Either add it through the Expo dashboard
+- Or through eas cli:
+
+```
+eas env:create [EXPO_ENVIRONMENT] --name <name> --value <value>
+```
+
+> ⚠️ All variables must use the `EXPO_PUBLIC` prefix! e.g., `EXPO_PUBLIC_API_URL`
+
+You can also pull variables from EAS to your local `.env` file:
+
+```
+eas env:pull [EXPO_ENVIRONMENT]
 ```

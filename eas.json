@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 3.13.3"
+    "version": ">= 3.13.3",
+    "appVersionSource": "remote"
   },
   "build": {
     "base": {
@@ -8,13 +9,11 @@
         "resourceClass": "medium"
       }
     },
-    "cli": {
-      "appVersionSource": "remote"
-    },
     "dev": {
       "extends": "base",
       "developmentClient": true,
       "distribution": "internal",
+      "environment": "development",
       "android": {
         "buildType": "apk"
       },
@@ -25,6 +24,7 @@
     },
     "dev-sim": {
       "extends": "dev",
+      "environment": "development",
       "ios": {
         "simulator": true
       }
@@ -34,6 +34,7 @@
       "distribution": "store",
       "channel": "staging",
       "autoIncrement": true,
+      "environment": "preview",
       "env": {
         "EXPO_PUBLIC_APP_ENV": "staging"
       }
@@ -42,6 +43,7 @@
       "extends": "base",
       "distribution": "store",
       "channel": "production",
+      "environment": "production",
       "env": {
         "EXPO_PUBLIC_APP_ENV": "production"
       }

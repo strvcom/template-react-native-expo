@@ -7,6 +7,9 @@ inputs:
   version:
     required: true
     description: 'The version number'
+  environment:
+    required: true
+    description: 'The environment to update'
 runs:
   using: composite
   steps:
@@ -14,8 +17,16 @@ runs:
       shell: bash
       run: |
         echo "EXPO_PUBLIC_APP_VERSION=${{ inputs.version }}" >> $GITHUB_ENV
+
+    - name: Map environment
+      uses: ./.github/actions/map-environment
+      id: map-env
+      with:
+        environment: ${{ inputs.environment }}
+
     - name: Perform OTA Update
       shell: bash
       run: |
         eas update --channel ${{ inputs.channel }} \
+          --environment ${{ steps.map-env.outputs.expo_environment }} \
           --message "Update ${{ inputs.channel }} to ${{ inputs.version }}"
