@@ -79,6 +79,7 @@ jobs:
           VARS: ${{ toJson(vars) }}
         with:
           channel: ${{ github.event.inputs.environment }}
+          environment: ${{ github.event.inputs.environment }}
           version: ${{ steps.version.outputs.version }}
 
       - name: Generate Release Notes
