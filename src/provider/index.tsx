@@ -29,11 +29,28 @@ export const Provider = ({ children }: PropsWithChildren) => {
   useOTAUpdates()
 
   useEffect(() => {
+    console.log('[DEBUG] Version check status:', {
+      shouldForceUpdate,
+      shouldRecommendUpdate,
+      isOnline,
+    })
+
     // isAppOutdated is null until logic runs
     if (!shouldForceUpdate && !shouldRecommendUpdate) {
+      console.log('[DEBUG] Hiding splash screen')
       void SplashScreen.hideAsync()
+    } else {
+      console.log('[DEBUG] Keeping splash screen visible due to version check')
     }
-  }, [shouldForceUpdate, shouldRecommendUpdate])
+
+    // Temporary safety timeout to force hide splash screen after 5 seconds
+    const safetyTimeout = setTimeout(() => {
+      console.log('[DEBUG] Safety timeout reached, forcing splash screen hide')
+      void SplashScreen.hideAsync()
+    }, 5000)
+
+    return () => clearTimeout(safetyTimeout)
+  }, [shouldForceUpdate, shouldRecommendUpdate, isOnline])
 
   return (
     <GestureHandlerRootView style={commonStyles.f1}>
