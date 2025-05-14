@@ -15,7 +15,7 @@ void SplashScreen.preventAutoHideAsync()
 setFontScaling()
 
 export const Provider = ({ children }: PropsWithChildren) => {
-  const { shouldForceUpdate, shouldRecommendUpdate } = useStoreUpdate({
+  const { shouldForceUpdate, shouldRecommendUpdate, markRecommendedUpdate } = useStoreUpdate({
     data: {
       recommendedIOSVersion: '1.0.0',
       recommendedAndroidVersion: '1.0.0',
@@ -39,7 +39,14 @@ export const Provider = ({ children }: PropsWithChildren) => {
     <GestureHandlerRootView style={commonStyles.f1}>
       {children}
       {shouldForceUpdate && <ForcedUpdate cancelable={false} />}
-      {shouldRecommendUpdate && <ForcedUpdate />}
+      {shouldRecommendUpdate && (
+        <ForcedUpdate
+          onCancel={() => {
+            void SplashScreen.hideAsync()
+            markRecommendedUpdate()
+          }}
+        />
+      )}
       {isOnline === false && <OfflineMessage />}
     </GestureHandlerRootView>
   )
