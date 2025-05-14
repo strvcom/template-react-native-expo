@@ -195,7 +195,7 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
 We highly recommend using EAS to manage environments.
 
-We map our environment names to the Expo environments names.
+We map our environment names to these Expo environment names.
 
 ```
 "dev": "development",
@@ -210,7 +210,7 @@ To add new environment variable:
 - Or through eas cli:
 
 ```
-eas env:create [EXPO_ENVIRONMENT] --name <name> --value <value>
+eas env:create <EXPO_ENVIRONMENT> --name <name> --value <value>
 ```
 
 > ⚠️ All variables must use the `EXPO_PUBLIC` prefix! e.g., `EXPO_PUBLIC_API_URL`
@@ -218,5 +218,5 @@ eas env:create [EXPO_ENVIRONMENT] --name <name> --value <value>
 You can also pull variables from EAS to your local `.env` file:
 
 ```
-eas env:pull [EXPO_ENVIRONMENT]
+eas env:pull <EXPO_ENVIRONMENT> --path <path-to-env-file>
 ```
