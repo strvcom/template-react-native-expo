@@ -20,6 +20,7 @@ const config = {
   expoProjectId: '46e1c780-9495-4650-93c8-7f465bf4e1d0',
   expoProjectOwner: 'strv-internal',
   appScheme: 'template-react-native-expo',
+  otaUpdateUrl: 'https://u.expo.dev/46e1c780-9495-4650-93c8-7f465bf4e1d0',
 }
 
 // Your project defaults
@@ -95,6 +96,7 @@ const expoConfig: ExpoConfig = {
   },
   updates: {
     fallbackToCacheTimeout,
+    url: config.otaUpdateUrl,
   },
   assetBundlePatterns: ['**/*'],
   ios: {
