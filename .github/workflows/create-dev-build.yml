@@ -43,22 +43,9 @@ jobs:
           version_bump: 'none'
           increment: false
 
-      - name: Update eas.json
-        uses: ./.github/actions/update-eas
-        with:
-          environment: dev
-          version: ${{ steps.version.outputs.version }}
-          build_number: ${{ vars.BUILD_NUMBER }}
-          vars: ${{ toJson(vars) }}
-
       - name: Build Application
         uses: ./.github/actions/build
         with:
           environment: ${{ github.event.inputs.environment }}
           platform: ${{ github.event.inputs.platform }}
           auto_submit: false
-
-      - name: Revert eas.json changes
-        if: always()
-        run: |
-          git restore eas.json

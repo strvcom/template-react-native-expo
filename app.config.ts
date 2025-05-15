@@ -20,6 +20,7 @@ declare const process: {
 //   expoProjectId: '46e1c780-9495-4650-93c8-7f465bf4e1d0',
 //   expoProjectOwner: 'strv-internal',
 //   appScheme: 'template-react-native-expo',
+//   otaUpdateUrl: 'https://u.expo.dev/46e1c780-9495-4650-93c8-7f465bf4e1d0',
 // }
 
 // Your project defaults
@@ -28,6 +29,7 @@ const config = {
   expoProjectId: undefined,
   expoProjectOwner: undefined,
   appScheme: '',
+  otaUpdateUrl: '',
 }
 
 const environment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
@@ -69,9 +71,8 @@ const plugins: ExpoConfig['plugins'] = [
   ['expo-router'],
 ]
 
-// UPDATE VERSION AND BUILDNUMBER
+// UPDATE VERSION
 const version = process.env.EXPO_PUBLIC_APP_VERSION || packageJson.version
-const buildNumber = process.env.EXPO_PUBLIC_BUILD_NUMBER || '1'
 
 const fallbackToCacheTimeout = 0
 const otaUpdatePriority: OtaUpdatePriority = 'normal'
@@ -96,10 +97,10 @@ const expoConfig: ExpoConfig = {
   },
   updates: {
     fallbackToCacheTimeout,
+    url: config.otaUpdateUrl,
   },
   assetBundlePatterns: ['**/*'],
   ios: {
-    buildNumber,
     supportsTablet: false,
     bundleIdentifier: appIdentifier,
     config: {
@@ -113,7 +114,6 @@ const expoConfig: ExpoConfig = {
     bundler: 'metro',
   },
   android: {
-    versionCode: parseInt(buildNumber, 10),
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',

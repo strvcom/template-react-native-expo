@@ -1,6 +1,6 @@
 import { useMMKVDevTools } from '@dev-plugins/react-native-mmkv'
 import * as SplashScreen from 'expo-splash-screen'
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren, useCallback, useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { OfflineMessage } from '~/features/offlineCheck/components/OfflineMessage'
@@ -15,7 +15,7 @@ void SplashScreen.preventAutoHideAsync()
 setFontScaling()
 
 export const Provider = ({ children }: PropsWithChildren) => {
-  const { shouldForceUpdate, shouldRecommendUpdate } = useStoreUpdate({
+  const { shouldForceUpdate, shouldRecommendUpdate, markRecommendedUpdate } = useStoreUpdate({
     data: {
       recommendedIOSVersion: '1.0.0',
       recommendedAndroidVersion: '1.0.0',
@@ -35,11 +35,16 @@ export const Provider = ({ children }: PropsWithChildren) => {
     }
   }, [shouldForceUpdate, shouldRecommendUpdate])
 
+  const onCancel = useCallback(() => {
+    void SplashScreen.hideAsync()
+    markRecommendedUpdate()
+  }, [markRecommendedUpdate])
+
   return (
     <GestureHandlerRootView style={commonStyles.f1}>
       {children}
       {shouldForceUpdate && <ForcedUpdate cancelable={false} />}
-      {shouldRecommendUpdate && <ForcedUpdate />}
+      {shouldRecommendUpdate && <ForcedUpdate onCancel={onCancel} />}
       {isOnline === false && <OfflineMessage />}
     </GestureHandlerRootView>
   )

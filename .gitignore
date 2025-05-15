@@ -15,6 +15,7 @@ web-build/
 
 # env
 .env
+.env.local
 
 # native folers
 android/

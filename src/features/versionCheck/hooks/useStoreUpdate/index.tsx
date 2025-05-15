@@ -1,4 +1,5 @@
 import packageJson from 'package.json'
+import { useCallback } from 'react'
 import { Platform } from 'react-native'
 import semver from 'semver'
 
@@ -21,7 +22,7 @@ type UseStoreUpdateProps = {
 }
 
 export const useStoreUpdate = ({ data, loading }: UseStoreUpdateProps) => {
-  const [recommendedUpdate] = useStorageString(StorageKeys.RecommendedUpdate)
+  const [recommendedUpdate, setRecommendedUpdate] = useStorageString(StorageKeys.RecommendedUpdate)
 
   const recommendedVersion = Platform.select({
     ios: data?.recommendedIOSVersion,
@@ -35,6 +36,10 @@ export const useStoreUpdate = ({ data, loading }: UseStoreUpdateProps) => {
 
   const shouldForceUpdate = !getIfVersionIsSupported(forceUpdateVersion)
 
+  const markRecommendedUpdate = useCallback(() => {
+    void setRecommendedUpdate(recommendedVersion)
+  }, [recommendedVersion, setRecommendedUpdate])
+
   const shouldRecommendUpdate =
     shouldForceUpdate || recommendedUpdate === recommendedVersion
       ? false
@@ -46,5 +51,6 @@ export const useStoreUpdate = ({ data, loading }: UseStoreUpdateProps) => {
     shouldForceUpdate,
     recommendedVersion,
     forceUpdateVersion,
+    markRecommendedUpdate,
   }
 }

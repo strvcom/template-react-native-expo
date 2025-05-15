@@ -4,7 +4,13 @@ import { View, Alert, AlertButton } from 'react-native'
 
 import { getStoreLink } from '~/utils/getStoreLink'
 
-export const ForcedUpdate = ({ cancelable = true }: { cancelable?: boolean }) => {
+export const ForcedUpdate = ({
+  cancelable = true,
+  onCancel,
+}: {
+  cancelable?: boolean
+  onCancel?: () => void
+}) => {
   useEffect(() => {
     const handleUpdate = async () => {
       const storeLink = getStoreLink()
@@ -18,7 +24,7 @@ export const ForcedUpdate = ({ cancelable = true }: { cancelable?: boolean }) =>
 
     const buttonCancel = {
       text: 'Not now',
-      onPress: () => {},
+      onPress: onCancel,
     }
 
     const buttonUpdate = {
@@ -32,7 +38,7 @@ export const ForcedUpdate = ({ cancelable = true }: { cancelable?: boolean }) =>
       [cancelable && buttonCancel, buttonUpdate].filter(Boolean) as AlertButton[],
       { cancelable },
     )
-  }, [cancelable])
+  }, [cancelable, onCancel])
 
   return <View />
 }
