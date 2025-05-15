@@ -37,6 +37,7 @@
       "extends": "base",
       "distribution": "store",
       "channel": "production",
+      "autoIncrement": true,
       "environment": "production"
     }
   },
