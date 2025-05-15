@@ -40,5 +40,16 @@
       "environment": "production"
     }
   },
-  "submit": {}
+  "submit": {
+    "staging": {
+      "ios": {
+        "ascAppId": "6670311845",
+        "appleTeamId": "EAVQTDVRT7"
+      },
+      "android": {
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
+  }
 }

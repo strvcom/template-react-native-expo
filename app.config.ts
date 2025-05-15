@@ -15,22 +15,22 @@ declare const process: {
 }
 
 // Template defaults uncomment if you are working on the template
-// const config = {
-//   appIdentifierBase: 'com.strv.rntemplate',
-//   expoProjectId: '46e1c780-9495-4650-93c8-7f465bf4e1d0',
-//   expoProjectOwner: 'strv-internal',
-//   appScheme: 'template-react-native-expo',
-//   otaUpdateUrl: 'https://u.expo.dev/46e1c780-9495-4650-93c8-7f465bf4e1d0',
-// }
+const config = {
+  appIdentifierBase: 'com.strv.rntemplate',
+  expoProjectId: '46e1c780-9495-4650-93c8-7f465bf4e1d0',
+  expoProjectOwner: 'strv-internal',
+  appScheme: 'template-react-native-expo',
+  otaUpdateUrl: 'https://u.expo.dev/46e1c780-9495-4650-93c8-7f465bf4e1d0',
+}
 
 // Your project defaults
-const config = {
-  appIdentifierBase: undefined,
-  expoProjectId: undefined,
-  expoProjectOwner: undefined,
-  appScheme: '',
-  otaUpdateUrl: '',
-}
+// const config = {
+//   appIdentifierBase: undefined,
+//   expoProjectId: undefined,
+//   expoProjectOwner: undefined,
+//   appScheme: '',
+//   otaUpdateUrl: '',
+// }
 
 const environment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
 
