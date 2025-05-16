@@ -1,9 +1,9 @@
+import { getEnvironmentInfo } from 'app.config'
+import easJson from 'eas.json'
 import { Platform } from 'react-native'
 
-import { config } from '~/config'
-
-const applicationIdProd = config.applicationIdProd
-const appleIdProd = config.appleIdProd
+const applicationIdProd = getEnvironmentInfo('production').appIdentifier
+const appleIdProd = easJson.submit.production.ios.ascAppId
 
 type StoreLink = {
   storeURI: string

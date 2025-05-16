@@ -16,6 +16,9 @@ importers:
       expo:
         specifier: ^52.0.44
         version: 52.0.44(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
+      expo-asset:
+        specifier: ~11.0.5
+        version: 11.0.5(expo@52.0.44(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
       expo-build-properties:
         specifier: ~0.13.2
         version: 0.13.2(expo@52.0.44(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))
@@ -25,6 +28,9 @@ importers:
       expo-dev-client:
         specifier: ~5.0.20
         version: 5.0.20(expo@52.0.44(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))
+      expo-font:
+        specifier: ~13.0.4
+        version: 13.0.4(expo@52.0.44(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react@18.3.1)
       expo-image:
         specifier: ~2.0.7
         version: 2.0.7(expo@52.0.44(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@expo/metro-runtime@4.0.1(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native-web@0.19.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1)
