@@ -41,5 +41,12 @@
       "environment": "production"
     }
   },
-  "submit": {}
+  "submit": {
+    "production": {
+      "ios": {
+        "ascAppId": "1234567890",
+        "appleTeamId": "1234567890"
+      }
+    }
+  }
 }
