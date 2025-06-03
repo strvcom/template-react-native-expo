@@ -1,6 +1,6 @@
 Welcome, Copilot! This file provides context and coding guidelines for assisting with this React Native project. Instructions are divided
 into two sections: General Instructions and Project-Specific Instructions. General Instructions are shared across all projects within the
-RN team and include best practices applicable across projects. These should be updated as changes are made to the RN project template.
+RN team and include best practices applicable across projects. These should be updated via PRs to RN project template.
 
 Project-Specific Instructions take precedence and can override General Instructions. These are tailored to the specific needs of the project
 and are updated throughout the development process.
