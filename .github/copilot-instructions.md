@@ -2,8 +2,9 @@ Welcome, Copilot! This file provides context and coding guidelines for assisting
 into two sections: General Instructions and Project-Specific Instructions. General Instructions are shared across all projects within the
 RN team and include best practices applicable across projects. These should be updated via PRs to RN project template.
 
-Project-Specific Instructions take precedence and can override General Instructions. These are tailored to the specific needs of the project
-and are updated throughout the development process.
+When thinking of solutions, combine general instructions and project-specific instructions. However, project-specific instructions take
+precedence and can override general instructions. Project-specific instructions are tailored to the specific needs of the project and are
+updated throughout the development process.
 
 # ------------------------ GENERAL INSTRUCTIONS ------------------------
 
