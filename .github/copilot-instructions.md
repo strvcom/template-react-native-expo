@@ -39,8 +39,7 @@ updated throughout the development process.
 ### Animations
 
 - Use react-native-reanimated and Skia for animations and drawing.
-- Avoid thread jumping in animations to ensure smooth performance. This means, try to access .value
-  of sharedValue in worklets, not on JS thread.
+- Avoid thread jumping in animations to ensure smooth performance. This means, try to access .value of sharedValue in worklets, not on JS thread.
 
 ### Avoid
 
