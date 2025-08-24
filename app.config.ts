@@ -32,7 +32,7 @@ const config = {
   otaUpdateUrl: '',
 }
 
-const environment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
+const detectedEnvironment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
 
 // your custom fonts
 const fonts = ['./assets/fonts/Domine-Bold.ttf']
@@ -40,7 +40,9 @@ const fonts = ['./assets/fonts/Domine-Bold.ttf']
 // prefetched/embedded assets, can be referenced as source='strv_logo' https://docs.expo.dev/versions/latest/sdk/asset/#configurable-properties
 const assets = ['./assets/images/strv_logo.png']
 
-const getEnvironmentInfo = (): {
+export const getEnvironmentInfo = (
+  environment: Environment,
+): {
   name: ExpoConfig['name']
   appIdentifier: IOS['bundleIdentifier']
   icon: ExpoConfig['icon']
@@ -62,7 +64,7 @@ const getEnvironmentInfo = (): {
   }
 }
 
-const { name, appIdentifier, icon } = getEnvironmentInfo()
+const { name, appIdentifier, icon } = getEnvironmentInfo(detectedEnvironment)
 
 const plugins: ExpoConfig['plugins'] = [
   ['expo-build-properties'],
