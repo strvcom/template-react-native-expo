@@ -2,6 +2,8 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "noUnusedLocals": true,
+    "incremental": true,
     "typeRoots": ["./src/types", "node_modules/@types"],
     "baseUrl": ".",
     "paths": {
