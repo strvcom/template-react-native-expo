@@ -12,7 +12,10 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Run ESLint
-        run: pnpm lint
+        run: pnpm lint --max-warnings=0
+
+      - name: Run Spellcheck
+        run: pnpm spellcheck
 
       - name: Run Prettier
         run: pnpm format:check
