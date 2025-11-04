@@ -17,7 +17,8 @@
     // React Native
     "Pressable",
     // Others
-    "itms"
+    "itms",
+    "eslintcache"
   ],
   "ignorePaths": ["node_modules", "ios", "android", "assets", "coverage", "CHANGELOG.md"]
 }
