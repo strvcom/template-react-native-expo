@@ -17,10 +17,10 @@
     "clean:folders": "rm -rf ios && rm -rf android",
     "format:check": "prettier --check '**/*.{ts,tsx,md,json}'",
     "format:fix": "prettier --write '**/*.{ts,tsx,md,json}'",
-    "lint": "eslint --concurrency=auto",
+    "lint": "eslint --cache --concurrency=auto",
     "spellcheck": "cspell --no-progress --gitignore **/*.{js,ts,tsx,json,md}",
     "test": "pnpm jest",
-    "lint:fix": "eslint --concurrency=auto",
+    "lint:fix": "eslint --cache --concurrency=auto",
     "type:check": "tsc",
     "preinstall": "npx only-allow pnpm"
   },
