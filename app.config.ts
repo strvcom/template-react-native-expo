@@ -27,7 +27,7 @@ const config = {
   appIdentifierBase: undefined,
   expoProjectId: undefined,
   expoProjectOwner: undefined,
-  appScheme: '',
+  appScheme: 'template-react-native-expo',
   otaUpdateUrl: '',
 }
 
