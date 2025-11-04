@@ -20,7 +20,7 @@
     "lint": "eslint --cache --concurrency=auto",
     "spellcheck": "cspell --no-progress --gitignore **/*.{js,ts,tsx,json,md}",
     "test": "pnpm jest",
-    "lint:fix": "eslint --cache --concurrency=auto",
+    "lint:fix": "eslint --cache --concurrency=auto --fix",
     "type:check": "tsc",
     "preinstall": "npx only-allow pnpm"
   },
