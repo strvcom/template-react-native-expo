@@ -17,16 +17,16 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
         options={{
           title: 'Dashboard',
         }}
+        name="index"
       />
       <Tabs.Screen
-        name="profile"
         options={{
           title: 'Profile',
         }}
+        name="profile"
       />
     </Tabs>
   )

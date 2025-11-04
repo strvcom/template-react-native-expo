@@ -1,6 +1,6 @@
 import { useMMKVDevTools } from '@dev-plugins/react-native-mmkv'
 import * as SplashScreen from 'expo-splash-screen'
-import React, { PropsWithChildren, useCallback, useEffect } from 'react'
+import React, { type PropsWithChildren, useCallback, useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { OfflineMessage } from '~/features/offlineCheck/components/OfflineMessage'

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 })
 
 export const Button = ({ text, onPress }: ButtonProps) => (
-  <TouchableOpacity onPress={onPress} style={styles.wrapper}>
+  <TouchableOpacity style={styles.wrapper} onPress={onPress}>
     <Text style={styles.text}>{text}</Text>
   </TouchableOpacity>
 )

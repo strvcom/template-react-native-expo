@@ -1,14 +1,13 @@
-/* eslint-disable import/consistent-type-specifier-style */
-import { ExpoConfig, IOS } from '@expo/config-types'
+import type { ExpoConfig, IOS } from '@expo/config-types'
 
 import packageJson from './package.json'
 
 import type { OtaUpdatePriority } from '~/features/versionCheck/hooks/useOTAUpdate'
-import { Environment } from '~/types/env'
+import type { Environment } from '~/types/env'
 
 declare const process: {
   env: {
-    EXPO_PUBLIC_APP_ENV: Environment
+    EXPO_PUBLIC_APP_ENV?: Environment
     EXPO_PUBLIC_APP_VERSION: string
     EXPO_PUBLIC_BUILD_NUMBER: string
   }
@@ -32,7 +31,7 @@ const config = {
   otaUpdateUrl: '',
 }
 
-const detectedEnvironment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
+const detectedEnvironment = process.env.EXPO_PUBLIC_APP_ENV ?? 'dev'
 
 // your custom fonts
 const fonts = ['./assets/fonts/Domine-Bold.ttf']

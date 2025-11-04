@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
@@ -10,8 +8,8 @@ import { Text, TextInput } from 'react-native'
 const MAXIMUM_FONT_SCALE = 1.25
 
 export const setFontScaling = () => {
-  Text.defaultProps = Text.defaultProps || {}
+  Text.defaultProps = Text.defaultProps ?? {}
   Text.defaultProps.maxFontSizeMultiplier = MAXIMUM_FONT_SCALE
-  TextInput.defaultProps = TextInput.defaultProps || {}
+  TextInput.defaultProps = TextInput.defaultProps ?? {}
   TextInput.defaultProps.maxFontSizeMultiplier = MAXIMUM_FONT_SCALE
 }
