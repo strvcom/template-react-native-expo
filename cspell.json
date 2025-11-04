@@ -13,6 +13,9 @@
     // Libraries
     "zustand",
     "mmkv",
+    "netinfo",
+    // React Native
+    "Pressable",
     // Others
     "itms"
   ],
