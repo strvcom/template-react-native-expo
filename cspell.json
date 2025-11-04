@@ -14,10 +14,15 @@
     "zustand",
     "mmkv",
     "netinfo",
+    "Notifee",
+    "Nativewind",
+    "Unistyles",
+    "unimodules",
     // React Native
     "Pressable",
     // Others
     "itms",
+    "nent",
     "eslintcache"
   ],
   "ignorePaths": ["node_modules", "ios", "android", "assets", "coverage", "CHANGELOG.md"]
