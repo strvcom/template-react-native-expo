@@ -1,0 +1,17 @@
+name: ESLint
+description: 'ESlint with caching'
+
+runs:
+  using: composite
+  steps:
+    - name: Cache ESLint
+      uses: actions/cache@v4
+      with:
+        path: .eslintcache
+        key: eslint-cache-${{ runner.os }}-${{ hashFiles('eslint.config.mjs', 'package.json', 'pnpm-lock.yaml') }}
+        restore-keys: |
+          eslint-cache-${{ runner.os }}-
+
+    - name: Run ESLint
+      shell: bash
+      run: pnpm lint --max-warnings=0 --cache
