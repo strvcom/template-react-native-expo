@@ -14,4 +14,4 @@ runs:
 
     - name: Run ESLint
       shell: bash
-      run: pnpm lint --max-warnings=0 --cache
+      run: pnpm lint --max-warnings=0 --cache --concurrency=2
