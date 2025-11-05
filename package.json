@@ -9,7 +9,7 @@
     "pnpm": ">=9"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -19,10 +19,9 @@
     "format:fix": "prettier --write '**/*.{ts,tsx,md,json}'",
     "lint": "eslint --cache --concurrency=auto",
     "spellcheck": "cspell --no-progress --gitignore **/*.{js,ts,tsx,json,md}",
-    "test": "pnpm jest",
+    "test": "jest",
     "lint:fix": "eslint --cache --concurrency=auto --fix",
-    "type:check": "tsc --noEmit",
-    "preinstall": "npx only-allow pnpm"
+    "type:check": "tsc --noEmit"
   },
   "dependencies": {
     "@dev-plugins/react-native-mmkv": "^0.4.0",
