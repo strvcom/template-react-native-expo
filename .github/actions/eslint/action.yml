@@ -1,5 +1,5 @@
 name: ESLint
-description: 'ESlint with caching'
+description: 'ESLint with caching'
 
 runs:
   using: composite
