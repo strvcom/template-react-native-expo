@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["softwareTerms", "typescript", "node"],
+  "words": [
+    // Project-specific terms
+    "strv",
+    "rntemplate",
+    "Testflight",
+    // Fonts
+    "Domine",
+    // Libraries
+    "zustand",
+    "mmkv",
+    "netinfo",
+    "Notifee",
+    "Nativewind",
+    "Unistyles",
+    "unimodules",
+    // React Native
+    "Pressable",
+    // Others
+    "itms",
+    "nent",
+    "eslintcache"
+  ],
+  "ignorePaths": ["node_modules", "ios", "android", "assets", "coverage", "CHANGELOG.md"]
+}

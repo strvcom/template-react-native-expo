@@ -1,6 +1,6 @@
 import * as Linking from 'expo-linking'
 import { useEffect } from 'react'
-import { View, Alert, AlertButton } from 'react-native'
+import { View, Alert, type AlertButton } from 'react-native'
 
 import { getStoreLink } from '~/utils/getStoreLink'
 

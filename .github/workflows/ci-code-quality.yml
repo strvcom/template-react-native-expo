@@ -5,14 +5,17 @@ on: [pull_request]
 jobs:
   code-quality-and-tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 14
+    timeout-minutes: 5
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/setup
 
       - name: Run ESLint
-        run: pnpm lint
+        uses: ./.github/actions/eslint
+
+      - name: Run Spellcheck
+        run: pnpm spellcheck
 
       - name: Run Prettier
         run: pnpm format:check

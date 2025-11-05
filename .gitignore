@@ -9,6 +9,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+*.tsbuildinfo
+.eslintcache
 
 # macOS
 .DS_Store
@@ -17,7 +19,7 @@ web-build/
 .env
 .env.local
 
-# native folers
+# native folders
 android/
 ios/
 # @generated expo-cli sync-7b54852541209080ac8fbd000256f25215d6b585

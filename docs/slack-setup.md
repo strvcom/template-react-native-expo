@@ -7,7 +7,7 @@ But there is some additional setup both in Slack and on EAS to make this work.
 - **Staging and Production Notifications:**
 
 1.  Open Slack
-2.  In the left sidebar, click on `... More` and select `Automations`
+2.  In the left sidebar, click on `... More` and select `Tools`
 3.  Click on `New Workflow`
 4.  name it `[App name] [Env] [Release]`
 5.  Choose `from a webhook` option

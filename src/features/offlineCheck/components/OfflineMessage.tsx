@@ -28,8 +28,8 @@ export const OfflineMessage = () => {
     >
       <Pressable
         hitSlop={3}
-        onPress={handleReload}
         style={{ flexDirection: 'row', alignItems: 'center' }}
+        onPress={handleReload}
       >
         <Text>{`You are offline.${showReload ? ' Stuck?' : ''}`}</Text>
         {showReload && <Text>- try reloading the app</Text>}
