@@ -1,0 +1,4 @@
+android/**/*
+ios/**/*
+
+**/@react-native-masked-view/
