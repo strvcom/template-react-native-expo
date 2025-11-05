@@ -81,7 +81,6 @@ const otaUpdatePriority: OtaUpdatePriority = 'normal'
 const expoConfig: ExpoConfig = {
   owner: config.expoProjectOwner,
   name,
-  newArchEnabled: true,
   slug: config.appScheme,
   version,
   runtimeVersion: {
@@ -100,7 +99,6 @@ const expoConfig: ExpoConfig = {
     fallbackToCacheTimeout,
     url: config.otaUpdateUrl,
   },
-  assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: false,
     bundleIdentifier: appIdentifier,
@@ -127,7 +125,6 @@ const expoConfig: ExpoConfig = {
       { action: 'VIEW', data: { scheme: 'tel' } },
     ],
   },
-  jsEngine: 'hermes',
   plugins,
   extra: {
     fallbackToCacheTimeout,
@@ -139,6 +136,7 @@ const expoConfig: ExpoConfig = {
   experiments: {
     tsconfigPaths: true,
     typedRoutes: true,
+    reactCompiler: true,
   },
 }
 
