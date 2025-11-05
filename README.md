@@ -109,7 +109,7 @@ Not included but useful:
 
 ### Linting Tools
 
-- We are using @strv/eslint-config-react-native config which is an extension of Expo Universe config with couple of extra rule changes we have found useful.
+- We are using @strv/eslint-config-react-native config which is an extension of Expo ESLint config with couple of extra rule changes we have found useful.
 - We are using mostly standard prettier config.
 - Husky is used to run linting and formatting before committing and pushing code.
 - Lint Staged is used to run linting and formatting before committing.
