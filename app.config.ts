@@ -86,6 +86,7 @@ const expoConfig: ExpoConfig = {
   runtimeVersion: {
     policy: 'fingerprint',
   },
+  buildCacheProvider: 'eas',
   scheme: config.appScheme,
   orientation: 'portrait',
   icon,
