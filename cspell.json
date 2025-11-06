@@ -23,7 +23,8 @@
     // Others
     "itms",
     "nent",
-    "eslintcache"
+    "eslintcache",
+    "worklets"
   ],
   "ignorePaths": ["node_modules", "ios", "android", "assets", "coverage", "CHANGELOG.md"]
 }
