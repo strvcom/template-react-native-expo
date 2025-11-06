@@ -21,7 +21,7 @@
     "spellcheck": "cspell --no-progress --gitignore **/*.{js,ts,tsx,json,md}",
     "test": "jest",
     "lint:fix": "eslint --cache --concurrency=auto --fix",
-    "type:check": "tsc --noEmit"
+    "type:check": "tsc"
   },
   "dependencies": {
     "@dev-plugins/react-native-mmkv": "^0.4.0",
