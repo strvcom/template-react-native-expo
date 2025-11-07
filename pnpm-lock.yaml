@@ -39,7 +39,7 @@ importers:
         version: 8.0.8(expo@54.0.22)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       expo-router:
         specifier: ~6.0.14
-        version: 6.0.14(b241ecae083921f1e25728a56027840d)
+        version: 6.0.14(cf5e0328aa2d912512af08c3c29b7c63)
       expo-splash-screen:
         specifier: ~31.0.10
         version: 31.0.10(expo@54.0.22)
@@ -95,9 +95,9 @@ importers:
       '@strv/eslint-config-react-native':
         specifier: ^4.1.0
         version: 4.1.0(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.3(eslint@9.39.1)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.1))(eslint@9.39.1)(typescript@5.9.3)
-      '@testing-library/react-hooks':
-        specifier: ^8.0.1
-        version: 8.0.1(@types/react@19.1.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@testing-library/react-native':
+        specifier: ^13.3.3
+        version: 13.3.3(jest@29.7.0(@types/node@24.10.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react-test-renderer@19.1.0(react@19.1.0))(react@19.1.0)
       '@types/jest':
         specifier: ^29.5.14
         version: 29.5.14
@@ -109,7 +109,7 @@ importers:
         version: 7.7.1
       cspell:
         specifier: ^9.2.2
-        version: 9.2.2
+        version: 9.3.0
       dotenv:
         specifier: ^16.6.1
         version: 16.6.1
@@ -119,6 +119,9 @@ importers:
       eslint:
         specifier: ^9.39.1
         version: 9.39.1
+      eslint-plugin-testing-library:
+        specifier: ^7.13.3
+        version: 7.13.3(eslint@9.39.1)(typescript@5.9.3)
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -969,45 +972,45 @@ packages:
       conventional-commits-parser:
         optional: true
 
-  '@cspell/cspell-bundled-dicts@9.2.2':
+  '@cspell/cspell-bundled-dicts@9.3.0':
     resolution:
       {
-        integrity: sha512-W3FKgb89DwMuQEVWz0dPH9uZqC8w+ylpbtmXuevflw3SLtGPyllMvf/1T6tcqIkg3KEWoRYFxjpJWyoOjJkZGw==,
+        integrity: sha512-rf5SAdg1EmgCBIo/zFEAIjydlO+VtVLR6oUVeD4rIE7zIPrPdJb0OMUGsxfOH7uePyhcfIxPYTjneQla0e5Ljw==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/cspell-json-reporter@9.2.2':
+  '@cspell/cspell-json-reporter@9.3.0':
     resolution:
       {
-        integrity: sha512-7nTqnnRCyQB+bTmIuBR4aRwV5JHymckmz1snCF+ItjDSvlc3qzjxldG8ao5zm34h+b/8YCvdMU9B92eHBt803w==,
+        integrity: sha512-bvpLNS73/SN3969ksipVSYDdMYsxYZqeBDkcA2yKJZ9eHRY/tHUbjTTIvyvlCLODzUiop2RFGrvDPcjyam/FoQ==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/cspell-pipe@9.2.2':
+  '@cspell/cspell-pipe@9.3.0':
     resolution:
       {
-        integrity: sha512-YOdbp1uoKMkYy92qxMjoOxcqcR6LEVDus+72C4X9L8eJ2b+CBO3VaVqU16Y7OQGjYMnukYgB6eyTh8YFo9uBRw==,
+        integrity: sha512-LEl2TYvXnGk/D+Vjq5DBsNQuLsmn3/2QV9dxteK5e323pJRcpEosq76elzsYpVLuB3s1hp2pFQhppWk69Gx2CQ==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/cspell-resolver@9.2.2':
+  '@cspell/cspell-resolver@9.3.0':
     resolution:
       {
-        integrity: sha512-5tST2xoU8xbXihr1bdQ6pfcScQ3PkFpKKhFGClVfqS0yf/CKYURqzJlRDVjrFZsl+PT6tw/Jdt0E9Wwp1X1Qgw==,
+        integrity: sha512-AOIC6xV2XuEWKy/K/CUBHQ7caavDnjb2zflP25j7fGMWpS/GIGKLPjgGQUHFbgNSSy9UY2ZGV7MVCsnD7moW5Q==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/cspell-service-bus@9.2.2':
+  '@cspell/cspell-service-bus@9.3.0':
     resolution:
       {
-        integrity: sha512-AxJuw/YPJkz1Ali5mA+OW9y4JiJzb2U7H4pGYq0nRB/mWwI/xtFjuWVkI+BhwrA2P6hHdifu0JdxSLqW4IYpPQ==,
+        integrity: sha512-e9ZfG1VJ/kbzh2LBW/TJImEWcEUuBMYSDnIYbQCsclKAWyF3g8eLGxoX7xDbZ82USo4IU2tqYmrDvPcUD8CHxg==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/cspell-types@9.2.2':
+  '@cspell/cspell-types@9.3.0':
     resolution:
       {
-        integrity: sha512-/1dRFQ3sEY9Yo+f3w0A8MFJ0BOapQc1uFjlMF19c3uoD/e4PpNLpL1qXY4FeLWKDk1D9VT8SL93J+lIwEi5bvg==,
+        integrity: sha512-WN3R4nqQ7BEgS8UEoPIwNBRuSFT/8GImqXmlx7EHmzBAhevWjF3IDF+OEtokRJ95qik6a4xqJJTJgi624UxDFg==,
       }
     engines: { node: '>=20' }
 
@@ -1364,31 +1367,31 @@ packages:
         integrity: sha512-Mqutb8jbM+kIcywuPQCCaK5qQHTdaByoEO2J9LKFy3sqAdiBogNkrplqUK0HyyRFgCfbJUgjz3N85iCMcWH0JA==,
       }
 
-  '@cspell/dynamic-import@9.2.2':
+  '@cspell/dynamic-import@9.3.0':
     resolution:
       {
-        integrity: sha512-RHQLp0iYcWuK0MGiUBA6dgEOCdI29kZTiBRVcJM/Pzvhvs8j9pzBTkMesZAJ7XOSFz2kU+skRMBsFd774dmYTA==,
+        integrity: sha512-c+coQC+bM1PuHX/Blg1mp2ODPZmMnWzXrZwX/JKpnY0uxcAjUrcmGjdjsV1/S/7ph9OJHvZL5KITCRBgFD1Kqg==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/filetypes@9.2.2':
+  '@cspell/filetypes@9.3.0':
     resolution:
       {
-        integrity: sha512-oM+cqipbZ4PNxQcKP9sKOeRKBG+oM3NKO3To1FyxYxvnUG7DukW2yH6BS0/GUY7qK+oSftuq5d6DXEAl9wzbEQ==,
+        integrity: sha512-pH413zKkMd5lh40HyLNgYfTacIryxsHDhxWShyxS7M+8W9MPl+tmzIHlSEvEVcKUUe3Qpowxo6b6Xkg7taRp/A==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/strong-weak-map@9.2.2':
+  '@cspell/strong-weak-map@9.3.0':
     resolution:
       {
-        integrity: sha512-Z7rd7NwHaoH/d/Ds97Rv042WS9PgpVdqgO2X0ehYZmgj2E0LIq2MTkIJMheUrSn37D0PW/suroKh6hN15pJtpQ==,
+        integrity: sha512-s8/QwCPWvWRXZsAzUbWzv/cgL0xjo7p+5QveThFmD3vODX3IlrC+MfnLpEWQAyTQ7CqB5bRuBVAR2cU9gpzZTA==,
       }
     engines: { node: '>=20' }
 
-  '@cspell/url@9.2.2':
+  '@cspell/url@9.3.0':
     resolution:
       {
-        integrity: sha512-gvLprhrArvLP/rnC8b766dA80EXwBbzXqb9tNDRk1esQV7d3uS1Ftk1970MRlAfLg1pG6V+3C4UrB6WOB/rMCQ==,
+        integrity: sha512-EY4Niv1apHP9RN1mMRP/AHm6xr14fhK+PXnytang6SVwX+tbAEYwwlnFjoEDO6ygPsqs5BBiQ4N7TiSlfmXfmw==,
       }
     engines: { node: '>=20' }
 
@@ -1833,6 +1836,13 @@ packages:
       }
     engines: { node: ^14.15.0 || ^16.10.0 || >=18.0.0 }
 
+  '@jest/diff-sequences@30.0.1':
+    resolution:
+      {
+        integrity: sha512-n5H8QLDJ47QqbCNn5SuFjCRDrOLEZ0h8vAHCK5RL9Ls7Xa8AQLa/YxAc9UjFqoEDM48muwtBGjtMY5cr0PLDCw==,
+      }
+    engines: { node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0 }
+
   '@jest/environment@29.7.0':
     resolution:
       {
@@ -1861,6 +1871,13 @@ packages:
       }
     engines: { node: ^14.15.0 || ^16.10.0 || >=18.0.0 }
 
+  '@jest/get-type@30.1.0':
+    resolution:
+      {
+        integrity: sha512-eMbZE2hUnx1WV0pmURZY9XoXPkUYjpc55mb0CrhtdWLtzMQPFvu/rZkTLZFTsdaVQa+Tr4eWAteqcUzoawq/uA==,
+      }
+    engines: { node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0 }
+
   '@jest/globals@29.7.0':
     resolution:
       {
@@ -1886,6 +1903,13 @@ packages:
         integrity: sha512-mo5j5X+jIZmJQveBKeS/clAueipV7KgiX1vMgCxam1RNYiqE1w62n0/tJJnHtjW8ZHcQco5gY85jA3mi0L+nSA==,
       }
     engines: { node: ^14.15.0 || ^16.10.0 || >=18.0.0 }
+
+  '@jest/schemas@30.0.5':
+    resolution:
+      {
+        integrity: sha512-DmdYgtezMkh3cpU8/1uyXakv3tJRcmcXxBOcO0tbaozPwpmh4YMsnWrQm9ZmZMfa5ocbxzbFk6O4bDPEc/iAnA==,
+      }
+    engines: { node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0 }
 
   '@jest/source-map@29.6.3':
     resolution:
@@ -2512,10 +2536,10 @@ packages:
       '@types/react':
         optional: true
 
-  '@react-navigation/bottom-tabs@7.8.1':
+  '@react-navigation/bottom-tabs@7.8.2':
     resolution:
       {
-        integrity: sha512-4boCAHFQwTNWUZrVeFV0GeY2iXeRXMOAGF1TxbGb/Rnyu9ZNkpN+qg1QWh5DIGkH7bBCGIPHffpqga2okQZe0g==,
+        integrity: sha512-QOcRZj6hA5QZg8PztlEaNOjbQRq75NKM26yTFXdL81OWM2qgry3tascIhBvLUak35NryG1iqQXzSpgn3I/86+g==,
       }
     peerDependencies:
       '@react-navigation/native': ^7.1.19
@@ -2595,6 +2619,12 @@ packages:
         integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==,
       }
 
+  '@sinclair/typebox@0.34.41':
+    resolution:
+      {
+        integrity: sha512-6gS8pZzSXdyRHTIqoqSVknxolr1kzfy4/CeDnrzsVz8TTIWUbOBr6gnzOmTYJ3eXQNh4IYHIGi5aIL7sOZ2G/g==,
+      }
+
   '@sindresorhus/merge-streams@2.3.0':
     resolution:
       {
@@ -2649,23 +2679,19 @@ packages:
     peerDependencies:
       eslint: '>=9.0.0'
 
-  '@testing-library/react-hooks@8.0.1':
+  '@testing-library/react-native@13.3.3':
     resolution:
       {
-        integrity: sha512-Aqhl2IVmLt8IovEVarNDFuJDVWVvhnr9/GCU6UUnrYXwgDFF9h2L2o2P9KBni1AST5sT6riAyoukFLyjQUgD/g==,
+        integrity: sha512-k6Mjsd9dbZgvY4Bl7P1NIpePQNi+dfYtlJ5voi9KQlynxSyQkfOgJmYGCYmw/aSgH/rUcFvG8u5gd4npzgRDyg==,
       }
-    engines: { node: '>=12' }
+    engines: { node: '>=18' }
     peerDependencies:
-      '@types/react': ^16.9.0 || ^17.0.0
-      react: ^16.9.0 || ^17.0.0
-      react-dom: ^16.9.0 || ^17.0.0
-      react-test-renderer: ^16.9.0 || ^17.0.0
+      jest: '>=29.0.0'
+      react: '>=18.2.0'
+      react-native: '>=0.71'
+      react-test-renderer: '>=18.2.0'
     peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      react-dom:
-        optional: true
-      react-test-renderer:
+      jest:
         optional: true
 
   '@tootallnate/once@2.0.0':
@@ -3860,10 +3886,10 @@ packages:
       }
     engines: { node: '>=16' }
 
-  caniuse-lite@1.0.30001753:
+  caniuse-lite@1.0.30001754:
     resolution:
       {
-        integrity: sha512-Bj5H35MD/ebaOV4iDLqPEtiliTN29qkGtEHCwawWn4cYm+bPJM2NsaP30vtZcnERClMzp52J4+aw2UNbK4o+zw==,
+        integrity: sha512-x6OeBXueoAceOmotzx3PO4Zpt4rzpeIFsSr6AAePTZxSkXiYDUmpypEl7e2+8NCd9bD7bXjqyef8CJYPC1jfxg==,
       }
 
   chalk-template@1.1.2:
@@ -4396,68 +4422,68 @@ packages:
       }
     engines: { node: '>=8' }
 
-  cspell-config-lib@9.2.2:
+  cspell-config-lib@9.3.0:
     resolution:
       {
-        integrity: sha512-Fp3jdFxb5gxcQP146TfNVmDqXKfm3xmcEUr1K829DmAFwhc7s+/pCRjhBPoGfQt6U7ugpxjkSx2gGKSbLhp7Mg==,
+        integrity: sha512-YyKMBwRIo8Sh3D9roHWWpW9KnQCkeWOoPJkcLEA3q+UldspkqpjQ8A8bUvigLgVg4dBQosiEUdda3MUZT79Lyg==,
       }
     engines: { node: '>=20' }
 
-  cspell-dictionary@9.2.2:
+  cspell-dictionary@9.3.0:
     resolution:
       {
-        integrity: sha512-lnoCFoCAaiFJi+Hz22t+tdTj76jyTA76EYFKhmf/dbj5UO6kVy8by08uFfUbbMaC9Oi09YHnI62P/e+LBx1v8Q==,
+        integrity: sha512-+gS59D0ly/UfTDsjKavWCDTSukmQ3HO0Xy+t4+pwgkVOa8kXzhERoXxT0V3v71TJS+kFRHfsWeGekfaVB4n2ng==,
       }
     engines: { node: '>=20' }
 
-  cspell-gitignore@9.2.2:
+  cspell-gitignore@9.3.0:
     resolution:
       {
-        integrity: sha512-Idx3IVKTpnGoyRlkj8F/lSWtWiJpqLhXmZglTzfGWxzbik8E0aQmSyT3blbNWhZL/K1JqlTjbSiAICVMoWTkhA==,
-      }
-    engines: { node: '>=20' }
-    hasBin: true
-
-  cspell-glob@9.2.2:
-    resolution:
-      {
-        integrity: sha512-6mhUk4iLu5YzY9PE86ZyAjNFjM7TD8Oh4btJ7ZV+edzJjdVjFugXWyefPXCGNfuvpaJqpuoLDwMvNHJxUmLwbg==,
-      }
-    engines: { node: '>=20' }
-
-  cspell-grammar@9.2.2:
-    resolution:
-      {
-        integrity: sha512-m0aozo5gjZYL5Vm3/9D0/yLZJTsVJAP8VeRVljN4u5T7w+WY+LsnvKSZhnkOvsT3kCJDhcKEkMVkCo8d/7EcAQ==,
+        integrity: sha512-AdI8WLKGNtTni1P+fbepDBh6u7Mv22diwtqMQoasDPeafArmQHpTp9gc8FgNnQO9tQASB7ZMjIOnLFNvmML+nw==,
       }
     engines: { node: '>=20' }
     hasBin: true
 
-  cspell-io@9.2.2:
+  cspell-glob@9.3.0:
     resolution:
       {
-        integrity: sha512-Rpky4woeB6/1VUCk7DtRm94A6c5XRbhcj5dUZh851EpZ0ItEz3S9+MhkX8g1sTVkDg6Hln1pu+Nbm9dFIpGkGA==,
+        integrity: sha512-Mp1T4Y3utyIB5dgQk+XksdmS97il8TfFI9byMUR6Mprml/I+QglXj38bHX/++DeApfFHr+5y5DgqxmRn3/wnKA==,
       }
     engines: { node: '>=20' }
 
-  cspell-lib@9.2.2:
+  cspell-grammar@9.3.0:
     resolution:
       {
-        integrity: sha512-ksy+5vCSZz7ECUDlLA8ZGNEcWmnzl5bMe4IEPHAMaPFY3iWNsG7dXBrae1dj/b/3HqVqOdXPdwjnGAyZciissg==,
+        integrity: sha512-X6VrCto78Xm72st+3YZ13qk5jw5sS9QOcS4x3KO41T90YoOMXbMsSH7HPaNrhqaa1rtEKk43kFQp33OLPvsI3Q==,
+      }
+    engines: { node: '>=20' }
+    hasBin: true
+
+  cspell-io@9.3.0:
+    resolution:
+      {
+        integrity: sha512-39Gp7asqdsrLvZ9L3BUXYX5wE6gAuvxeklguB4hjz+7i7Jhz02CcjFXDd1VhIA6tJ4hRTHWtgqaoaFv6qQF/vg==,
       }
     engines: { node: '>=20' }
 
-  cspell-trie-lib@9.2.2:
+  cspell-lib@9.3.0:
     resolution:
       {
-        integrity: sha512-84L0Or6xkfnDMmxx2BtuaqsM4LOVCgnG4ZzMMgwQJU+9nSOAHs0ULNWQTHLbsCF+FFG/siILpUkIc3z+UxjGFw==,
+        integrity: sha512-MM71PponJHWn/tt93hYBSvBVeyivjWjaiROfQ4UlUGw7TIwysAyywH3XNYUnydaHcbjWTk7W12JbEVa8sQaBIQ==,
       }
     engines: { node: '>=20' }
 
-  cspell@9.2.2:
+  cspell-trie-lib@9.3.0:
     resolution:
       {
-        integrity: sha512-D9jxXlYWIxUw4IjicxrmK83n5BzuQVZaIhsDsfRiH7iP4F71gDtKR9b+UgmXevvseN7OH4LkdyaPKzjNliGAbg==,
+        integrity: sha512-/hLujE3Gp36hhgJChvp6C3uJdBo5hGOqtyal6HjNmn+K27GXRrrn1L+5RoKaDMgFao9Ks5ccca9NtjQTw1EcoA==,
+      }
+    engines: { node: '>=20' }
+
+  cspell@9.3.0:
+    resolution:
+      {
+        integrity: sha512-YyXjOS3MAF6d0XggxHZtkyde6Yf0VgXkrFvR8C6jfxcnY0SJrJDKLiOppmm4ol+oWlvt1Dir1neGJW13xN+dUg==,
       }
     engines: { node: '>=20' }
     hasBin: true
@@ -4798,10 +4824,10 @@ packages:
         integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==,
       }
 
-  electron-to-chromium@1.5.245:
+  electron-to-chromium@1.5.248:
     resolution:
       {
-        integrity: sha512-rdmGfW47ZhL/oWEJAY4qxRtdly2B98ooTJ0pdEI4jhVLZ6tNf8fPtov2wS1IRKwFJT92le3x4Knxiwzl7cPPpQ==,
+        integrity: sha512-zsur2yunphlyAO4gIubdJEXCK6KOVvtpiuDfCIqbM9FjcnMYiyn0ICa3hWfPr0nc41zcLWobgy1iL7VvoOyA2Q==,
       }
 
   emittery@0.13.1:
@@ -5129,6 +5155,15 @@ packages:
     engines: { node: '>=4' }
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
+
+  eslint-plugin-testing-library@7.13.3:
+    resolution:
+      {
+        integrity: sha512-STwyXN7GnHulgsfdXVd5iC8fFCJVRQj2AcKtMmQOsA8G4oMnSCOX1p3MjbrDQ9fmwVf5wZy6vboTOTFobWuxOA==,
+      }
+    engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0, pnpm: ^9.14.0 }
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
 
   eslint-scope@5.1.1:
     resolution:
@@ -6291,6 +6326,13 @@ packages:
       }
     engines: { node: '>=0.8.19' }
 
+  indent-string@4.0.0:
+    resolution:
+      {
+        integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==,
+      }
+    engines: { node: '>=8' }
+
   inflight@1.0.6:
     resolution:
       {
@@ -6843,6 +6885,13 @@ packages:
       }
     engines: { node: ^14.15.0 || ^16.10.0 || >=18.0.0 }
 
+  jest-diff@30.2.0:
+    resolution:
+      {
+        integrity: sha512-dQHFo3Pt4/NLlG5z4PxZ/3yZTZ1C7s9hveiOj+GCN+uT109NC2QgsoVZsVOAvbJ3RgKkvyLGXZV9+piDpWbm6A==,
+      }
+    engines: { node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0 }
+
   jest-docblock@29.7.0:
     resolution:
       {
@@ -6913,6 +6962,13 @@ packages:
         integrity: sha512-sBkD+Xi9DtcChsI3L3u0+N0opgPYnCRPtGcQYrgXmR+hmt/fYfWAL0xRXYU8eWOdfuLgBe0YCW3AFtnRLagq/g==,
       }
     engines: { node: ^14.15.0 || ^16.10.0 || >=18.0.0 }
+
+  jest-matcher-utils@30.2.0:
+    resolution:
+      {
+        integrity: sha512-dQ94Nq4dbzmUWkQ0ANAWS9tBRfqCrn0bV9AMYdOi/MHW726xn7eQmMeRTpX2ViC00bpNaWXq+7o4lIQ3AX13Hg==,
+      }
+    engines: { node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0 }
 
   jest-message-util@29.7.0:
     resolution:
@@ -7849,6 +7905,13 @@ packages:
       }
     engines: { node: '>=18' }
 
+  min-indent@1.0.1:
+    resolution:
+      {
+        integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==,
+      }
+    engines: { node: '>=4' }
+
   minimatch@3.1.2:
     resolution:
       {
@@ -8553,6 +8616,13 @@ packages:
       }
     engines: { node: ^14.15.0 || ^16.10.0 || >=18.0.0 }
 
+  pretty-format@30.2.0:
+    resolution:
+      {
+        integrity: sha512-9uBdv/B4EefsuAL+pWqueZyZS2Ba+LxfFeQ9DN14HU4bN8bhaxKdkpjpB6fs9+pSjIBu+FXQHImEg8j/Lw0+vA==,
+      }
+    engines: { node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0 }
+
   proc-log@4.2.0:
     resolution:
       {
@@ -8708,15 +8778,6 @@ packages:
       }
     peerDependencies:
       react: ^19.1.0
-
-  react-error-boundary@3.1.4:
-    resolution:
-      {
-        integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==,
-      }
-    engines: { node: '>=10', npm: '>=6' }
-    peerDependencies:
-      react: '>=16.13.1'
 
   react-fast-compare@3.2.2:
     resolution:
@@ -8939,6 +9000,13 @@ packages:
         integrity: sha512-HFM8rkZ+i3zrV+4LQjwQ0W+ez98pApMGM3HUrN04j3CqzPOzl9nmP15Y8YXNm8QHGv/eacOVEjqhmWpkRV0NAw==,
       }
     engines: { node: '>= 0.10' }
+
+  redent@3.0.0:
+    resolution:
+      {
+        integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==,
+      }
+    engines: { node: '>=8' }
 
   reflect.getprototypeof@1.0.10:
     resolution:
@@ -9836,6 +9904,13 @@ packages:
         integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==,
       }
     engines: { node: '>=12' }
+
+  strip-indent@3.0.0:
+    resolution:
+      {
+        integrity: sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==,
+      }
+    engines: { node: '>=8' }
 
   strip-json-comments@2.0.1:
     resolution:
@@ -11491,7 +11566,7 @@ snapshots:
       '@types/semver': 7.7.1
       semver: 7.7.3
 
-  '@cspell/cspell-bundled-dicts@9.2.2':
+  '@cspell/cspell-bundled-dicts@9.3.0':
     dependencies:
       '@cspell/dict-ada': 4.1.1
       '@cspell/dict-al': 1.1.1
@@ -11552,19 +11627,19 @@ snapshots:
       '@cspell/dict-typescript': 3.2.3
       '@cspell/dict-vue': 3.0.5
 
-  '@cspell/cspell-json-reporter@9.2.2':
+  '@cspell/cspell-json-reporter@9.3.0':
     dependencies:
-      '@cspell/cspell-types': 9.2.2
+      '@cspell/cspell-types': 9.3.0
 
-  '@cspell/cspell-pipe@9.2.2': {}
+  '@cspell/cspell-pipe@9.3.0': {}
 
-  '@cspell/cspell-resolver@9.2.2':
+  '@cspell/cspell-resolver@9.3.0':
     dependencies:
       global-directory: 4.0.1
 
-  '@cspell/cspell-service-bus@9.2.2': {}
+  '@cspell/cspell-service-bus@9.3.0': {}
 
-  '@cspell/cspell-types@9.2.2': {}
+  '@cspell/cspell-types@9.3.0': {}
 
   '@cspell/dict-ada@4.1.1': {}
 
@@ -11691,16 +11766,16 @@ snapshots:
 
   '@cspell/dict-vue@3.0.5': {}
 
-  '@cspell/dynamic-import@9.2.2':
+  '@cspell/dynamic-import@9.3.0':
     dependencies:
-      '@cspell/url': 9.2.2
+      '@cspell/url': 9.3.0
       import-meta-resolve: 4.2.0
 
-  '@cspell/filetypes@9.2.2': {}
+  '@cspell/filetypes@9.3.0': {}
 
-  '@cspell/strong-weak-map@9.2.2': {}
+  '@cspell/strong-weak-map@9.3.0': {}
 
-  '@cspell/url@9.2.2': {}
+  '@cspell/url@9.3.0': {}
 
   '@dev-plugins/react-native-mmkv@0.4.0(expo@54.0.22)(react-native-mmkv@3.3.3(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -11842,7 +11917,7 @@ snapshots:
       wrap-ansi: 7.0.0
       ws: 8.18.3
     optionalDependencies:
-      expo-router: 6.0.14(b241ecae083921f1e25728a56027840d)
+      expo-router: 6.0.14(cf5e0328aa2d912512af08c3c29b7c63)
       react-native: 0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0)
     transitivePeerDependencies:
       - '@modelcontextprotocol/sdk'
@@ -12225,6 +12300,8 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
 
+  '@jest/diff-sequences@30.0.1': {}
+
   '@jest/environment@29.7.0':
     dependencies:
       '@jest/fake-timers': 29.7.0
@@ -12251,6 +12328,8 @@ snapshots:
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
+
+  '@jest/get-type@30.1.0': {}
 
   '@jest/globals@29.7.0':
     dependencies:
@@ -12293,6 +12372,10 @@ snapshots:
   '@jest/schemas@29.6.3':
     dependencies:
       '@sinclair/typebox': 0.27.8
+
+  '@jest/schemas@30.0.5':
+    dependencies:
+      '@sinclair/typebox': 0.34.41
 
   '@jest/source-map@29.6.3':
     dependencies:
@@ -12783,7 +12866,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.1.17
 
-  '@react-navigation/bottom-tabs@7.8.1(@react-navigation/native@7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-screens@4.16.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)':
+  '@react-navigation/bottom-tabs@7.8.2(@react-navigation/native@7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-screens@4.16.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@react-navigation/elements': 2.8.1(@react-navigation/native@7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       '@react-navigation/native': 7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
@@ -12862,6 +12945,8 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
+  '@sinclair/typebox@0.34.41': {}
+
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@sinonjs/commons@3.0.1':
@@ -12922,14 +13007,17 @@ snapshots:
       - supports-color
       - typescript
 
-  '@testing-library/react-hooks@8.0.1(@types/react@19.1.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@testing-library/react-native@13.3.3(jest@29.7.0(@types/node@24.10.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react-test-renderer@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@babel/runtime': 7.28.4
+      jest-matcher-utils: 30.2.0
+      picocolors: 1.1.1
+      pretty-format: 30.2.0
       react: 19.1.0
-      react-error-boundary: 3.1.4(react@19.1.0)
+      react-native: 0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0)
+      react-test-renderer: 19.1.0(react@19.1.0)
+      redent: 3.0.0
     optionalDependencies:
-      '@types/react': 19.1.17
-      react-dom: 19.1.0(react@19.1.0)
+      jest: 29.7.0(@types/node@24.10.0)
 
   '@tootallnate/once@2.0.0': {}
 
@@ -13650,7 +13738,7 @@ snapshots:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 8.0.0
-      chalk: 5.6.2
+      chalk: 5.4.1
       cli-boxes: 3.0.0
       string-width: 7.2.0
       type-fest: 4.41.0
@@ -13685,8 +13773,8 @@ snapshots:
   browserslist@4.27.0:
     dependencies:
       baseline-browser-mapping: 2.8.25
-      caniuse-lite: 1.0.30001753
-      electron-to-chromium: 1.5.245
+      caniuse-lite: 1.0.30001754
+      electron-to-chromium: 1.5.248
       node-releases: 2.0.27
       update-browserslist-db: 1.1.4(browserslist@4.27.0)
 
@@ -13732,7 +13820,7 @@ snapshots:
 
   camelcase@8.0.0: {}
 
-  caniuse-lite@1.0.30001753: {}
+  caniuse-lite@1.0.30001754: {}
 
   chalk-template@1.1.2:
     dependencies:
@@ -14061,58 +14149,58 @@ snapshots:
 
   crypto-random-string@2.0.0: {}
 
-  cspell-config-lib@9.2.2:
+  cspell-config-lib@9.3.0:
     dependencies:
-      '@cspell/cspell-types': 9.2.2
+      '@cspell/cspell-types': 9.3.0
       comment-json: 4.4.1
       smol-toml: 1.4.2
       yaml: 2.8.1
 
-  cspell-dictionary@9.2.2:
+  cspell-dictionary@9.3.0:
     dependencies:
-      '@cspell/cspell-pipe': 9.2.2
-      '@cspell/cspell-types': 9.2.2
-      cspell-trie-lib: 9.2.2
+      '@cspell/cspell-pipe': 9.3.0
+      '@cspell/cspell-types': 9.3.0
+      cspell-trie-lib: 9.3.0
       fast-equals: 5.3.2
 
-  cspell-gitignore@9.2.2:
+  cspell-gitignore@9.3.0:
     dependencies:
-      '@cspell/url': 9.2.2
-      cspell-glob: 9.2.2
-      cspell-io: 9.2.2
+      '@cspell/url': 9.3.0
+      cspell-glob: 9.3.0
+      cspell-io: 9.3.0
 
-  cspell-glob@9.2.2:
+  cspell-glob@9.3.0:
     dependencies:
-      '@cspell/url': 9.2.2
+      '@cspell/url': 9.3.0
       picomatch: 4.0.3
 
-  cspell-grammar@9.2.2:
+  cspell-grammar@9.3.0:
     dependencies:
-      '@cspell/cspell-pipe': 9.2.2
-      '@cspell/cspell-types': 9.2.2
+      '@cspell/cspell-pipe': 9.3.0
+      '@cspell/cspell-types': 9.3.0
 
-  cspell-io@9.2.2:
+  cspell-io@9.3.0:
     dependencies:
-      '@cspell/cspell-service-bus': 9.2.2
-      '@cspell/url': 9.2.2
+      '@cspell/cspell-service-bus': 9.3.0
+      '@cspell/url': 9.3.0
 
-  cspell-lib@9.2.2:
+  cspell-lib@9.3.0:
     dependencies:
-      '@cspell/cspell-bundled-dicts': 9.2.2
-      '@cspell/cspell-pipe': 9.2.2
-      '@cspell/cspell-resolver': 9.2.2
-      '@cspell/cspell-types': 9.2.2
-      '@cspell/dynamic-import': 9.2.2
-      '@cspell/filetypes': 9.2.2
-      '@cspell/strong-weak-map': 9.2.2
-      '@cspell/url': 9.2.2
+      '@cspell/cspell-bundled-dicts': 9.3.0
+      '@cspell/cspell-pipe': 9.3.0
+      '@cspell/cspell-resolver': 9.3.0
+      '@cspell/cspell-types': 9.3.0
+      '@cspell/dynamic-import': 9.3.0
+      '@cspell/filetypes': 9.3.0
+      '@cspell/strong-weak-map': 9.3.0
+      '@cspell/url': 9.3.0
       clear-module: 4.1.2
-      cspell-config-lib: 9.2.2
-      cspell-dictionary: 9.2.2
-      cspell-glob: 9.2.2
-      cspell-grammar: 9.2.2
-      cspell-io: 9.2.2
-      cspell-trie-lib: 9.2.2
+      cspell-config-lib: 9.3.0
+      cspell-dictionary: 9.3.0
+      cspell-glob: 9.3.0
+      cspell-grammar: 9.3.0
+      cspell-io: 9.3.0
+      cspell-trie-lib: 9.3.0
       env-paths: 3.0.0
       gensequence: 7.0.0
       import-fresh: 3.3.1
@@ -14121,28 +14209,28 @@ snapshots:
       vscode-uri: 3.1.0
       xdg-basedir: 5.1.0
 
-  cspell-trie-lib@9.2.2:
+  cspell-trie-lib@9.3.0:
     dependencies:
-      '@cspell/cspell-pipe': 9.2.2
-      '@cspell/cspell-types': 9.2.2
+      '@cspell/cspell-pipe': 9.3.0
+      '@cspell/cspell-types': 9.3.0
       gensequence: 7.0.0
 
-  cspell@9.2.2:
+  cspell@9.3.0:
     dependencies:
-      '@cspell/cspell-json-reporter': 9.2.2
-      '@cspell/cspell-pipe': 9.2.2
-      '@cspell/cspell-types': 9.2.2
-      '@cspell/dynamic-import': 9.2.2
-      '@cspell/url': 9.2.2
+      '@cspell/cspell-json-reporter': 9.3.0
+      '@cspell/cspell-pipe': 9.3.0
+      '@cspell/cspell-types': 9.3.0
+      '@cspell/dynamic-import': 9.3.0
+      '@cspell/url': 9.3.0
       chalk: 5.6.2
       chalk-template: 1.1.2
       commander: 14.0.2
-      cspell-config-lib: 9.2.2
-      cspell-dictionary: 9.2.2
-      cspell-gitignore: 9.2.2
-      cspell-glob: 9.2.2
-      cspell-io: 9.2.2
-      cspell-lib: 9.2.2
+      cspell-config-lib: 9.3.0
+      cspell-dictionary: 9.3.0
+      cspell-gitignore: 9.3.0
+      cspell-glob: 9.3.0
+      cspell-io: 9.3.0
+      cspell-lib: 9.3.0
       fast-json-stable-stringify: 2.1.0
       flatted: 3.3.3
       semver: 7.7.3
@@ -14313,7 +14401,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.245: {}
+  electron-to-chromium@1.5.248: {}
 
   emittery@0.13.1: {}
 
@@ -14650,6 +14738,15 @@ snapshots:
       string.prototype.matchall: 4.0.12
       string.prototype.repeat: 1.0.0
 
+  eslint-plugin-testing-library@7.13.3(eslint@9.39.1)(typescript@5.9.3):
+    dependencies:
+      '@typescript-eslint/scope-manager': 8.46.3
+      '@typescript-eslint/utils': 8.46.3(eslint@9.39.1)(typescript@5.9.3)
+      eslint: 9.39.1
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
   eslint-scope@5.1.1:
     dependencies:
       esrecurse: 4.3.0
@@ -14895,13 +14992,13 @@ snapshots:
       react: 19.1.0
       react-native: 0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0)
 
-  expo-router@6.0.14(b241ecae083921f1e25728a56027840d):
+  expo-router@6.0.14(cf5e0328aa2d912512af08c3c29b7c63):
     dependencies:
       '@expo/metro-runtime': 6.1.2(expo@54.0.22)(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       '@expo/schema-utils': 0.1.7
       '@radix-ui/react-slot': 1.2.0(@types/react@19.1.17)(react@19.1.0)
       '@radix-ui/react-tabs': 1.1.13(@types/react@19.1.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@react-navigation/bottom-tabs': 7.8.1(@react-navigation/native@7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-screens@4.16.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
+      '@react-navigation/bottom-tabs': 7.8.2(@react-navigation/native@7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-screens@4.16.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       '@react-navigation/native': 7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       '@react-navigation/native-stack': 7.6.2(@react-navigation/native@7.1.19(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native-screens@4.16.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       client-only: 0.0.1
@@ -14928,6 +15025,7 @@ snapshots:
       use-latest-callback: 0.2.6(react@19.1.0)
       vaul: 1.1.2(@types/react@19.1.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     optionalDependencies:
+      '@testing-library/react-native': 13.3.3(jest@29.7.0(@types/node@24.10.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react-test-renderer@19.1.0(react@19.1.0))(react@19.1.0)
       react-dom: 19.1.0(react@19.1.0)
       react-native-gesture-handler: 2.28.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       react-native-reanimated: 4.1.3(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
@@ -15462,6 +15560,8 @@ snapshots:
 
   imurmurhash@0.1.4: {}
 
+  indent-string@4.0.0: {}
+
   inflight@1.0.6:
     dependencies:
       once: 1.4.0
@@ -15841,6 +15941,13 @@ snapshots:
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
 
+  jest-diff@30.2.0:
+    dependencies:
+      '@jest/diff-sequences': 30.0.1
+      '@jest/get-type': 30.1.0
+      chalk: 4.1.2
+      pretty-format: 30.2.0
+
   jest-docblock@29.7.0:
     dependencies:
       detect-newline: 3.1.0
@@ -15936,6 +16043,13 @@ snapshots:
       jest-diff: 29.7.0
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
+
+  jest-matcher-utils@30.2.0:
+    dependencies:
+      '@jest/get-type': 30.1.0
+      chalk: 4.1.2
+      jest-diff: 30.2.0
+      pretty-format: 30.2.0
 
   jest-message-util@29.7.0:
     dependencies:
@@ -16364,7 +16478,7 @@ snapshots:
 
   log-symbols@6.0.0:
     dependencies:
-      chalk: 5.6.2
+      chalk: 5.4.1
       is-unicode-supported: 1.3.0
 
   log-update@6.1.0:
@@ -16790,6 +16904,8 @@ snapshots:
 
   mimic-function@5.0.1: {}
 
+  min-indent@1.0.1: {}
+
   minimatch@3.1.2:
     dependencies:
       brace-expansion: 1.1.12
@@ -17007,7 +17123,7 @@ snapshots:
 
   ora@8.1.1:
     dependencies:
-      chalk: 5.6.2
+      chalk: 5.4.1
       cli-cursor: 5.0.0
       cli-spinners: 2.9.2
       is-interactive: 2.0.0
@@ -17189,6 +17305,12 @@ snapshots:
       ansi-styles: 5.2.0
       react-is: 18.3.1
 
+  pretty-format@30.2.0:
+    dependencies:
+      '@jest/schemas': 30.0.5
+      ansi-styles: 5.2.0
+      react-is: 18.3.1
+
   proc-log@4.2.0: {}
 
   progress@2.0.3: {}
@@ -17285,11 +17407,6 @@ snapshots:
     dependencies:
       react: 19.1.0
       scheduler: 0.26.0
-
-  react-error-boundary@3.1.4(react@19.1.0):
-    dependencies:
-      '@babel/runtime': 7.28.4
-      react: 19.1.0
 
   react-fast-compare@3.2.2: {}
 
@@ -17492,6 +17609,11 @@ snapshots:
   rechoir@0.6.2:
     dependencies:
       resolve: 1.22.11
+
+  redent@3.0.0:
+    dependencies:
+      indent-string: 4.0.0
+      strip-indent: 3.0.0
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -18065,6 +18187,10 @@ snapshots:
 
   strip-final-newline@3.0.0: {}
 
+  strip-indent@3.0.0:
+    dependencies:
+      min-indent: 1.0.1
+
   strip-json-comments@2.0.1: {}
 
   strip-json-comments@3.1.1: {}
@@ -18337,7 +18463,7 @@ snapshots:
   update-notifier@7.3.1:
     dependencies:
       boxen: 8.0.1
-      chalk: 5.6.2
+      chalk: 5.4.1
       configstore: 7.1.0
       is-in-ci: 1.0.0
       is-installed-globally: 1.0.0
