@@ -9,7 +9,6 @@
     - [Expo Development Build](#expo-development-build)
     - [EAS Build Setup](#eas-build-setup)
     - [App Environments Setup](#app-environments-setup)
-    - [Babel Plugins](#babel-plugins)
     - [Debugging - Expo Dev Plugins](#debugging---expo-dev-plugins)
     - [Linting Tools](#linting-tools)
   - [Important Defaults - APP](#important-defaults---app)
@@ -20,7 +19,7 @@
     - [Maximum Font Scaling](#maximum-font-scaling)
     - [Size Scaling](#size-scaling)
   - [Other Recommended Solutions](#other-recommended-solutions)
-  - [Adding new `ENV` variables:](#adding-new-env-variables)
+  - [Adding new ENV variables](#adding-new-env-variables)
 
 ## Overview
 
@@ -43,7 +42,7 @@ It provides a foundation for every stage of the development process:
 
 🚀 For shipping and production maintenance:
 
-- Github Actions for CI/CD
+- GitHub Actions for CI/CD
 - App config ready for different environments
 - Utilities for version check and forced updates in production
 
@@ -51,21 +50,21 @@ It provides a foundation for every stage of the development process:
 >
 > - Styling and theming solution
 > - State management library
-> - Image loading library
 > - E2E testing setup
->   You need to decide what is best for your project and add it to the project. But we provide some recommendations in the [Other Recommended Solutions](#other-recommended-solutions) section.
+>
+> You need to decide what is best for your project and add it to the project. But we provide some recommendations in the [Other Recommended Solutions](#other-recommended-solutions) section.
 
 ## Quick Start
 
 1. Clone the repository
 2. Run `pnpm install` to install dependencies
-3. copy `.env.example` to `.env` using `cp .env.example .env`
-4. run `pnpm ios/android` to start the development server and run the app on your device
+3. Copy `.env.example` to `.env` using `cp .env.example .env`
+4. Run `pnpm ios` or `pnpm android` to start the development server and run the app on your device
 
 To use the full CI/CD pipeline you also need to:
 
 1. [Setup EAS and EAS credentials](docs/eas-setup.md)
-2. [Setup Github environment](docs/github-setup.md)
+2. [Setup GitHub environment](docs/github-setup.md)
 3. [Setup Slack app for notifications (optional)](docs/slack-setup.md)
 4. [Jira Setup (optional)](docs/jira-setup.md)
 
@@ -80,7 +79,7 @@ To use the full CI/CD pipeline you also need to:
 - EAS helps with building and app submission. It can create and store all important credentials so that we don't have to distribute them among everyone.
 - Default build profiles in `eas.json`:
   - `dev` - this profile will build an `expo-dev-client`, meaning that after installing the app, one can change non-native code and see changes reflected in the app
-  - `staging` - should be distributed for testing, does not have a dev client, meaning it cannot be manipulated. It builds `com.xxx.xxx.staging` application which can be distributed through a link or a QR code.
+  - `staging` - should be distributed for testing, does not have a dev client, meaning it cannot be manipulated. It builds a separate app identifier (e.g. `com.xxx.xxx.staging`) which can be distributed through a link or a QR code.
 
 > For iOS, we need to add devices for EAS testing (development, staging) via `eas device:create` (creates sharable registration link) and confirm the device has been added. It is good to write down your unique device ID to understand what is your device.
 
@@ -90,21 +89,14 @@ To use the full CI/CD pipeline you also need to:
 
 - Environment variables are managed by [Expo](https://docs.expo.dev/guides/environment-variables/), use `EXPO_PUBLIC` prefix to make them accessible in the app
 - `app.config.ts` determines based on the environment a relevant **icon, app name and appIdentifier** to distinguish individual apps and allow installing side by side
-- `eas.json` can set `APP_ENV` variable for each build profile to define environment
-
-### Babel Plugins
-
-- `babel-plugin-transform-remove-console` to remove console logs in production
+- `eas.json` uses the `environment` field for each build profile to define the Expo environment (`development`, `preview`, `production`)
 
 ### Debugging - Expo Dev Plugins
 
-Dev plugins included in the template:
+Dev plugins are not included by default but can be useful for debugging:
 
 - [React Navigation](https://docs.expo.dev/debugging/devtools-plugins/#react-navigation) - to see navigation state, history, and params passed to screens
-- [MMKV](https://github.com/expo/dev-plugins/blob/main/apps/example/src/app/react-native-mmkv/index.tsx) - to see MMKV store
-
-Not included but useful:
-
+- [MMKV](https://github.com/expo/dev-plugins/blob/main/apps/example/src/app/react-native-mmkv/index.tsx) - to inspect MMKV store (note: `@dev-plugins/react-native-mmkv` is not yet compatible with MMKV v4)
 - [React Query](https://github.com/bgaleotti/react-query-native-devtools)
 
 ### Linting Tools
@@ -126,13 +118,9 @@ User persistence is setup through `MMKV` which is a **synchronized** and **faste
 
 > ⚠️ The OTA updates are used for patches to javascript layer only which is convenient for small bug fixes and UI changes.
 
-To deliver the update through `eas update` we need to target the right `channel` from `eas.json` and manage `runtimeVersion` in `app.config.ts` for **native layer compatibility** otherwise we risk updating incompatible environment resulting in app crashes.
+To deliver the update through `eas update` we need to target the right `channel` from `eas.json`. The `runtimeVersion` in `app.config.ts` uses the `fingerprint` policy, which automatically detects native layer changes and generates a new runtime version when needed — no manual version management required.
 
-> ⚠️ runtimeVersion should be changed whenever we change native layer, meaning a new native third party dependency is installed in package.json or we do native config changes in app.config.ts.
-
-> ❓ A versioning strategy could be to bump minor version for every native change and bump patch version for every javascript change. Then `runtimeVersion` would change from `0.1.0` to `0.2.0`, while `version` could change as follows: `0.1.0` > `0.1.x` > `0.2.0`. This means `runtimeVersion` `0.1.0` is compatible with all `versions` `0.1.x`.
-
-> ⚠️ if we run `eas update` locally, current `.env` file is used, so be careful not to publish to production development variables. Better to do it through a github action and setup environment variables as Github Secrets.
+> ⚠️ If we run `eas update` locally, current `.env` file is used, so be careful not to publish to production development variables. Better to do it through a GitHub action and setup environment variables as GitHub Secrets.
 
 ### Forced Update aka Minimum Version Check
 
@@ -143,7 +131,7 @@ How such a modal could look like is included in the template.
 
 `useNetInfo()` provides information about current user's network connectivity. In case of `isConnected` returns false, we can provide a helpful hint (`<OfflineMessage/>` or full screen) to the user that they are disconnected from the internet so that they don't expect full app functionality. Also provide button to either `fetch()` the latest connection info or `reload` the app should they get stuck.
 
-> True is the listener is not fully [reliable](https://github.com/react-native-netinfo/react-native-netinfo/issues/481) and I see on my Pixel that I am not connected when changing from background to foreground even though I am
+> ⚠️ Note that the listener is not fully [reliable](https://github.com/react-native-netinfo/react-native-netinfo/issues/481) — connectivity state may briefly report as disconnected when transitioning from background to foreground.
 
 ### Maximum Font Scaling
 
@@ -156,9 +144,9 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 ## Other Recommended Solutions
 
 - **Styling**
-  - [Restyle](https://github.com/Shopify/restyle), [Unistyles](https://www.unistyl.es/), [Nativewind](https://www.nativewind.dev/)
+  - [Unistyles](https://www.unistyl.es/), [NativeWind](https://www.nativewind.dev/), [Restyle](https://github.com/Shopify/restyle)
 
-    > Restyle follows a defined theme with strict type safety resulting in consistent and quickly built UI. It is very helpful when a designer defines majority of text variants which can be plugged into the theme and reused super easily. It has also responsive utilities that can make potential transition to a tablet app easier. Unistyles takes a similar approach but is newer and doesn't require special components. Nativewind is a newer library that is based on Tailwind CSS.
+    > Unistyles provides a theme-based approach with good performance and doesn't require special components. NativeWind brings Tailwind CSS to React Native. Restyle from Shopify offers strict type safety and is helpful when a designer defines text variants that can be plugged into the theme.
 
 - **Notifications**
   - [React Native Firebase Cloud Messaging](https://rnfirebase.io/messaging/usage) + [Notifee](https://github.com/invertase/notifee)
@@ -185,7 +173,7 @@ To replicate Figma design consistently on majority of mobile screen sizes, we sh
 
     > Ready-to-go solution from RevenueCat, used on Arnold and Showdown projects.
 
-## Adding new `ENV` variables:
+## Adding new ENV variables
 
 We highly recommend using EAS to manage environments.
 
@@ -197,7 +185,7 @@ We map our environment names to these Expo environment names.
 "production": "production"
 ```
 
-Inside Github Actions we use an action to map the environments automatically.
+Inside GitHub Actions we use an action to map the environments automatically.
 To add new environment variable:
 
 - Either add it through the Expo dashboard
