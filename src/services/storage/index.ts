@@ -1,6 +1,6 @@
-import { MMKV, useMMKVObject, useMMKVString } from 'react-native-mmkv'
+import { createMMKV, useMMKVObject, useMMKVString } from 'react-native-mmkv'
 
-export const storage = new MMKV()
+export const storage = createMMKV()
 
 export enum StorageKeys {
   AccessToken = 'accessToken',
@@ -19,7 +19,7 @@ export function setItem(key: StorageKeys, value: string) {
 }
 
 function removeItem(key: StorageKeys) {
-  storage.delete(key)
+  storage.remove(key)
 }
 
 function clearAll() {
