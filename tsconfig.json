@@ -6,6 +6,7 @@
     "incremental": true,
     "allowJs": true,
     "typeRoots": ["./src/types", "node_modules/@types"],
+    "types": ["jest", "react", "semver"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
