@@ -1,3 +1,4 @@
+import { useMMKVDevTools } from '@dev-plugins/react-native-mmkv'
 import * as SplashScreen from 'expo-splash-screen'
 import React, { type PropsWithChildren, useCallback, useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
@@ -24,6 +25,7 @@ export const Provider = ({ children }: PropsWithChildren) => {
     loading: false,
   })
   const { isOnline } = useIsOnline()
+  useMMKVDevTools()
   useOTAUpdates()
 
   useEffect(() => {
