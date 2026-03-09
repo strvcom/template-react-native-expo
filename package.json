@@ -52,6 +52,7 @@
     "semver": "^7.7.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
     "@release-it/conventional-changelog": "^8.0.2",
     "@strv/eslint-config-react-native": "^4.1.0",
     "@testing-library/react-native": "^13.3.3",
