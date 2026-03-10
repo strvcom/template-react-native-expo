@@ -69,6 +69,7 @@ const plugins: ExpoConfig['plugins'] = [
   ['expo-build-properties'],
   ['expo-font', { fonts }],
   ['expo-asset', { assets }],
+  ['expo-image'],
   ['expo-router'],
 ]
 
