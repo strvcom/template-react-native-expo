@@ -51,6 +51,7 @@
     "semver": "^7.7.4"
   },
   "devDependencies": {
+    "@dev-plugins/react-native-mmkv": "~0.4.0",
     "@release-it/conventional-changelog": "^10.0.5",
     "@strv/eslint-config-react-native": "^4.1.0",
     "@testing-library/react-native": "^13.3.3",
